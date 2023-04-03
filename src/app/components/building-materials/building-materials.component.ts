@@ -7,8 +7,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BuildingMaterialService } from 'src/app/services/building-material.service';
-import { DialogComponent } from '../dialog/dialog.component';
 import { BuildingMaterial } from 'src/app/models/building-material.model';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-building-materials',
@@ -17,6 +17,7 @@ import { BuildingMaterial } from 'src/app/models/building-material.model';
 })
 export class BuildingMaterialsComponent implements OnInit{
 
+  public materials:any=[];
   addBuildingMaterialRequest: BuildingMaterial = {
     id:'',
     name:'',
@@ -37,21 +38,8 @@ export class BuildingMaterialsComponent implements OnInit{
   constructor(private buildingMaterialsService: BuildingMaterialService, private dialog: MatDialog){}
 
   ngOnInit(): void {
-    this.getAllBuildingMaterials();
-  }
-
-  addBuildingMaterial(){
-    this.buildingMaterialsService.addMaterial(this.addBuildingMaterialRequest)
-    .subscribe({
-      next: (material)=>{
-        console.log(material);
-      },
-      error:(response)=>{
-        console.log(response);
-      }
-      
-    })
-  }
+    this.getAllBuildingMaterials();   
+  }  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -72,10 +60,24 @@ export class BuildingMaterialsComponent implements OnInit{
     })
   };
 
+  addBuildingMaterial(){
+    this.buildingMaterialsService.addMaterial(this.addBuildingMaterialRequest)
+    .subscribe({
+      next: (material)=>{
+        console.log(material);
+      },
+      error:(response)=>{
+        console.log(response);
+      }
+      
+    })
+  }
+
   getAllBuildingMaterials(){
     this.buildingMaterialsService.getAllMaterials()
     .subscribe({
       next: (res)=>{  
+        this.materials=res;
         console.log(res)      
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;

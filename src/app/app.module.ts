@@ -24,13 +24,21 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
+import { BuildingObjectComponent } from './components/building-object/building-object.component';
+import { DivisionalStructuresComponent } from './components/divisional-structures/divisional-structures.component';
+import { LeftContainerComponent } from './components/left-container/left-container.component';
+import { BuildingParametersComponent } from './components/building-parameters/building-parameters.component';
 // import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     BuildingMaterialsComponent,
-    DialogComponent
+    DialogComponent,
+    BuildingObjectComponent,
+    DivisionalStructuresComponent,
+    LeftContainerComponent,
+    BuildingParametersComponent
 
   ],
   imports: [
