@@ -22,6 +22,7 @@ export class BuildingMaterialsComponent implements OnInit{
     id:'',
     name:'',
     description:'',
+    thickness:0,
     gammaSW:0,
     gammaW:0,
     ro:0,
@@ -29,7 +30,7 @@ export class BuildingMaterialsComponent implements OnInit{
 
   };
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'gammaSW','gammaW','ro','cw' ];
+  displayedColumns: string[] = ['id', 'name', 'description','thickness' , 'gammaSW','gammaW','ro','cw'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
-import { BuildingMaterial } from 'src/app/models/building-material.model';
 import { BuildingMaterialService } from 'src/app/services/building-material.service';
 
 
@@ -24,6 +23,7 @@ export class DialogComponent implements OnInit{
     this.buildingMaterialForm = this.formBuilder.group({
       name: ['',Validators.required],
       description: ['',Validators.required],
+      thickness: [0,Validators.required],
       gammaSW: [0,Validators.required],
       gammaW: [0,Validators.required],
       ro: [0,Validators.required],
@@ -34,6 +34,7 @@ export class DialogComponent implements OnInit{
       this.actionBtn = "Update";
       this.buildingMaterialForm.controls['name'].setValue(this.editData.name);
       this.buildingMaterialForm.controls['description'].setValue(this.editData.description);
+      this.buildingMaterialForm.controls['thickness'].setValue(this.editData.thickness);
       this.buildingMaterialForm.controls['gammaSW'].setValue(this.editData.gammaSW);
       this.buildingMaterialForm.controls['gammaW'].setValue(this.editData.gammaW);
       this.buildingMaterialForm.controls['ro'].setValue(this.editData.ro);
@@ -45,7 +46,7 @@ export class DialogComponent implements OnInit{
     if(!this.editData)
     {
       if(this.buildingMaterialForm.valid){
-        console.log(1)
+        console.log(this.buildingMaterialForm)
         this.api.addMaterial(this.buildingMaterialForm.value)
         .subscribe({
           next:(res)=>{

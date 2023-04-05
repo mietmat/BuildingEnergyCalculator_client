@@ -28,6 +28,8 @@ import { BuildingObjectComponent } from './components/building-object/building-o
 import { DivisionalStructuresComponent } from './components/divisional-structures/divisional-structures.component';
 import { LeftContainerComponent } from './components/left-container/left-container.component';
 import { BuildingParametersComponent } from './components/building-parameters/building-parameters.component';
+import { DialogDivisionalStructureComponent } from './components/dialog-divisional-structure/dialog-divisional-structure.component';
+
 // import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
@@ -38,7 +40,8 @@ import { BuildingParametersComponent } from './components/building-parameters/bu
     BuildingObjectComponent,
     DivisionalStructuresComponent,
     LeftContainerComponent,
-    BuildingParametersComponent
+    BuildingParametersComponent,
+    DialogDivisionalStructureComponent
 
   ],
   imports: [
@@ -64,7 +67,8 @@ import { BuildingParametersComponent } from './components/building-parameters/bu
     NgToastModule,
     BrowserAnimationsModule,
     MatCardModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule
 
   ],
   providers: [ 
