@@ -18,18 +18,20 @@ export class DialogDivisionalStructureComponent {
   deliveryList = [true,false]
   divisionalStructureForm !: FormGroup;
   actionBtn : string = "Save";
-  buildingMaterials = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  public buildingMaterials: string[] = ["drewno","cegła","styropian"]
 
   constructor(private formBuilder : FormBuilder, 
     private api: DivisionalStructureService, 
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef : MatDialogRef<DialogDivisionalStructureComponent>){}
+    private dialogRef : MatDialogRef<DialogDivisionalStructureComponent>,
+    public apiMaterials: BuildingMaterialService){}
+
 
   ngOnInit(): void {
     this.divisionalStructureForm = this.formBuilder.group({
       name: ['',Validators.required],
       description: ['',Validators.required],
-      buildingMaterials: [[''],Validators.required]
+      // buildingMaterials: this.apiMaterials.getAllMaterials()
            
     });
 
@@ -38,7 +40,7 @@ export class DialogDivisionalStructureComponent {
       this.divisionalStructureForm.controls['name'].setValue(this.editData.name);
       this.divisionalStructureForm.controls['description'].setValue(this.editData.description);
       this.divisionalStructureForm.controls['buildingMaterials'].setValue(this.editData.buildingMaterials);
-           
+
     }
   }
 

@@ -32,7 +32,7 @@ export class DivisionalStructuresComponent implements OnInit {
 
   };
 
-  displayedColumns: string[] = this.materials;
+  displayedColumns: string[] = ['id', 'name', 'description', 'divisionalThickness','U' ];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -98,5 +98,17 @@ export class DivisionalStructuresComponent implements OnInit {
       }
       
     })
+  }
+
+  addDivisionalStructure(){
+    this.divisionalStructureService.addDivisionalStructure(this.addDivisionalStructuresRequest)
+    .subscribe({
+      next: (structure) =>{
+        console.log(structure);
+      },
+      error: (response) =>{
+        console.log(response);
+      }
+    });
   }
 }
