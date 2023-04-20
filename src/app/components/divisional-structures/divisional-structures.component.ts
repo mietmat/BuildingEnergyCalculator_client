@@ -20,15 +20,15 @@ export class DivisionalStructuresComponent implements OnInit {
   public divisionalStructures:any=[];
 
   addDivisionalStructuresRequest: DivisionalStructure = {
-    id:'',
     name:'',
     description:'',
-    buildingMaterials:[''],
     divisionalThickness: 0,
     R:0,
     U:0,
     Rsi:0,
     Rse:0,
+    buildingMaterials:[],
+
 
   };
 
@@ -41,7 +41,7 @@ export class DivisionalStructuresComponent implements OnInit {
   constructor(private divisionalStructureService: DivisionalStructureService, private dialog: MatDialog, private buildingMaterialsService:BuildingMaterialService){}
 
   ngOnInit(): void {
-    this.getAllBuildingMaterials();
+    // this.getAllBuildingMaterials();
     this.getAllDivisionalStructures();
   }
 
@@ -59,35 +59,35 @@ export class DivisionalStructuresComponent implements OnInit {
       width:'30%'
      }).afterClosed().subscribe(val=>{
        if(val==='save'){
-         this.getAllDivisionalStructures();
+        //  this.addDivisionalStructure();
        }
      })
   };
 
-  getAllBuildingMaterials(){
-    this.buildingMaterialsService.getAllMaterials()
-    .subscribe({
-      next: (res)=>{  
-        this.materials=res;
-        console.log(res)      
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      error: (err)=>{
-        console.log(err);
-        alert("Error while fetching the Records BM")
-      }
+  // getAllBuildingMaterials(){
+  //   this.buildingMaterialsService.getAllMaterials()
+  //   .subscribe({
+  //     next: (res)=>{  
+  //       this.materials=res;
+  //       // console.log(res)      
+  //       this.dataSource = new MatTableDataSource(res);
+  //       this.dataSource.paginator = this.paginator;
+  //       this.dataSource.sort = this.sort;
+  //     },
+  //     error: (err)=>{
+  //       console.log(err);
+  //       alert("Error while fetching the Records BM")
+  //     }
 
-    })
-  }
+  //   })
+  // }
 
   getAllDivisionalStructures(){
     this.divisionalStructureService.getAllDivisionalStructures()
     .subscribe({
       next: (res)=>{  
         this.divisionalStructures=res;
-        console.log(res)      
+        console.log(res) 
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -100,15 +100,15 @@ export class DivisionalStructuresComponent implements OnInit {
     })
   }
 
-  addDivisionalStructure(){
-    this.divisionalStructureService.addDivisionalStructure(this.addDivisionalStructuresRequest)
-    .subscribe({
-      next: (structure) =>{
-        console.log(structure);
-      },
-      error: (response) =>{
-        console.log(response);
-      }
-    });
-  }
+  // addDivisionalStructure(){
+  //   this.divisionalStructureService.addDivisionalStructure(this.addDivisionalStructuresRequest)
+  //   .subscribe({
+  //     next: (structure) =>{
+  //       console.log("divisional-structures" + structure);
+  //     },
+  //     error: (response) =>{
+  //       console.log(response);
+  //     }
+  //   });
+  // }
 }

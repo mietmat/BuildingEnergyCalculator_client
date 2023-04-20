@@ -9,6 +9,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { BuildingMaterialService } from 'src/app/services/building-material.service';
 import { BuildingMaterial } from 'src/app/models/building-material.model';
 import { DialogComponent } from '../dialog/dialog.component';
+import { AuthService } from 'src/app/services/auth-service.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-building-materials',
@@ -19,7 +21,6 @@ export class BuildingMaterialsComponent implements OnInit{
 
   public materials:any=[];
   addBuildingMaterialRequest: BuildingMaterial = {
-    id:'',
     name:'',
     description:'',
     thickness:0,
@@ -35,11 +36,17 @@ export class BuildingMaterialsComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  public role!:string;    
 
-  constructor(private buildingMaterialsService: BuildingMaterialService, private dialog: MatDialog){}
+  constructor(private buildingMaterialsService: BuildingMaterialService, private dialog: MatDialog,private auth: AuthService, private userStore: UserStoreService){}
 
   ngOnInit(): void {
-    this.getAllBuildingMaterials();   
+    this.getAllBuildingMaterials();  
+    this.userStore.getRoleFromStore()
+    .subscribe(val=>{
+      const roleFromToken = this.auth.getRoleFromToken();
+      this.role = val || roleFromToken
+    })
   }  
 
   applyFilter(event: Event) {

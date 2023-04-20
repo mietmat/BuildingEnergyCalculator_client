@@ -29,6 +29,8 @@ import { DivisionalStructuresComponent } from './components/divisional-structure
 import { LeftContainerComponent } from './components/left-container/left-container.component';
 import { BuildingParametersComponent } from './components/building-parameters/building-parameters.component';
 import { DialogDivisionalStructureComponent } from './components/dialog-divisional-structure/dialog-divisional-structure.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
 
@@ -41,7 +43,9 @@ import { DialogDivisionalStructureComponent } from './components/dialog-division
     DivisionalStructuresComponent,
     LeftContainerComponent,
     BuildingParametersComponent,
-    DialogDivisionalStructureComponent
+    DialogDivisionalStructureComponent, 
+    LoginComponent,   
+    SignupComponent
 
   ],
   imports: [

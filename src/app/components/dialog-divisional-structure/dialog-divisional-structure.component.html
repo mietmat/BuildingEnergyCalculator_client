@@ -9,13 +9,13 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea formControlName="description" matInput></textarea>     
+        <textarea formControlName="description" matInput placeholder="Description"></textarea>     
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Materials</mat-label>
-        <mat-select multiple>
-          <mat-option *ngFor="let buildingMaterial of buildingMaterials" [value]="buildingMaterial">{{buildingMaterial}}</mat-option>
+        <mat-select [formControl]="materials" multiple (selectionChange)="onMaterialSelectionChange()">
+          <mat-option *ngFor="let buildingMaterial of buildingMaterialsAll" [value]="buildingMaterial">{{buildingMaterial.name}}</mat-option>
         </mat-select>
       </mat-form-field> 
     
@@ -24,5 +24,4 @@
 <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
     <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addDivisionalStructure()" >{{actionBtn}}</button>
-
 </div>

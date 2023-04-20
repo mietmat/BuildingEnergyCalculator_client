@@ -4,8 +4,21 @@ import { BuildingMaterialsComponent } from './components/building-materials/buil
 import { BuildingObjectComponent } from './components/building-object/building-object.component';
 import { DivisionalStructuresComponent } from './components/divisional-structures/divisional-structures.component';
 import { BuildingParametersComponent } from './components/building-parameters/building-parameters.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
+  // {
+  //   path:'', redirectTo:'building-energy/login', pathMatch:'full',
+  // },
+  {
+    path:'building-energy/login',
+    component: LoginComponent
+  },
+  {
+    path:'building-energy/signup',
+    component: SignupComponent
+  },
   {
     path:'materials',
     component: BuildingMaterialsComponent

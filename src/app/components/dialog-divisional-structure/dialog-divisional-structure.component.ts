@@ -4,6 +4,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BuildingMaterialService } from 'src/app/services/building-material.service';
 import { DivisionalStructureService } from 'src/app/services/divisional-structure.service';
 import {FormControl} from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
+import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
+import { BuildingMaterial } from 'src/app/models/building-material.model';
 
 
 @Component({
@@ -18,38 +22,57 @@ export class DialogDivisionalStructureComponent {
   deliveryList = [true,false]
   divisionalStructureForm !: FormGroup;
   actionBtn : string = "Save";
-  public buildingMaterials: string[] = ["drewno","cegła","styropian"]
+  materials = new FormControl('');
+  public buildingMaterialsAll: any[]=[];
+  public materialen: any[] = ["asdsa","dasd"];
 
   constructor(private formBuilder : FormBuilder, 
     private api: DivisionalStructureService, 
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef : MatDialogRef<DialogDivisionalStructureComponent>,
-    public apiMaterials: BuildingMaterialService){}
+    public apiMaterials: BuildingMaterialService){} 
+    
+    
+  ngOnInit(): void {     
+      this.apiMaterials.getAllMaterials()
+      .subscribe(buildingMaterial=>{
+        this.buildingMaterialsAll = buildingMaterial;
+      }); 
 
+      this.divisionalStructureForm = this.formBuilder.group({
+        name: ['',Validators.required],
+        description: ['',Validators.required],
+        buildingMaterials:[[this.materials]],   
+        thickness:[10],
+        gammaSw:[20],
+        gammaW:[0],
+        ro:[0],
+        cw:[0]
+      });
 
-  ngOnInit(): void {
-    this.divisionalStructureForm = this.formBuilder.group({
-      name: ['',Validators.required],
-      description: ['',Validators.required],
-      // buildingMaterials: this.apiMaterials.getAllMaterials()
-           
-    });
+    // if(this.editData){
+    //   this.actionBtn = "Update";
+    //   this.divisionalStructureForm.controls['name'].setValue(this.editData.name);
+    //   this.divisionalStructureForm.controls['description'].setValue(this.editData.description);
+    //   this.divisionalStructureForm.controls['buildingMaterials'].setValue(this.editData.buildingMaterials);
 
-    if(this.editData){
-      this.actionBtn = "Update";
-      this.divisionalStructureForm.controls['name'].setValue(this.editData.name);
-      this.divisionalStructureForm.controls['description'].setValue(this.editData.description);
-      this.divisionalStructureForm.controls['buildingMaterials'].setValue(this.editData.buildingMaterials);
-
-    }
+    // }
   }
+
+  onMaterialSelectionChange() {
+    console.log(this.materials.value); // wyświetla wybrane wartości
+    
+  } 
 
   addDivisionalStructure(){
     if(!this.editData)
     {
       if(this.divisionalStructureForm.valid){
-        console.log(1)
-        this.api.addDivisionalStructure(this.divisionalStructureForm.value)
+        console.log("KROK1") 
+        const formValues = this.divisionalStructureForm.value;
+        formValues.buildingMaterials = this.materials.value;
+
+        this.api.addDivisionalStructure(formValues)
         .subscribe({
           next:(res)=>{
             alert("Divisional structure added successfully");
@@ -61,8 +84,9 @@ export class DialogDivisionalStructureComponent {
           },
          error:(err)=>{
             alert("Error while adding the divisional structure")
-            console.log(this.divisionalStructureForm)
+            console.log(this.divisionalStructureForm.value)
             console.log(err)
+            console.log(this.materials.value)
           }
         })
       }   

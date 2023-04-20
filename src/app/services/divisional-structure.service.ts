@@ -19,4 +19,6 @@ export class DivisionalStructureService {
   {
     return this.http.post<DivisionalStructure>(this.baseUrl + "divisionalstructure",addDivisionalStructureRequest)
   }
+
+    
 }

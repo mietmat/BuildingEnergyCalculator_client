@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import { AuthService } from 'src/app/services/auth-service.service';
 import { BuildingMaterialService } from 'src/app/services/building-material.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 
 @Component({
@@ -13,11 +15,14 @@ export class DialogComponent implements OnInit{
   deliveryList = [true,false]
   buildingMaterialForm !: FormGroup;
   actionBtn : string = "Save"
+  public role!:string;    
 
   constructor(private formBuilder : FormBuilder, 
     private api: BuildingMaterialService, 
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef : MatDialogRef<DialogComponent>){}
+    private dialogRef : MatDialogRef<DialogComponent>,
+    private auth: AuthService,
+     private userStore: UserStoreService){}
 
   ngOnInit(): void {
     this.buildingMaterialForm = this.formBuilder.group({
@@ -27,7 +32,9 @@ export class DialogComponent implements OnInit{
       gammaSW: [0,Validators.required],
       gammaW: [0,Validators.required],
       ro: [0,Validators.required],
-      cw: [0,Validators.required],     
+      cw: [0,Validators.required],  
+      
+     
     });
 
     if(this.editData){
@@ -40,6 +47,12 @@ export class DialogComponent implements OnInit{
       this.buildingMaterialForm.controls['ro'].setValue(this.editData.ro);
       this.buildingMaterialForm.controls['cw'].setValue(this.editData.cw);      
     }
+
+    this.userStore.getRoleFromStore()
+      .subscribe(val=>{
+        const roleFromToken = this.auth.getRoleFromToken();
+        this.role = val || roleFromToken
+      })
   }
 
   addMaterial(){

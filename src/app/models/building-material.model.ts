@@ -1,5 +1,4 @@
 export interface BuildingMaterial{
-    id: string;
     name: string;
     description: string;
     thickness: number;
@@ -7,5 +6,4 @@ export interface BuildingMaterial{
     gammaW: number;
     ro:number;
     cw:number;
-  
 }

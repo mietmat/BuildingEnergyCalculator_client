@@ -1,5 +1,7 @@
-<h1 mat-dialog-title>Add New Building Material</h1>
-<div mat-dialog-content>   
+<ng-container *ngIf="role === 'Admin'">
+  <h1 mat-dialog-title>Add New Building Material</h1>
+
+  <div mat-dialog-content>   
     <form [formGroup]="buildingMaterialForm">
       <mat-form-field appearance="outline">
         <mat-label>Material Name</mat-label>
@@ -35,7 +37,15 @@
     </form>
 </div>
 <div mat-dialog-actions [align]="'end'">
-    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addMaterial()" >{{actionBtn}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addMaterial()" >{{actionBtn}}</button>
 
 </div>
+</ng-container>
+<ng-container *ngIf="role != 'Admin'">
+  <h1 mat-dialog-title>You can add new material only as a logged user !</h1>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
+  </div>
+</ng-container>
+

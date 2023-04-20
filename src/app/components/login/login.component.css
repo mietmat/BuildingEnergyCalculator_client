@@ -1,0 +1,12 @@
+a{
+    text-align: right;
+   }
+   #exampleModal{
+       color: black;
+   }
+   #forgot:hover{
+       cursor: pointer;
+   }
+   h3.login{
+       color: black;
+   }

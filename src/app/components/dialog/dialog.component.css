@@ -15,3 +15,8 @@ mat-form-field{
   h1{
     margin-top: 20px;
   }
+
+  #claims{
+    color: black;
+    margin-left: 2vw;
+  }
