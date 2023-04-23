@@ -41,7 +41,6 @@ export class DivisionalStructuresComponent implements OnInit {
   constructor(private divisionalStructureService: DivisionalStructureService, private dialog: MatDialog, private buildingMaterialsService:BuildingMaterialService){}
 
   ngOnInit(): void {
-    // this.getAllBuildingMaterials();
     this.getAllDivisionalStructures();
   }
 
@@ -63,24 +62,7 @@ export class DivisionalStructuresComponent implements OnInit {
        }
      })
   };
-
-  // getAllBuildingMaterials(){
-  //   this.buildingMaterialsService.getAllMaterials()
-  //   .subscribe({
-  //     next: (res)=>{  
-  //       this.materials=res;
-  //       // console.log(res)      
-  //       this.dataSource = new MatTableDataSource(res);
-  //       this.dataSource.paginator = this.paginator;
-  //       this.dataSource.sort = this.sort;
-  //     },
-  //     error: (err)=>{
-  //       console.log(err);
-  //       alert("Error while fetching the Records BM")
-  //     }
-
-  //   })
-  // }
+  
 
   getAllDivisionalStructures(){
     this.divisionalStructureService.getAllDivisionalStructures()

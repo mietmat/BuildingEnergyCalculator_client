@@ -43,11 +43,14 @@ export class DialogDivisionalStructureComponent {
         name: ['',Validators.required],
         description: ['',Validators.required],
         buildingMaterials:[[this.materials]],   
-        thickness:[10],
-        gammaSw:[20],
-        gammaW:[0],
+        thickness:[0],
+        lambdaSw:[0],
+        lambdaW:[0],
         ro:[0],
-        cw:[0]
+        cw:[0],
+        Rsi:0,
+        Rse:0,
+        U:0,
       });
 
     // if(this.editData){

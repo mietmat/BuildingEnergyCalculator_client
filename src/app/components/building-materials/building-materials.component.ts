@@ -24,14 +24,14 @@ export class BuildingMaterialsComponent implements OnInit{
     name:'',
     description:'',
     thickness:0,
-    gammaSW:0,
-    gammaW:0,
+    lambdaSW:0,
+    lambdaW:0,
     ro:0,
     cw:0
 
   };
 
-  displayedColumns: string[] = ['id', 'name', 'description','thickness' , 'gammaSW','gammaW','ro','cw'];
+  displayedColumns: string[] = ['id', 'name', 'description','thickness' , 'lambdaSW','lambdaW','ro','cw'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

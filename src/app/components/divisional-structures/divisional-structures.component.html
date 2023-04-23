@@ -56,14 +56,14 @@
               
                   <!-- divisionalThickness Column -->
                   <ng-container matColumnDef="divisionalThickness">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Thickness </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Thickness [m]</th>
                     <td mat-cell *matCellDef="let row"> {{row.divisionalThickness}} </td>
                   </ng-container>    
                        
                      <!-- U Column -->
                      <ng-container matColumnDef="U">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> U </th>
-                        <td mat-cell *matCellDef="let row"> {{row.U}} </td>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> U [W/(m2K)] </th>
+                        <td mat-cell *matCellDef="let row"> {{row.u}} </td>
                       </ng-container>   
                     
                                             

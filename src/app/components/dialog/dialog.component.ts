@@ -29,8 +29,8 @@ export class DialogComponent implements OnInit{
       name: ['',Validators.required],
       description: ['',Validators.required],
       thickness: [0,Validators.required],
-      gammaSW: [0,Validators.required],
-      gammaW: [0,Validators.required],
+      lambdaSW: [0,Validators.required],
+      lambdaW: [0,Validators.required],
       ro: [0,Validators.required],
       cw: [0,Validators.required],  
       
@@ -42,8 +42,8 @@ export class DialogComponent implements OnInit{
       this.buildingMaterialForm.controls['name'].setValue(this.editData.name);
       this.buildingMaterialForm.controls['description'].setValue(this.editData.description);
       this.buildingMaterialForm.controls['thickness'].setValue(this.editData.thickness);
-      this.buildingMaterialForm.controls['gammaSW'].setValue(this.editData.gammaSW);
-      this.buildingMaterialForm.controls['gammaW'].setValue(this.editData.gammaW);
+      this.buildingMaterialForm.controls['lambdaSW'].setValue(this.editData.lambdaSW);
+      this.buildingMaterialForm.controls['lambdaW'].setValue(this.editData.lambdaW);
       this.buildingMaterialForm.controls['ro'].setValue(this.editData.ro);
       this.buildingMaterialForm.controls['cw'].setValue(this.editData.cw);      
     }
@@ -60,6 +60,7 @@ export class DialogComponent implements OnInit{
     {
       if(this.buildingMaterialForm.valid){
         console.log(this.buildingMaterialForm)
+        console.log("sent to backend")
         this.api.addMaterial(this.buildingMaterialForm.value)
         .subscribe({
           next:(res)=>{

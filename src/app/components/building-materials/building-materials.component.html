@@ -65,31 +65,31 @@
   
                     <!-- Thickness Column -->
                     <ng-container matColumnDef="thickness">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Thickness </th>
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Thickness [m] </th>
                       <td mat-cell *matCellDef="let row"> {{row.thickness}} </td>
                     </ng-container>
                 
-                    <!-- GammaSW Column -->
-                    <ng-container matColumnDef="gammaSW">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header> GammaSW </th>
-                      <td mat-cell *matCellDef="let row"> {{row.gammaSW}} </td>
+                    <!-- LambdaSW Column -->
+                    <ng-container matColumnDef="lambdaSW">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>λsw [W/mK] </th>
+                      <td mat-cell *matCellDef="let row"> {{row.lambdaSW}} </td>
                     </ng-container>
       
-                      <!-- GammaW Column -->
-                      <ng-container matColumnDef="gammaW">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> GammaW </th>
-                          <td mat-cell *matCellDef="let row"> {{row.gammaW}} </td>
+                      <!-- LambdaW Column -->
+                      <ng-container matColumnDef="lambdaW">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> λw [W/mK] </th>
+                          <td mat-cell *matCellDef="let row"> {{row.lambdaW}} </td>
                         </ng-container>
       
                        <!-- Ro Column -->
                        <ng-container matColumnDef="ro">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ro </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> ρ [kg/m3] </th>
                           <td mat-cell *matCellDef="let row"> {{row.ro}} </td>
                         </ng-container>
       
                       <!-- Cw Column -->
                       <ng-container matColumnDef="cw">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cw </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cw [kJ/kgK] </th>
                           <td mat-cell *matCellDef="let row"> {{row.cw}} </td>
                       </ng-container>  
                                               

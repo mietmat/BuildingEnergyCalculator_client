@@ -2,8 +2,8 @@ export interface BuildingMaterial{
     name: string;
     description: string;
     thickness: number;
-    gammaSW: number;
-    gammaW: number;
+    lambdaSW: number;
+    lambdaW: number;
     ro:number;
     cw:number;
 }

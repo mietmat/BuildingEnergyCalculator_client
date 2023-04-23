@@ -2,14 +2,20 @@
 <div mat-dialog-content>   
     <form [formGroup]="divisionalStructureForm">
       <mat-form-field appearance="outline">
-        <mat-label>Material Name</mat-label>
-        <input formControlName="name" matInput placeholder="Name">
-        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint> -->
+        <mat-label>Divisional Structure Name</mat-label>
+        <input formControlName="name" matInput placeholder="Name">        
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <textarea formControlName="description" matInput placeholder="Description"></textarea>     
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Rsi [m2K/W]</mat-label>
+        <input formControlName="Rsi" matInput placeholder="Rsi [m2K/W]">        
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Rse [m2K/W]</mat-label>
+        <input formControlName="Rse" matInput placeholder="Rse [m2K/W]">        
       </mat-form-field>
 
       <mat-form-field appearance="outline">
