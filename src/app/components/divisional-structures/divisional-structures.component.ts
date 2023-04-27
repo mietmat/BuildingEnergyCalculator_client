@@ -8,6 +8,7 @@ import { DialogDivisionalStructureComponent } from '../dialog-divisional-structu
 import { DivisionalStructure } from 'src/app/models/divisional-structures.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { NgConfirmService } from 'ng-confirm-box';
 
 @Component({
   selector: 'app-divisional-structures',
@@ -32,13 +33,14 @@ export class DivisionalStructuresComponent implements OnInit {
 
   };
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'divisionalThickness','U' ];
+  displayedColumns: string[] = ['id', 'name', 'description', 'divisionalThickness','U','action' ];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private divisionalStructureService: DivisionalStructureService, private dialog: MatDialog, private buildingMaterialsService:BuildingMaterialService){}
+  constructor(private divisionalStructureService: DivisionalStructureService, private dialog: MatDialog,
+     private confirmService: NgConfirmService){}
 
   ngOnInit(): void {
     this.getAllDivisionalStructures();
@@ -58,7 +60,7 @@ export class DivisionalStructuresComponent implements OnInit {
       width:'30%'
      }).afterClosed().subscribe(val=>{
        if(val==='save'){
-        //  this.addDivisionalStructure();
+        this.getAllDivisionalStructures();
        }
      })
   };
@@ -68,7 +70,7 @@ export class DivisionalStructuresComponent implements OnInit {
     this.divisionalStructureService.getAllDivisionalStructures()
     .subscribe({
       next: (res)=>{  
-        this.divisionalStructures=res;
+        // this.divisionalStructures=res;
         console.log(res) 
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
@@ -82,15 +84,40 @@ export class DivisionalStructuresComponent implements OnInit {
     })
   }
 
-  // addDivisionalStructure(){
-  //   this.divisionalStructureService.addDivisionalStructure(this.addDivisionalStructuresRequest)
-  //   .subscribe({
-  //     next: (structure) =>{
-  //       console.log("divisional-structures" + structure);
-  //     },
-  //     error: (response) =>{
-  //       console.log(response);
-  //     }
-  //   });
-  // }
+  editStructure(row: any)
+  {
+    this.dialog.open(DialogDivisionalStructureComponent,{
+      width:'30%',
+      data: row
+    }).afterClosed().subscribe(val=>{
+      if(val==='update'){
+        this.getAllDivisionalStructures();
+      }
+    })
+  };
+
+  deleteStructure(id: number){
+
+    this.confirmService.showConfirm("Are you sure want to remove item permanently ?",
+    ()=>{
+      this.divisionalStructureService.deleteStructure(id)
+    .subscribe({
+      next:(res)=>{
+        alert("product deleted successfully")
+        this.getAllDivisionalStructures();
+      },
+      error:()=>{
+        alert("Error while deleting the product !")
+      }
+      })
+    },
+    ()=>{
+      alert("User selected No")
+    }
+    )   
+  
+  
+}
+
+  
 }

@@ -82,7 +82,26 @@ export class DialogComponent implements OnInit{
         console.log("nie zwalidowałem się !")  
 
       }     
+    }else{
+
+      this.updateBuildingMaterial()
     }
   }
+
+  updateBuildingMaterial(){
+    this.api.updateBuildingMaterial(this.buildingMaterialForm.value, this.editData.id)
+    .subscribe({
+      next:(res)=>{
+        alert("Product updated successfully");
+        console.log(res);
+        this.buildingMaterialForm.reset();
+        this.dialogRef.close('update');
+      },
+      error:(err)=>{
+        console.log(err);
+        alert('Error while updating the record !')
+      }
+    })
+  }  
   
 }

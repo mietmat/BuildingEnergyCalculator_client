@@ -31,6 +31,8 @@ import { BuildingParametersComponent } from './components/building-parameters/bu
 import { DialogDivisionalStructureComponent } from './components/dialog-divisional-structure/dialog-divisional-structure.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { NgConfirmModule} from 'ng-confirm-box';
+
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
 
@@ -72,7 +74,9 @@ import { SignupComponent } from './components/signup/signup.component';
     BrowserAnimationsModule,
     MatCardModule,
     DragDropModule,
-    MatSelectModule
+    MatSelectModule,
+    NgConfirmModule
+
 
   ],
   providers: [ 

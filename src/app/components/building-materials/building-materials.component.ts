@@ -11,6 +11,7 @@ import { BuildingMaterial } from 'src/app/models/building-material.model';
 import { DialogComponent } from '../dialog/dialog.component';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
+import { NgConfirmService } from 'ng-confirm-box';
 
 @Component({
   selector: 'app-building-materials',
@@ -31,14 +32,15 @@ export class BuildingMaterialsComponent implements OnInit{
 
   };
 
-  displayedColumns: string[] = ['id', 'name', 'description','thickness' , 'lambdaSW','lambdaW','ro','cw'];
+  displayedColumns: string[] = ['id', 'name', 'description','thickness' , 'lambdaSW','lambdaW','ro','cw','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   public role!:string;    
 
-  constructor(private buildingMaterialsService: BuildingMaterialService, private dialog: MatDialog,private auth: AuthService, private userStore: UserStoreService){}
+  constructor(private buildingMaterialsService: BuildingMaterialService, private dialog: MatDialog,private auth: AuthService,
+     private userStore: UserStoreService,private confirmService: NgConfirmService){}
 
   ngOnInit(): void {
     this.getAllBuildingMaterials();  
@@ -98,6 +100,40 @@ export class BuildingMaterialsComponent implements OnInit{
 
     })
   }
+
+  editMaterial(row: any){
+    this.dialog.open(DialogComponent,{
+      width:'30%',
+      data: row
+    }).afterClosed().subscribe(val=>{
+      if(val==='update'){
+        this.getAllBuildingMaterials();
+      }
+    })
+  };
+
+  deleteMaterial(id: number){
+
+    this.confirmService.showConfirm("Are you sure want to remove item permanently ?",
+    ()=>{
+      this.buildingMaterialsService.deleteMaterial(id)
+    .subscribe({
+      next:(res)=>{
+        alert("material deleted successfully")
+        this.getAllBuildingMaterials();
+      },
+      error:(err)=>{
+        console.log(err)
+        alert("Error while deleting the product !")
+      }
+      })
+    },
+    ()=>{
+       alert("User selected No")
+    }
+    )  
+    
+}
 
   
 }

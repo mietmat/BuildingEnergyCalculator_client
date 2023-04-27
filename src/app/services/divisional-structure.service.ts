@@ -20,5 +20,15 @@ export class DivisionalStructureService {
     return this.http.post<DivisionalStructure>(this.baseUrl + "divisionalstructure",addDivisionalStructureRequest)
   }
 
+  updateStructure(data: DivisionalStructure, id: number)
+  {
+    return this.http.put<DivisionalStructure>(this.baseUrl + "divisionalstructure/"+id,data)
+  }
+
+  deleteStructure(id: number)
+  {
+    return this.http.delete<DivisionalStructure>(this.baseUrl + "divisionalstructure/"+id)
+  }
+
     
 }

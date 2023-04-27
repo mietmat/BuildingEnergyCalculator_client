@@ -24,42 +24,46 @@ export class DialogDivisionalStructureComponent {
   actionBtn : string = "Save";
   materials = new FormControl('');
   public buildingMaterialsAll: any[]=[];
-  public materialen: any[] = ["asdsa","dasd"];
 
   constructor(private formBuilder : FormBuilder, 
     private api: DivisionalStructureService, 
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef : MatDialogRef<DialogDivisionalStructureComponent>,
-    public apiMaterials: BuildingMaterialService){} 
+    public apiMaterials: BuildingMaterialService,
+    public divisionalStructure: DivisionalStructureService){} 
     
     
-  ngOnInit(): void {     
-      this.apiMaterials.getAllMaterials()
+  ngOnInit(): void {  
+
+    this.apiMaterials.getAllMaterials()
       .subscribe(buildingMaterial=>{
         this.buildingMaterialsAll = buildingMaterial;
+        console.log("Pobrane materiały:" + buildingMaterial)
       }); 
 
       this.divisionalStructureForm = this.formBuilder.group({
         name: ['',Validators.required],
         description: ['',Validators.required],
         buildingMaterials:[[this.materials]],   
-        thickness:[0],
         lambdaSw:[0],
         lambdaW:[0],
         ro:[0],
         cw:[0],
-        Rsi:0,
-        Rse:0,
-        U:0,
+        rsi:[0,Validators.required],
+        rse:[0],
+        u:0,
       });
 
-    // if(this.editData){
-    //   this.actionBtn = "Update";
-    //   this.divisionalStructureForm.controls['name'].setValue(this.editData.name);
-    //   this.divisionalStructureForm.controls['description'].setValue(this.editData.description);
-    //   this.divisionalStructureForm.controls['buildingMaterials'].setValue(this.editData.buildingMaterials);
+    if(this.editData){
+      this.actionBtn = "Update";
+      this.divisionalStructureForm.controls['name'].setValue(this.editData.name);
+      this.divisionalStructureForm.controls['description'].setValue(this.editData.description);
+      this.divisionalStructureForm.controls['rsi'].setValue(this.editData.rsi);
+      this.divisionalStructureForm.controls['rse'].setValue(this.editData.rse);
+      this.divisionalStructureForm.controls['buildingMaterials'].setValue(this.editData.buildingMaterials);
+    
 
-    // }
+    }
   }
 
   onMaterialSelectionChange() {
@@ -71,7 +75,6 @@ export class DialogDivisionalStructureComponent {
     if(!this.editData)
     {
       if(this.divisionalStructureForm.valid){
-        console.log("KROK1") 
         const formValues = this.divisionalStructureForm.value;
         formValues.buildingMaterials = this.materials.value;
 
@@ -98,5 +101,26 @@ export class DialogDivisionalStructureComponent {
 
       }     
     }
+    else{
+      console.log("UPDATE")
+
+      this.updateStructure()
+    }
   }
+
+  updateStructure(){
+    this.api.updateStructure(this.divisionalStructureForm.value, this.editData.id)
+    .subscribe({
+      next:(res)=>{
+        console.log("UPDATED:" + res);
+        alert("Product updated successfully");
+        this.divisionalStructureForm.reset();
+        this.dialogRef.close('update');
+      },
+      error:(err)=>{
+        console.log(err)
+        alert('Error while updating the record !')
+      }
+    })
+  }  
 }
