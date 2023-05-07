@@ -2,18 +2,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark btn-danger">
   
   <div class="container">
-    <a class="navbar-brand" href="materials">BEC</a>
+    <a class="navbar-brand" href="#">BEC</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="materials">Building Materials</a>
+          <a class="nav-link active" aria-current="page" routerLink="building-object">BUILDING OBJECT</a>
         </li>    
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="">Divisional Structures</a>
-        </li>        
+          <a class="nav-link active" aria-current="page" routerLink="">ENERGY DEMAND</a>
+        </li>   
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="">OPERATING COSTS</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="">INVESTMENT COSTS</a>
+        </li>    
         
       </ul>
     </div>
@@ -24,10 +30,11 @@
 
   </div>     
                 
-  <button mat-button style="color:white; background: black;" routerLink="/restaurant/login">Login</button>
+  <button mat-button style="color:white; background: black;" routerLink="/building-energy/login">Login</button>
 
 </nav>
 
 <router-outlet></router-outlet>
+<ng-confirm></ng-confirm>
 
 

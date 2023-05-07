@@ -24,13 +24,30 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
+import { BuildingObjectComponent } from './components/building-object/building-object.component';
+import { DivisionalStructuresComponent } from './components/divisional-structures/divisional-structures.component';
+import { LeftContainerComponent } from './components/left-container/left-container.component';
+import { BuildingParametersComponent } from './components/building-parameters/building-parameters.component';
+import { DialogDivisionalStructureComponent } from './components/dialog-divisional-structure/dialog-divisional-structure.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { NgConfirmModule} from 'ng-confirm-box';
+
+
 // import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     BuildingMaterialsComponent,
-    DialogComponent
+    DialogComponent,
+    BuildingObjectComponent,
+    DivisionalStructuresComponent,
+    LeftContainerComponent,
+    BuildingParametersComponent,
+    DialogDivisionalStructureComponent, 
+    LoginComponent,   
+    SignupComponent
 
   ],
   imports: [
@@ -56,7 +73,10 @@ import {MatRadioModule} from '@angular/material/radio';
     NgToastModule,
     BrowserAnimationsModule,
     MatCardModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule,
+    NgConfirmModule
+
 
   ],
   providers: [ 

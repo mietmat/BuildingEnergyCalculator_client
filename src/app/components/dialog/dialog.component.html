@@ -1,37 +1,49 @@
-<h1 mat-dialog-title>Add New Building Material</h1>
-<div mat-dialog-content>   
+<ng-container *ngIf="role === 'Admin'">
+  <h1 mat-dialog-title>Add New Building Material</h1>
+
+  <div mat-dialog-content>   
     <form [formGroup]="buildingMaterialForm">
       <mat-form-field appearance="outline">
         <mat-label>Material Name</mat-label>
-        <input formControlName="name" matInput placeholder="Name">
-        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint> -->
+        <input formControlName="name" matInput placeholder="Name">      
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <textarea formControlName="description" matInput></textarea>     
-      </mat-form-field>      
+      </mat-form-field>   
       <mat-form-field appearance="outline">
-        <mat-label>GammaSW</mat-label>
-        <input formControlName="gammaSW" matInput placeholder="GammaSW">        
+        <mat-label>Thickness [m]</mat-label>
+        <input formControlName="thickness" matInput placeholder="Thickness [m]">  
+      </mat-form-field>    
+      <mat-form-field appearance="outline">
+        <mat-label>λsw [W/mK]</mat-label>
+        <input formControlName="lambdaSW" matInput placeholder="λsw [W/mK]">        
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>GammaW</mat-label>
-        <input formControlName="gammaW" matInput placeholder="GammaW">        
+        <mat-label>λw [W/mK]</mat-label>
+        <input formControlName="lambdaW" matInput placeholder="λw [W/mK]">        
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Ro</mat-label>
-        <input formControlName="ro" matInput placeholder="Ro">        
+        <mat-label>ρ [kg/m3]</mat-label>
+        <input formControlName="ro" matInput placeholder="ρ [kg/m3]">        
       </mat-form-field>      
       
       <mat-form-field appearance="outline">
-        <mat-label>Cw</mat-label>
-        <input formControlName="cw" matInput placeholder="Cw">        
+        <mat-label>Cw [kJ/kgK]</mat-label>
+        <input formControlName="cw" matInput placeholder="Cw [kJ/kgK]">        
       </mat-form-field>
     </form>
 </div>
 <div mat-dialog-actions [align]="'end'">
-    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addMaterial()" >{{actionBtn}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addMaterial()" >{{actionBtn}}</button>
 
 </div>
+</ng-container>
+<ng-container *ngIf="role != 'Admin'">
+  <h1 mat-dialog-title>You can add new material only as a logged user !</h1>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
+  </div>
+</ng-container>
+
