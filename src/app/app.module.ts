@@ -32,6 +32,8 @@ import { DialogDivisionalStructureComponent } from './components/dialog-division
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NgConfirmModule} from 'ng-confirm-box';
+import { BuildingInformationComponent } from './components/building-information/building-information.component';
+import { DialogBuildingInformationComponent } from './components/dialog-building-information/dialog-building-information.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -47,7 +49,9 @@ import { NgConfirmModule} from 'ng-confirm-box';
     BuildingParametersComponent,
     DialogDivisionalStructureComponent, 
     LoginComponent,   
-    SignupComponent
+    SignupComponent, 
+    BuildingInformationComponent, 
+    DialogBuildingInformationComponent
 
   ],
   imports: [
