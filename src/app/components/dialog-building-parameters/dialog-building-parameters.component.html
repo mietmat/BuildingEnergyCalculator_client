@@ -1,0 +1,130 @@
+<ng-container *ngIf="role == 'Admin'">
+    <h1 mat-dialog-title>Add Building Parameters</h1>
+  
+    <div mat-dialog-content>   
+      <form [formGroup]="buildingParametersForm">
+        <div>   
+            <mat-form-field appearance="outline">
+                <mat-label>Building Length N</mat-label>
+                <input formControlName="buildingLengthN" matInput placeholder="Building Length N">      
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Building Length E</mat-label>
+                <input formControlName="buildingLengthE" matInput placeholder="Building Length E">
+            </mat-form-field>  
+            <mat-form-field appearance="outline">
+                <mat-label>Building Length S</mat-label>
+                <input formControlName="buildingLengthS" matInput placeholder="Building Length S">
+            </mat-form-field> 
+            <mat-form-field appearance="outline">
+                <mat-label>Building Length W</mat-label>
+                <input formControlName="buildingLengthW" matInput placeholder="Building Length W">
+            </mat-form-field>   
+            <mat-form-field appearance="outline">
+                <mat-label>Storey Height Net</mat-label>
+                <input formControlName="storeyHeightNet" matInput placeholder="Storey Height Net">
+            </mat-form-field> 
+            <mat-form-field appearance="outline">
+                <mat-label>Storey Height Gross</mat-label>
+                <input formControlName="storeyHeightGross" matInput placeholder="Storey Height Gross">
+            </mat-form-field> 
+            <mat-form-field appearance="outline">
+                <mat-label>Cellar Height</mat-label>
+                <input formControlName="cellarHeight" matInput placeholder="Cellar Height">
+            </mat-form-field>    
+            <mat-form-field appearance="outline">
+                <mat-label>Storey Quantity</mat-label>
+                <input formControlName="storeyQuantity" matInput placeholder="Storey Quantity">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Building Area</mat-label>
+                <input formControlName="buildingArea" matInput placeholder="Building Area">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Staircase Surface</mat-label>
+                <input formControlName="staircaseSurface" matInput placeholder="StaircaseSurface">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Usable Area Of The Stair Case</mat-label>
+                <input formControlName="usableAreaOfTheStairCase" matInput placeholder="Usable Area Of The Stair Case">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Staircase Width</mat-label>
+                <input formControlName="staircaseWidth" matInput placeholder="Staircase Width">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Heat Attic Area</mat-label>
+                <input formControlName="heatAtticArea" matInput placeholder="Heat Attic Area">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Unheated Attic Area</mat-label>
+                <input formControlName="unheatedAtticArea" matInput placeholder="Unheated Attic Area">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Usable Area Of The Building</mat-label>
+                <input formControlName="usableAreaOfTheBuilding" matInput placeholder="Usable Area Of The Building">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Attic Usable Area</mat-label>
+                <input formControlName="atticUsableArea" matInput placeholder="Attic Usable Area">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Perimiter Of The Building</mat-label>
+                <input formControlName="perimiterOfTheBuilding" matInput placeholder="Perimiter Of The Building">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Balcony Length</mat-label>
+                <input formControlName="balconyLength" matInput placeholder="Balcony Length">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Window Area N</mat-label>
+                <input formControlName="totalWindowAreaN" matInput placeholder="Total Window Area N">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Window Area E</mat-label>
+                <input formControlName="totalWindowAreaE" matInput placeholder="Total Window Area E">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Window Area S</mat-label>
+                <input formControlName="totalWindowAreaS" matInput placeholder="Total Window Area S">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Window Area W</mat-label>
+                <input formControlName="totalWindowAreaW" matInput placeholder="Total Window Area W">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Door Area N</mat-label>
+                <input formControlName="totalDoorAreaN" matInput placeholder="Total Door Area N">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Door Area E</mat-label>
+                <input formControlName="totalDoorAreaE" matInput placeholder="Total Door Area E">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Door Area S</mat-label>
+                <input formControlName="totalDoorAreaS" matInput placeholder="Total Door Area S">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total Door Area W</mat-label>
+                <input formControlName="totalDoorAreaW" matInput placeholder="Total Door Area W">
+            </mat-form-field>
+        
+
+        </div>                
+                
+        </form>       
+    </div>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addBuildingParameters()" >{{actionBtn}}</button>
+  
+  </div>
+  </ng-container>
+  <ng-container *ngIf="role != 'Admin'">
+    <h1 mat-dialog-title>You can add new material only as a logged user !</h1>
+    <div mat-dialog-actions [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
+    </div>
+  </ng-container>
+  
+  

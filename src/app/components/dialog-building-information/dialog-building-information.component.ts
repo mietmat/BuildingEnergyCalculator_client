@@ -16,29 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class DialogBuildingInformationComponent implements OnInit{
   deliveryList = [true,false]
   buildingInformationForm: FormGroup;
-  // buildingInformationForm: FormGroup = new FormGroup({
-  //     name: new FormControl(''),
-  //     description: new FormControl(''),
-  //     address:new FormGroup({
-  //       city: new FormControl(''),
-  //       street: new FormControl(''),
-  //       postalCode: new FormControl(''),
-
-  //     }),
-
-  //     investor:new FormGroup({
-  //       name: new FormControl(''),
-  //       lastName: new FormControl(''),
-  //       phoneNumber: new FormControl(''),
-  //       email: new FormControl(''),
-  //       address:new FormGroup({
-  //         city: new FormControl(''),
-  //         street: new FormControl(''),
-  //         postalCode: new FormControl(''),
-  
-  //       })
-  //     })
-  // });
+ 
   actionBtn : string = "Save"
   public role!:string;    
 
@@ -49,53 +27,29 @@ export class DialogBuildingInformationComponent implements OnInit{
     private auth: AuthService,
     private userStore: UserStoreService){
       this.buildingInformationForm = this.formBuilder.group({
-        name: [''],
-        description: [''],
+        name: ['',Validators.required],
+        description: ['',Validators.required],
         address: this.formBuilder.group({
-          city: [''],
-          street: [''],
-          postalCode: ['']
+          city: ['',Validators.required],
+          street: ['',Validators.required],
+          postalCode: ['',Validators.required],
         }),
         investor: this.formBuilder.group({
-          name: [''],
-          lastName: [''],
-          phoneNumber: [''],
-          email: [''],
+          name: ['',Validators.required],
+          lastName: ['',Validators.required],
+          phoneNumber: ['',Validators.required],
+          email: ['',Validators.required],
           address: this.formBuilder.group({
-            city: [''],
-            street: [''],
-            postalCode: ['']
+            city: ['',Validators.required],
+            street: ['',Validators.required],
+            postalCode: ['',Validators.required],
           })
         })
       });
       
     }
 
-  ngOnInit(): void {
-    // this.buildingInformationForm = new FormGroup({
-    //   name: new FormControl(''),
-    //   description: new FormControl(''),
-    //   address:new FormGroup({
-    //     city: new FormControl(''),
-    //     street: new FormControl(''),
-    //     postalCode: new FormControl(''),
-
-    //   }),
-    //   investor: new FormGroup({
-    //     name: new FormControl(''),
-    //     lastName: new FormControl(''),
-    //     phoneNUmber: new FormControl(''),
-    //     address:new FormGroup({
-    //       city: new FormControl(''),
-    //       street: new FormControl(''),
-    //       postalCode: new FormControl(''),
-  
-    //     })
-    //   })
-      
-         
-           
-    // });
+  ngOnInit(): void {   
 
     // if(this.editData){
     //   this.actionBtn = "Update";
