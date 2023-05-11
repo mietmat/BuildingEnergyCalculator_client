@@ -34,6 +34,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NgConfirmModule} from 'ng-confirm-box';
 import { BuildingInformationComponent } from './components/building-information/building-information.component';
 import { DialogBuildingInformationComponent } from './components/dialog-building-information/dialog-building-information.component';
+import { DialogBuildingParametersComponent } from './components/dialog-building-parameters/dialog-building-parameters.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -51,7 +52,7 @@ import { DialogBuildingInformationComponent } from './components/dialog-building
     LoginComponent,   
     SignupComponent, 
     BuildingInformationComponent, 
-    DialogBuildingInformationComponent
+    DialogBuildingInformationComponent, DialogBuildingParametersComponent
 
   ],
   imports: [

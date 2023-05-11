@@ -14,6 +14,8 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 import { NgConfirmService } from 'ng-confirm-box';
 import { BuildingParameters } from 'src/app/models/building-parameters.model';
 import { BuildingParametersService } from 'src/app/services/building-parameters.service';
+import { DialogBuildingInformationComponent } from '../dialog-building-information/dialog-building-information.component';
+import { DialogBuildingParametersComponent } from '../dialog-building-parameters/dialog-building-parameters.component';
 
 @Component({
   selector: 'app-building-parameters',
@@ -24,32 +26,32 @@ export class BuildingParametersComponent {
 
   public buildingParameters:any=[];
   addBuildingParametersRequest: BuildingParameters = {    
-    BuildingLengthN:0,
-    BuildingLengthE:0,
-    BuildingLengthS:0,
-    BuildingLengthW:0,
-    StoreyHeightNet:0,
-    StoreyHeightGross:0,
-    CellarHeight:0,
-    StoreyQuantity:0,
-    BuildingArea:0,
-    StaircaseSurface:0,
-    UsableAreaOfTheStairCase:0,
-    StaircaseWidth:0,
-    HeatAtticArea:0,
-    UnheatedAtticArea:0,
-    UsableAreaOfTheBuilding:0,
-    AtticUsableArea:0,
-    PerimiterOfTheBuilding:0,
-    BalconyLength:0,
-    TotalWindowAreaN:0,
-    TotalWindowAreaE:0,
-    TotalWindowAreaS:0,
-    TotalWindowAreaW:0,
-    TotalDoorAreaN:0,
-    TotalDoorAreaE:0,
-    TotalDoorAreaS:0,
-    TotalDoorAreaW:0,
+    buildingLengthN:0,
+    buildingLengthE:0,
+    buildingLengthS:0,
+    buildingLengthW:0,
+    storeyHeightNet:0,
+    storeyHeightGross:0,
+    cellarHeight:0,
+    storeyQuantity:0,
+    buildingArea:0,
+    staircaseSurface:0,
+    usableAreaOfTheStairCase:0,
+    staircaseWidth:0,
+    heatAtticArea:0,
+    unheatedAtticArea:0,
+    usableAreaOfTheBuilding:0,
+    atticUsableArea:0,
+    perimiterOfTheBuilding:0,
+    balconyLength:0,
+    totalWindowAreaN:0,
+    totalWindowAreaE:0,
+    totalWindowAreaS:0,
+    totalWindowAreaW:0,
+    totalDoorAreaN:0,
+    totalDoorAreaE:0,
+    totalDoorAreaS:0,
+    totalDoorAreaW:0,
   };
 
   displayedColumns: string[] = ['id', 'BuildingLengthN', 'BuildingLengthE'];
@@ -81,7 +83,7 @@ export class BuildingParametersComponent {
   }
 
   openDialog() {
-    this.dialog.open(DialogComponent, {
+    this.dialog.open(DialogBuildingParametersComponent, {
      width:'30%'
     }).afterClosed().subscribe(val=>{
       if(val==='save'){
@@ -136,7 +138,7 @@ export class BuildingParametersComponent {
 
     this.confirmService.showConfirm("Are you sure want to remove item permanently ?",
     ()=>{
-      this.buildingParametersService.deleteMaterial(id)
+      this.buildingParametersService.deleteBuildingParameters(id)
     .subscribe({
       next:(res: any)=>{
         alert("material deleted successfully")

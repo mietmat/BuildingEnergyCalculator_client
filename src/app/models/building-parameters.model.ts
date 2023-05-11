@@ -1,30 +1,30 @@
 export interface BuildingParameters{    
-    BuildingLengthN:number;
-    BuildingLengthE:number;
-    BuildingLengthS:number;
-    BuildingLengthW:number;
-    StoreyHeightNet:number;
-    StoreyHeightGross:number;
-    CellarHeight:number;
-    StoreyQuantity:number;
-    BuildingArea:number;
-    StaircaseSurface:number;    
-    UsableAreaOfTheStairCase:number;
-    StaircaseWidth:number;
-    HeatAtticArea:number;
-    UnheatedAtticArea:number;
-    UsableAreaOfTheBuilding:number;
-    AtticUsableArea:number;
-    PerimiterOfTheBuilding:number;
-    BalconyLength:number;
-    TotalWindowAreaN:number;
-    TotalWindowAreaE:number;
-    TotalWindowAreaS:number;
-    TotalWindowAreaW:number;
-    TotalDoorAreaN:number;
-    TotalDoorAreaE:number;
-    TotalDoorAreaS:number;
-    TotalDoorAreaW:number;
+    buildingLengthN:number;
+    buildingLengthE:number;
+    buildingLengthS:number;
+    buildingLengthW:number;
+    storeyHeightNet:number;
+    storeyHeightGross:number;
+    cellarHeight:number;
+    storeyQuantity:number;
+    buildingArea:number;
+    staircaseSurface:number;    
+    usableAreaOfTheStairCase:number;
+    staircaseWidth:number;
+    heatAtticArea:number;
+    unheatedAtticArea:number;
+    usableAreaOfTheBuilding:number;
+    atticUsableArea:number;
+    perimiterOfTheBuilding:number;
+    balconyLength:number;
+    totalWindowAreaN:number;
+    totalWindowAreaE:number;
+    totalWindowAreaS:number;
+    totalWindowAreaW:number;
+    totalDoorAreaN:number;
+    totalDoorAreaE:number;
+    totalDoorAreaS:number;
+    totalDoorAreaW:number;
 
 
 }

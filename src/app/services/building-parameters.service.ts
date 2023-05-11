@@ -19,12 +19,12 @@ export class BuildingParametersService {
     return this.http.post<BuildingParameters>(this.baseUrl + "buildingparameters",addParametersRequest)
   }
 
-  updateBuildingMaterial(data: BuildingParameters, id: number)
+  updateBuildingParameters(data: BuildingParameters, id: number)
   {
     return this.http.put<BuildingParameters>(this.baseUrl + "buildingparameters/"+id,data)
   }
 
-  deleteMaterial(id: number)
+  deleteBuildingParameters(id: number)
   {
     return this.http.delete<BuildingParameters>(this.baseUrl + "buildingparameters/"+id)
   }
