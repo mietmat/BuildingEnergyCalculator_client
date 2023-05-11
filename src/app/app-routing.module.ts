@@ -6,6 +6,7 @@ import { DivisionalStructuresComponent } from './components/divisional-structure
 import { BuildingParametersComponent } from './components/building-parameters/building-parameters.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { BuildingInformationComponent } from './components/building-information/building-information.component';
 
 const routes: Routes = [
   // {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path:'building-parameters',
     component: BuildingParametersComponent
+  },
+  {
+    path:'building-information',
+    component: BuildingInformationComponent
   },
 ];
 

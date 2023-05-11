@@ -1,6 +1,4 @@
-export interface BuildingParameters{
-    BuildingName: string;
-    BuildingDescription: string;
+export interface BuildingParameters{    
     BuildingLengthN:number;
     BuildingLengthE:number;
     BuildingLengthS:number;

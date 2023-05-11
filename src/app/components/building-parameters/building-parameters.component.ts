@@ -23,9 +23,7 @@ import { BuildingParametersService } from 'src/app/services/building-parameters.
 export class BuildingParametersComponent {
 
   public buildingParameters:any=[];
-  addBuildingParametersRequest: BuildingParameters = {
-    BuildingName:'',
-    BuildingDescription:'',
+  addBuildingParametersRequest: BuildingParameters = {    
     BuildingLengthN:0,
     BuildingLengthE:0,
     BuildingLengthS:0,
@@ -54,7 +52,7 @@ export class BuildingParametersComponent {
     TotalDoorAreaW:0,
   };
 
-  displayedColumns: string[] = ['id', 'BuildingName', 'BuildingDescription'];
+  displayedColumns: string[] = ['id', 'BuildingLengthN', 'BuildingLengthE'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
