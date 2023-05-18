@@ -15,7 +15,7 @@ export interface BuildingParameters{
     unheatedAtticArea:number;
     usableAreaOfTheBuilding:number;
     atticUsableArea:number;
-    perimiterOfTheBuilding:number;
+    perimeterOfTheBuilding:number;
     balconyLength:number;
     totalWindowAreaN:number;
     totalWindowAreaE:number;

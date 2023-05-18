@@ -42,7 +42,7 @@ export class BuildingParametersComponent {
     unheatedAtticArea:0,
     usableAreaOfTheBuilding:0,
     atticUsableArea:0,
-    perimiterOfTheBuilding:0,
+    perimeterOfTheBuilding:0,
     balconyLength:0,
     totalWindowAreaN:0,
     totalWindowAreaE:0,

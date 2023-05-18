@@ -20,3 +20,12 @@ mat-form-field{
     color: black;
     margin-left: 2vw;
   }
+
+  
+  #horizontalFields{
+    display: flex;
+  }
+
+  #horizontalFields mat-form-field{
+    margin-right: 10px;
+  }
