@@ -40,7 +40,7 @@ export class DialogBuildingParametersComponent {
         unheatedAtticArea: [0,Validators.required],
         usableAreaOfTheBuilding: [0,Validators.required],
         atticUsableArea: [0,Validators.required],
-        perimiterOfTheBuilding: [0,Validators.required],
+        perimeterOfTheBuilding: [0,Validators.required],
         balconyLength: [0,Validators.required],
         totalWindowAreaN: [0,Validators.required],
         totalWindowAreaE: [0,Validators.required],

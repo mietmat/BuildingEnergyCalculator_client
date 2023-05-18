@@ -38,14 +38,11 @@ export class BuildingInformationComponent implements OnInit{
         postalCode:''
       },
 
-
-    }
-
-   
+    }   
 
   };
 
-  displayedColumns: string[] = ['id', 'name', 'description'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'address.city','investor.name','investor.lastName'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -12,11 +12,21 @@ mat-form-field{
     margin: 5px;
   }
 
-  h1{
-    margin-top: 20px;
+  h2 {
+    font-size: 18px;
   }
 
   #claims{
     color: black;
     margin-left: 2vw;
   }
+
+  #horizontalFields{
+    display: flex;
+  }
+
+  #horizontalFields mat-form-field{
+    margin-right: 10px;
+  }
+
+

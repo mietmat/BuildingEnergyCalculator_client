@@ -53,11 +53,20 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
                         <td mat-cell *matCellDef="let row"> {{row.description}} </td>
                       </ng-container>
-                          <!-- Description Column -->
-                          <ng-container matColumnDef="city">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-                            <td mat-cell *matCellDef="let row"> {{row.address.city}} </td>
-                          </ng-container>
+                      <!-- City Column -->
+                      <ng-container matColumnDef="address.city">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+                          <td mat-cell *matCellDef="let row"> {{row.address.city}} </td>
+                      </ng-container>
+                      <!-- Investor Name Column -->
+                      <ng-container matColumnDef="investor.name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Investor Name </th>
+                        <td mat-cell *matCellDef="let row"> {{row.investor.name}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="investor.lastName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Investor Last Name </th>
+                        <td mat-cell *matCellDef="let row"> {{row.investor.lastName}} </td>
+                      </ng-container>
     
                                                                       
                         <ng-container matColumnDef="action">
