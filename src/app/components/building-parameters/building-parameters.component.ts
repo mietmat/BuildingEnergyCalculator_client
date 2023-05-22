@@ -84,7 +84,7 @@ export class BuildingParametersComponent {
 
   openDialog() {
     this.dialog.open(DialogBuildingParametersComponent, {
-     width:'30%'
+     width:'50%'
     }).afterClosed().subscribe(val=>{
       if(val==='save'){
         this.getAllBuildingParameters();

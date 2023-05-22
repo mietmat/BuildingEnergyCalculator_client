@@ -72,7 +72,7 @@ export class BuildingInformationComponent implements OnInit{
 
   openDialog() {
     this.dialog.open(DialogBuildingInformationComponent, {
-     width:'30%'
+     width:'40%'
     }).afterClosed().subscribe(val=>{
       if(val==='save'){
         this.getAllBuildingInformation();

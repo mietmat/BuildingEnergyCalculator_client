@@ -1,7 +1,7 @@
-<ng-container *ngIf="role === 'Admin'">
+  <ng-container *ngIf="role === 'Admin'">
     <h1 mat-dialog-title>Add Building Information</h1>
   
-    <div mat-dialog-content>   
+    <div mat-dialog-content >   
       <form [formGroup]="buildingInformationForm">
         <div id="horizontalFields" >   
             <mat-form-field appearance="outline">
@@ -83,5 +83,7 @@
       <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
     </div>
   </ng-container>
+
+
   
   

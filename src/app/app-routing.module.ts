@@ -7,6 +7,8 @@ import { BuildingParametersComponent } from './components/building-parameters/bu
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { BuildingInformationComponent } from './components/building-information/building-information.component';
+import { DoorsComponent } from './components/doors/doors.component';
+import { WindowsComponent } from './components/windows/windows.component';
 
 const routes: Routes = [
   // {
@@ -39,6 +41,14 @@ const routes: Routes = [
   {
     path:'building-information',
     component: BuildingInformationComponent
+  },
+  {
+    path:'doors',
+    component: DoorsComponent
+  },
+  {
+    path:'windows',
+    component: WindowsComponent
   },
 ];
 
