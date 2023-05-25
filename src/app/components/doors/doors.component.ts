@@ -32,7 +32,7 @@ export class DoorsComponent {
 
   };
 
-  displayedColumns: string[] = ['id','name','description', 'width', 'height','perimeter'];
+  displayedColumns: string[] = ['id','name','description', 'width', 'height','perimeter','u'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -119,7 +119,7 @@ export class DoorsComponent {
       this.doorService.deleteDoor(id)
     .subscribe({
       next:(res: any)=>{
-        alert("material deleted successfully")
+        alert("door deleted successfully")
         this.getAllDoors();
       },
       error:(err: any)=>{

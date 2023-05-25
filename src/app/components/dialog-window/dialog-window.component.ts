@@ -2,29 +2,28 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth-service.service';
-import { DoorService } from 'src/app/services/door.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
-  selector: 'app-dialog-door',
-  templateUrl: './dialog-door.component.html',
-  styleUrls: ['./dialog-door.component.css']
+  selector: 'app-dialog-window',
+  templateUrl: './dialog-window.component.html',
+  styleUrls: ['./dialog-window.component.css']
 })
-export class DialogDoorComponent {
-
+export class DialogWindowComponent {
   deliveryList = [true,false]
-  doorForm: FormGroup;
+  windowForm: FormGroup;
  
   actionBtn : string = "Save"
   public role!:string;    
 
   constructor(private formBuilder : FormBuilder, 
-    private api: DoorService, 
+    private api: WindowService, 
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef : MatDialogRef<DialogDoorComponent>,
+    private dialogRef : MatDialogRef<DialogWindowComponent>,
     private auth: AuthService,
     private userStore: UserStoreService){
-      this.doorForm = this.formBuilder.group({
+      this.windowForm = this.formBuilder.group({
         name: ['',Validators.required],
         description: ['',Validators.required],
         width: [0,Validators.required],
@@ -58,25 +57,25 @@ export class DialogDoorComponent {
       })
   }
 
-  addDoor(){
+  addWindow(){
     if(!this.editData)
     {
-      if(this.doorForm.valid){
-        console.log(this.doorForm.value)
+      if(this.windowForm.valid){
+        console.log(this.windowForm.value)
         console.log("sent to backend")
-        this.api.addDoor(this.doorForm.value)
+        this.api.addWindow(this.windowForm.value)
         .subscribe({
           next:(res)=>{
-            alert("Door added successfully");
+            alert("Window added successfully");
             console.log(res)
             console.log("after response")
 
-            this.doorForm.reset();
+            this.windowForm.reset();
             this.dialogRef.close('save');
           },
          error:(err)=>{
-            alert("Error while adding the door")
-            console.log("FORM: " + this.doorForm)
+            alert("Error while adding the window")
+            console.log("FORM: " + this.windowForm)
             console.log("error: " + err)
           }
         })
@@ -92,12 +91,12 @@ export class DialogDoorComponent {
   }
 
   updateDoor(){
-    this.api.updateDoor(this.doorForm.value, this.editData.id)
+    this.api.updateWindow(this.windowForm.value, this.editData.id)
     .subscribe({
       next:(res)=>{
         alert("Door updated successfully");
         console.log(res);
-        this.doorForm.reset();
+        this.windowForm.reset();
         this.dialogRef.close('update');
       },
       error:(err)=>{
@@ -108,3 +107,4 @@ export class DialogDoorComponent {
   }  
 
 }
+

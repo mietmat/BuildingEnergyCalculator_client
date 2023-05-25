@@ -38,6 +38,7 @@ import { DialogBuildingParametersComponent } from './components/dialog-building-
 import { WindowsComponent } from './components/windows/windows.component';
 import { DoorsComponent } from './components/doors/doors.component';
 import { DialogDoorComponent } from './components/dialog-door/dialog-door.component';
+import { DialogWindowComponent } from './components/dialog-window/dialog-window.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -59,7 +60,11 @@ import { DialogDoorComponent } from './components/dialog-door/dialog-door.compon
     DialogBuildingParametersComponent,
     WindowsComponent,
     DoorsComponent,
-    DialogDoorComponent
+    DialogDoorComponent,
+    DialogWindowComponent,
+    
+    
+    
 
   ],
   imports: [
