@@ -15,9 +15,9 @@ export class DoorService {
     return this.http.get<any>(this.baseUrl + "door")
   }
 
-  addDoor(addMaterialRequest: Doors)
+  addDoor(addDoorRequest: Doors)
   {
-    return this.http.post<Doors>(this.baseUrl + "door",addMaterialRequest)
+    return this.http.post<Doors>(this.baseUrl + "door",addDoorRequest)
   }
 
   updateDoor(data: Doors, id: number)

@@ -1,8 +1,8 @@
 <ng-container *ngIf="role === 'Admin'">
-    <h1 mat-dialog-title>Add Door</h1>
+    <h1 mat-dialog-title>Add Window</h1>
   
     <div mat-dialog-content >   
-      <form [formGroup]="doorForm">
+      <form [formGroup]="windowForm">
         <div id="horizontalFields" >   
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
@@ -61,7 +61,7 @@
     </div>
   <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addDoor()" >{{actionBtn}}</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addWindow()" >{{actionBtn}}</button>
   
   </div>
   </ng-container>

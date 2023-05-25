@@ -1,35 +1,34 @@
-mat-form-field{
-    width:100%;
+.example-spacer {
+  flex: 1 1 auto;
 }
-.example-radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-    align-items: flex-start;
-  }
-  
-  .example-radio-button {
-    margin: 5px;
-  }
 
-  h2 {
-    font-size: 18px;
-  }
+table {
+  width: 100%;
+}
 
-  #claims{
-    color: black;
-    margin-left: 2vw;
-  }
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}  
 
-  #horizontalFields{
-    display: flex;
-  }
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-  #horizontalFields mat-form-field{
-    margin-right: 10px;
-    margin-top: 4px;
+#sidebarMenu{
+  height: 100vh;
+}
+.nav-item{
+  text-align: center;
+  font-size: 1.8vh;
+}
+a{
+  color: black;
+}
 
-  }
+
 
 
 
