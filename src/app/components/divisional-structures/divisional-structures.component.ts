@@ -33,7 +33,7 @@ export class DivisionalStructuresComponent implements OnInit {
 
   };
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'divisionalThickness','U','action' ];
+  displayedColumns: string[] = ['id', 'name', 'description', 'divisionalThickness','U','Rsi','Rse','action' ];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

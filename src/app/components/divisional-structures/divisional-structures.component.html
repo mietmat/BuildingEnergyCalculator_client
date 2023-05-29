@@ -64,7 +64,19 @@
                      <ng-container matColumnDef="U">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> U [W/(m2K)] </th>
                         <td mat-cell *matCellDef="let row"> {{row.u}} </td>
-                      </ng-container>   
+                      </ng-container>  
+                  
+                   <!-- Rsi Column -->
+                   <ng-container matColumnDef="Rsi">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rsi [m2K/W]</th>
+                    <td mat-cell *matCellDef="let row"> {{row.rsi}} </td>
+                  </ng-container> 
+
+                   <!-- Rse Column -->
+                   <ng-container matColumnDef="Rse">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rse [m2K/W]</th>
+                    <td mat-cell *matCellDef="let row"> {{row.rse}} </td>
+                  </ng-container> 
                     
                                             
                     <ng-container matColumnDef="action">
