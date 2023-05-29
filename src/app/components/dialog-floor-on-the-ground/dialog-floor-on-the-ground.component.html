@@ -1,0 +1,92 @@
+<ng-container *ngIf="role === 'Admin'">
+    <h1 mat-dialog-title>Add Building Information</h1>
+  
+    <div mat-dialog-content >   
+      <form [formGroup]="floorOnTheGroundForm">
+        <div id="horizontalFields" >   
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input formControlName="name" matInput placeholder="Name">      
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea formControlName="description" matInput></textarea>
+              </mat-form-field>              
+
+        </div>
+        
+        <div id="horizontalFields" >                        
+            <mat-form-field appearance="outline">            
+                <mat-label>Building Area</mat-label>
+                <input formControlName="Ag" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">            
+                <mat-label>Building Perimeter</mat-label>
+                <input formControlName="P" matInput>
+            </mat-form-field>        
+            <mat-form-field appearance="outline">
+                <mat-label>B'</mat-label>
+                <input formControlName="B" matInput>
+            </mat-form-field>
+        </div>     
+        <div id="horizontalFields" >                        
+            <mat-form-field appearance="outline">            
+                <mat-label>Ground Material</mat-label>
+                <input formControlName="GroundMaterial" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">            
+                <mat-label>Ground Thermal Conductivity</mat-label>
+                <input formControlName="λgr" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">            
+                <mat-label>Wall Thickness</mat-label>
+                <input formControlName="w" matInput>
+            </mat-form-field>        
+            
+        </div>   
+        <div id="horizontalFields" > 
+            <mat-form-field appearance="outline">
+                <mat-label>Floor insulation thickness</mat-label>
+                <input formControlName="df" matInput>
+            </mat-form-field>                      
+            <mat-form-field appearance="outline">            
+                <mat-label>Insulation Thermal Conductivity</mat-label>
+                <input formControlName="λf" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">            
+                <mat-label>Insulation Thermal Resistance</mat-label>
+                <input formControlName="Rf" matInput>
+            </mat-form-field>        
+            
+        </div>  
+        <div id="horizontalFields" >   
+            <mat-form-field appearance="outline">
+                <mat-label>Equivalent Thickness</mat-label>
+                <input formControlName="dt" matInput>
+            </mat-form-field>                     
+            <mat-form-field appearance="outline">            
+                <mat-label>Ugr</mat-label>
+                <input formControlName="Ugr" matInput>
+            </mat-form-field>
+           
+        </div> 
+               
+                        
+        </form>       
+    </div>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addFloorOnTheGround()" >{{actionBtn}}</button>
+  
+  </div>
+  </ng-container>
+  <ng-container *ngIf="role != 'Admin'">
+    <h1 mat-dialog-title>You can add new material only as a logged user !</h1>
+    <div mat-dialog-actions [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
+    </div>
+  </ng-container>
+
+
+  
+  

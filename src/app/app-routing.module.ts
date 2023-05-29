@@ -9,6 +9,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { BuildingInformationComponent } from './components/building-information/building-information.component';
 import { DoorsComponent } from './components/doors/doors.component';
 import { WindowsComponent } from './components/windows/windows.component';
+import { FloorOnTheGroundComponent } from './components/floor-on-the-ground/floor-on-the-ground.component';
 
 const routes: Routes = [
   // {
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path:'windows',
     component: WindowsComponent
+  },
+  {
+    path:'floor-on-the-ground',
+    component: FloorOnTheGroundComponent
   },
 ];
 

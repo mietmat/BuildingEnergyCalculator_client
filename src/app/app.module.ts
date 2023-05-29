@@ -39,6 +39,8 @@ import { WindowsComponent } from './components/windows/windows.component';
 import { DoorsComponent } from './components/doors/doors.component';
 import { DialogDoorComponent } from './components/dialog-door/dialog-door.component';
 import { DialogWindowComponent } from './components/dialog-window/dialog-window.component';
+import { FloorOnTheGroundComponent } from './components/floor-on-the-ground/floor-on-the-ground.component';
+import { DialogFloorOnTheGroundComponent } from './components/dialog-floor-on-the-ground/dialog-floor-on-the-ground.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -62,6 +64,8 @@ import { DialogWindowComponent } from './components/dialog-window/dialog-window.
     DoorsComponent,
     DialogDoorComponent,
     DialogWindowComponent,
+    FloorOnTheGroundComponent,
+    DialogFloorOnTheGroundComponent
     
     
     
