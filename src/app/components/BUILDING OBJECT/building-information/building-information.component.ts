@@ -8,8 +8,8 @@ import { BuildingInformation } from 'src/app/models/building-information.model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { BuildingInformationService } from 'src/app/services/building-information.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
-import { DialogComponent } from '../dialog/dialog.component';
-import { DialogBuildingInformationComponent } from '../dialog-building-information/dialog-building-information.component';
+import { DialogComponent } from '../DIALOGS/dialog-building-materials/dialog.component';
+import { DialogBuildingInformationComponent } from '../DIALOGS/dialog-building-information/dialog-building-information.component';
 
 @Component({
   selector: 'app-building-information',

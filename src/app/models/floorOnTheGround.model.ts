@@ -11,5 +11,5 @@ export interface FloorOnTheGround{
     λf: number; 
     Rf: number; 
     dt: number; 
-    Ugr: number; 
+    ugr: number; 
 }

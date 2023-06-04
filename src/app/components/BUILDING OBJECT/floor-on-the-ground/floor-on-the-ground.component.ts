@@ -8,8 +8,7 @@ import { FloorOnTheGround } from 'src/app/models/floorOnTheGround.model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { FloorOnTheGroundService } from 'src/app/services/floor-on-the-ground.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
-import { DialogBuildingInformationComponent } from '../dialog-building-information/dialog-building-information.component';
-import { DialogFloorOnTheGroundComponent } from '../dialog-floor-on-the-ground/dialog-floor-on-the-ground.component';
+import { DialogFloorOnTheGroundComponent } from '../../BUILDING OBJECT/DIALOGS/dialog-floor-on-the-ground/dialog-floor-on-the-ground.component';
 
 @Component({
   selector: 'app-floor-on-the-ground',
@@ -30,13 +29,13 @@ export class FloorOnTheGroundComponent {
     df:0,
     λf:0,
     dt:0,
-    Ugr:0,
+    ugr:0,
     Rf:0,
 
   }   
   
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'groundMaterial','Ugr'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'groundMaterial','ugr'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

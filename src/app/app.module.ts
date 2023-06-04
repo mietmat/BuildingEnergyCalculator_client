@@ -15,32 +15,37 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BuildingMaterialsComponent } from './components/building-materials/building-materials.component';
+import { BuildingMaterialsComponent } from './components/BUILDING OBJECT/building-materials/building-materials.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import { DialogComponent } from './components/dialog/dialog.component';
+import { DialogComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-materials/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
-import { BuildingObjectComponent } from './components/building-object/building-object.component';
-import { DivisionalStructuresComponent } from './components/divisional-structures/divisional-structures.component';
-import { LeftContainerComponent } from './components/left-container/left-container.component';
-import { BuildingParametersComponent } from './components/building-parameters/building-parameters.component';
-import { DialogDivisionalStructureComponent } from './components/dialog-divisional-structure/dialog-divisional-structure.component';
+import { BuildingObjectComponent } from './components/BUILDING OBJECT/building-object/building-object.component';
+import { DivisionalStructuresComponent } from './components/BUILDING OBJECT/divisional-structures/divisional-structures.component';
+import { LeftContainerComponent } from './components/BUILDING OBJECT/left-container/left-container.component';
+import { BuildingParametersComponent } from './components/BUILDING OBJECT/building-parameters/building-parameters.component';
+import { DialogDivisionalStructureComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-divisional-structure/dialog-divisional-structure.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NgConfirmModule} from 'ng-confirm-box';
-import { BuildingInformationComponent } from './components/building-information/building-information.component';
-import { DialogBuildingInformationComponent } from './components/dialog-building-information/dialog-building-information.component';
-import { DialogBuildingParametersComponent } from './components/dialog-building-parameters/dialog-building-parameters.component';
-import { WindowsComponent } from './components/windows/windows.component';
-import { DoorsComponent } from './components/doors/doors.component';
-import { DialogDoorComponent } from './components/dialog-door/dialog-door.component';
-import { DialogWindowComponent } from './components/dialog-window/dialog-window.component';
-import { FloorOnTheGroundComponent } from './components/floor-on-the-ground/floor-on-the-ground.component';
-import { DialogFloorOnTheGroundComponent } from './components/dialog-floor-on-the-ground/dialog-floor-on-the-ground.component';
+import { BuildingInformationComponent } from './components/BUILDING OBJECT/building-information/building-information.component';
+import { DialogBuildingInformationComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-information/dialog-building-information.component';
+import { DialogBuildingParametersComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
+import { WindowsComponent } from './components/BUILDING OBJECT/windows/windows.component';
+import { DoorsComponent } from './components/BUILDING OBJECT/doors/doors.component';
+import { DialogDoorComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-door/dialog-door.component';
+import { DialogWindowComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-window/dialog-window.component';
+import { FloorOnTheGroundComponent } from './components/BUILDING OBJECT/floor-on-the-ground/floor-on-the-ground.component';
+import { DialogFloorOnTheGroundComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-floor-on-the-ground/dialog-floor-on-the-ground.component';
+import { EnergyDemandComponent } from './components/ENERGY DEMAND/energy-demand/energy-demand.component';
+import { LeftContainerEnergyDemandComponent } from './components/ENERGY DEMAND/left-container-energy-demand/left-container-energy-demand.component';
+import { ClimaticDataComponent } from './components/ENERGY DEMAND/climatic-data/climatic-data.component';
+import { HeatLossCoefficientByTransmissionComponent } from './components/ENERGY DEMAND/heat-loss-coefficient-by-transmission/heat-loss-coefficient-by-transmission.component';
+import { HeatLossCoefficientByVentilationComponent } from './components/ENERGY DEMAND/heat-loss-coefficient-by-ventilation/heat-loss-coefficient-by-ventilation.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -65,7 +70,12 @@ import { DialogFloorOnTheGroundComponent } from './components/dialog-floor-on-th
     DialogDoorComponent,
     DialogWindowComponent,
     FloorOnTheGroundComponent,
-    DialogFloorOnTheGroundComponent
+    DialogFloorOnTheGroundComponent,
+    EnergyDemandComponent,
+    LeftContainerEnergyDemandComponent,
+    ClimaticDataComponent,
+    HeatLossCoefficientByTransmissionComponent,
+    HeatLossCoefficientByVentilationComponent
     
     
     
