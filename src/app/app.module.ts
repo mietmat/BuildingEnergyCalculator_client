@@ -46,6 +46,9 @@ import { LeftContainerEnergyDemandComponent } from './components/ENERGY DEMAND/l
 import { ClimaticDataComponent } from './components/ENERGY DEMAND/climatic-data/climatic-data.component';
 import { HeatLossCoefficientByTransmissionComponent } from './components/ENERGY DEMAND/heat-loss-coefficient-by-transmission/heat-loss-coefficient-by-transmission.component';
 import { HeatLossCoefficientByVentilationComponent } from './components/ENERGY DEMAND/heat-loss-coefficient-by-ventilation/heat-loss-coefficient-by-ventilation.component';
+import { HeatLossByTransmissionAndVentilationComponent } from './components/ENERGY DEMAND/heat-loss-by-transmission-and-ventilation/heat-loss-by-transmission-and-ventilation.component';
+import { HeatGainsFromSolarRadiationComponent } from './components/ENERGY DEMAND/heat-gains-from-solar-radiation/heat-gains-from-solar-radiation.component';
+import { InternalHeatGainsComponent } from './components/ENERGY DEMAND/internal-heat-gains/internal-heat-gains.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -75,7 +78,10 @@ import { HeatLossCoefficientByVentilationComponent } from './components/ENERGY D
     LeftContainerEnergyDemandComponent,
     ClimaticDataComponent,
     HeatLossCoefficientByTransmissionComponent,
-    HeatLossCoefficientByVentilationComponent
+    HeatLossCoefficientByVentilationComponent,
+    HeatLossByTransmissionAndVentilationComponent,
+    HeatGainsFromSolarRadiationComponent,
+    InternalHeatGainsComponent
     
     
     

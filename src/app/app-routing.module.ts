@@ -13,6 +13,10 @@ import { FloorOnTheGroundComponent } from './components/BUILDING OBJECT/floor-on
 import { EnergyDemandComponent } from './components/ENERGY DEMAND/energy-demand/energy-demand.component';
 import { HeatLossCoefficientByTransmissionComponent } from './components/ENERGY DEMAND/heat-loss-coefficient-by-transmission/heat-loss-coefficient-by-transmission.component';
 import { HeatLossCoefficientByVentilationComponent } from './components/ENERGY DEMAND/heat-loss-coefficient-by-ventilation/heat-loss-coefficient-by-ventilation.component';
+import { ClimaticDataComponent } from './components/ENERGY DEMAND/climatic-data/climatic-data.component';
+import { HeatLossByTransmissionAndVentilationComponent } from './components/ENERGY DEMAND/heat-loss-by-transmission-and-ventilation/heat-loss-by-transmission-and-ventilation.component';
+import { InternalHeatGainsComponent } from './components/ENERGY DEMAND/internal-heat-gains/internal-heat-gains.component';
+import { HeatGainsFromSolarRadiationComponent } from './components/ENERGY DEMAND/heat-gains-from-solar-radiation/heat-gains-from-solar-radiation.component';
 
 const routes: Routes = [
   // {
@@ -70,6 +74,23 @@ const routes: Routes = [
     path:'heat-loss-coefficient-by-ventilation',
     component: HeatLossCoefficientByVentilationComponent
   },
+  {
+    path:'climatic-data',
+    component: ClimaticDataComponent
+  },
+  {
+    path:'heat-loss-by-transmission-and-ventilation',
+    component: HeatLossByTransmissionAndVentilationComponent
+  },
+  {
+    path:'heat-gains-from-solar-radiation',
+    component: HeatGainsFromSolarRadiationComponent
+  },
+  {
+    path:'internal-heat-gains',
+    component: InternalHeatGainsComponent
+  },
+  
 ];
 
 @NgModule({
