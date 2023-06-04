@@ -8,7 +8,7 @@ import { Windows } from 'src/app/models/window.model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { WindowService } from 'src/app/services/window.service';
-import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
+import { DialogWindowComponent } from '../DIALOGS/dialog-window/dialog-window.component';
 
 @Component({
   selector: 'app-windows',

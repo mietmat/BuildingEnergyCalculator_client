@@ -8,64 +8,42 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BuildingMaterialService } from 'src/app/services/building-material.service';
 import { BuildingMaterial } from 'src/app/models/building-material.model';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from '../DIALOGS/dialog-building-materials/dialog.component';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { NgConfirmService } from 'ng-confirm-box';
-import { BuildingParameters } from 'src/app/models/building-parameters.model';
-import { BuildingParametersService } from 'src/app/services/building-parameters.service';
-import { DialogBuildingInformationComponent } from '../dialog-building-information/dialog-building-information.component';
-import { DialogBuildingParametersComponent } from '../dialog-building-parameters/dialog-building-parameters.component';
 
 @Component({
-  selector: 'app-building-parameters',
-  templateUrl: './building-parameters.component.html',
-  styleUrls: ['./building-parameters.component.css']
+  selector: 'app-building-materials',
+  templateUrl: './building-materials.component.html',
+  styleUrls: ['./building-materials.component.css']
 })
-export class BuildingParametersComponent {
+export class BuildingMaterialsComponent implements OnInit{
 
-  public buildingParameters:any=[];
-  addBuildingParametersRequest: BuildingParameters = {    
-    buildingLengthN:0,
-    buildingLengthE:0,
-    buildingLengthS:0,
-    buildingLengthW:0,
-    storeyHeightNet:0,
-    storeyHeightGross:0,
-    cellarHeight:0,
-    storeyQuantity:0,
-    buildingArea:0,
-    staircaseSurface:0,
-    usableAreaOfTheStairCase:0,
-    staircaseWidth:0,
-    heatAtticArea:0,
-    unheatedAtticArea:0,
-    usableAreaOfTheBuilding:0,
-    atticUsableArea:0,
-    perimeterOfTheBuilding:0,
-    balconyLength:0,
-    totalWindowAreaN:0,
-    totalWindowAreaE:0,
-    totalWindowAreaS:0,
-    totalWindowAreaW:0,
-    totalDoorAreaN:0,
-    totalDoorAreaE:0,
-    totalDoorAreaS:0,
-    totalDoorAreaW:0,
+  public materials:any=[];
+  addBuildingMaterialRequest: BuildingMaterial = {
+    name:'',
+    description:'',
+    thickness:0,
+    lambdaSW:0,
+    lambdaW:0,
+    ro:0,
+    cw:0
+
   };
 
-  displayedColumns: string[] = ['id', 'BuildingLengthN', 'BuildingLengthE'];
+  displayedColumns: string[] = ['id', 'name', 'description','thickness' , 'lambdaSW','lambdaW','ro','cw','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   public role!:string;    
 
-  constructor(private buildingParametersService: BuildingParametersService, private dialog: MatDialog,private auth: AuthService,
+  constructor(private buildingMaterialsService: BuildingMaterialService, private dialog: MatDialog,private auth: AuthService,
      private userStore: UserStoreService,private confirmService: NgConfirmService){}
 
   ngOnInit(): void {
-    this.getAllBuildingParameters();  
+    this.getAllBuildingMaterials();  
     this.userStore.getRoleFromStore()
     .subscribe(val=>{
       const roleFromToken = this.auth.getRoleFromToken();
@@ -83,39 +61,39 @@ export class BuildingParametersComponent {
   }
 
   openDialog() {
-    this.dialog.open(DialogBuildingParametersComponent, {
-     width:'50%'
+    this.dialog.open(DialogComponent, {
+     width:'30%'
     }).afterClosed().subscribe(val=>{
       if(val==='save'){
-        this.getAllBuildingParameters();
+        this.getAllBuildingMaterials();
       }
     })
   };
 
   addBuildingMaterial(){
-    this.buildingParametersService.addBuildingParameters(this.addBuildingParametersRequest)
+    this.buildingMaterialsService.addMaterial(this.addBuildingMaterialRequest)
     .subscribe({
-      next: (parameters: any)=>{
-        console.log(parameters);
+      next: (material)=>{
+        console.log(material);
       },
-      error:(response: any)=>{
+      error:(response)=>{
         console.log(response);
       }
       
     })
   }
 
-  getAllBuildingParameters(){
-    this.buildingParametersService.getAllBuildingParameters()
+  getAllBuildingMaterials(){
+    this.buildingMaterialsService.getAllMaterials()
     .subscribe({
-      next: (res: any[] | undefined)=>{  
-        this.buildingParameters=res;
+      next: (res)=>{  
+        this.materials=res;
         console.log(res)      
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
-      error: (err: any)=>{
+      error: (err)=>{
         console.log(err);
         alert("Error while fetching the Records")
       }
@@ -129,7 +107,7 @@ export class BuildingParametersComponent {
       data: row
     }).afterClosed().subscribe(val=>{
       if(val==='update'){
-        this.getAllBuildingParameters();
+        this.getAllBuildingMaterials();
       }
     })
   };
@@ -138,13 +116,13 @@ export class BuildingParametersComponent {
 
     this.confirmService.showConfirm("Are you sure want to remove item permanently ?",
     ()=>{
-      this.buildingParametersService.deleteBuildingParameters(id)
+      this.buildingMaterialsService.deleteMaterial(id)
     .subscribe({
-      next:(res: any)=>{
+      next:(res)=>{
         alert("material deleted successfully")
-        this.getAllBuildingParameters();
+        this.getAllBuildingMaterials();
       },
-      error:(err: any)=>{
+      error:(err)=>{
         console.log(err)
         alert("Error while deleting the product !")
       }
@@ -157,5 +135,7 @@ export class BuildingParametersComponent {
     
 }
 
-
+  
 }
+
+
