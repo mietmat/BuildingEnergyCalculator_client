@@ -4,8 +4,8 @@ import { BuildingMaterialsComponent } from './components/BUILDING OBJECT/buildin
 import { BuildingObjectComponent } from './components/BUILDING OBJECT/building-object/building-object.component';
 import { DivisionalStructuresComponent } from './components/BUILDING OBJECT/divisional-structures/divisional-structures.component';
 import { BuildingParametersComponent } from './components/BUILDING OBJECT/building-parameters/building-parameters.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/ACCOUNT/login/login.component';
+import { SignupComponent } from './components/ACCOUNT/signup/signup.component';
 import { BuildingInformationComponent } from './components/BUILDING OBJECT/building-information/building-information.component';
 import { DoorsComponent } from './components/BUILDING OBJECT/doors/doors.component';
 import { WindowsComponent } from './components/BUILDING OBJECT/windows/windows.component';

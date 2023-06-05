@@ -29,8 +29,8 @@ import { DivisionalStructuresComponent } from './components/BUILDING OBJECT/divi
 import { LeftContainerComponent } from './components/BUILDING OBJECT/left-container/left-container.component';
 import { BuildingParametersComponent } from './components/BUILDING OBJECT/building-parameters/building-parameters.component';
 import { DialogDivisionalStructureComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-divisional-structure/dialog-divisional-structure.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/ACCOUNT/login/login.component';
+import { SignupComponent } from './components/ACCOUNT/signup/signup.component';
 import { NgConfirmModule} from 'ng-confirm-box';
 import { BuildingInformationComponent } from './components/BUILDING OBJECT/building-information/building-information.component';
 import { DialogBuildingInformationComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-information/dialog-building-information.component';
@@ -49,6 +49,19 @@ import { HeatLossCoefficientByVentilationComponent } from './components/ENERGY D
 import { HeatLossByTransmissionAndVentilationComponent } from './components/ENERGY DEMAND/heat-loss-by-transmission-and-ventilation/heat-loss-by-transmission-and-ventilation.component';
 import { HeatGainsFromSolarRadiationComponent } from './components/ENERGY DEMAND/heat-gains-from-solar-radiation/heat-gains-from-solar-radiation.component';
 import { InternalHeatGainsComponent } from './components/ENERGY DEMAND/internal-heat-gains/internal-heat-gains.component';
+import { AnnualDemandForUsableEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-usable-energy/annual-demand-for-usable-energy.component';
+import { UsefulHeatDemandForDomesticHotWaterComponent } from './components/ENERGY DEMAND/useful-heat-demand-for-domestic-hot-water/useful-heat-demand-for-domestic-hot-water.component';
+import { DemandForUsableAndFianlEnergyComponent } from './components/ENERGY DEMAND/demand-for-usable-and-final-energy/demand-for-usable-and-final-energy.component';
+import { DemandForUsableAndFinalEnergyForPreparationOfDomesticHotWaterComponent } from './components/ENERGY DEMAND/demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water/demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water.component';
+import { FinalEnergyDemandForLightingComponent } from './components/ENERGY DEMAND/final-energy-demand-for-lighting/final-energy-demand-for-lighting.component';
+import { AnnualDemandForAuxiliaryEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-auxiliary-energy/annual-demand-for-auxiliary-energy.component';
+import { AnnualDemandForPrimaryFinalUsableEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-primary-final-usable-energy/annual-demand-for-primary-final-usable-energy.component';
+import { BuildingEnergyPerformanceCertificateComponent } from './components/ENERGY DEMAND/building-energy-performance-certificate/building-energy-performance-certificate.component';
+import { HeatDemandForDomesticHotWaterPreparationComponent } from './components/ENERGY DEMAND/heat-demand-for-domestic-hot-water-preparation/heat-demand-for-domestic-hot-water-preparation.component';
+import { PowerForHeatingComponent } from './components/OPERATING COSTS/power-for-heating/power-for-heating.component';
+import { AnnualEnergyCostComponent } from './components/OPERATING COSTS/annual-energy-cost/annual-energy-cost.component';
+import { MaterialCostsComponent } from './components/INVESTMENT COSTS/material-costs/material-costs.component';
+import { LabourCostsComponent } from './components/INVESTMENT COSTS/labour-costs/labour-costs.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -81,7 +94,20 @@ import { InternalHeatGainsComponent } from './components/ENERGY DEMAND/internal-
     HeatLossCoefficientByVentilationComponent,
     HeatLossByTransmissionAndVentilationComponent,
     HeatGainsFromSolarRadiationComponent,
-    InternalHeatGainsComponent
+    InternalHeatGainsComponent,
+    AnnualDemandForUsableEnergyComponent,
+    UsefulHeatDemandForDomesticHotWaterComponent,
+    DemandForUsableAndFianlEnergyComponent,
+    DemandForUsableAndFinalEnergyForPreparationOfDomesticHotWaterComponent,
+    FinalEnergyDemandForLightingComponent,
+    AnnualDemandForAuxiliaryEnergyComponent,
+    AnnualDemandForPrimaryFinalUsableEnergyComponent,
+    BuildingEnergyPerformanceCertificateComponent,
+    HeatDemandForDomesticHotWaterPreparationComponent,
+    PowerForHeatingComponent,
+    AnnualEnergyCostComponent,
+    MaterialCostsComponent,
+    LabourCostsComponent
     
     
     
