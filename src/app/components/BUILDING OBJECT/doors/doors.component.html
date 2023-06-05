@@ -56,26 +56,26 @@
 
                     <!-- Width Column -->
                         <ng-container matColumnDef="width">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Width </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Width [m] </th>
                             <td mat-cell *matCellDef="let row"> {{row.width}} </td>
                         </ng-container>
 
                     <!-- Height Column -->
                       <ng-container matColumnDef="height">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Height </th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Height [m] </th>
                         <td mat-cell *matCellDef="let row"> {{row.height}} </td>
                       </ng-container>
 
                     <!-- Perimeter Column -->
                         <ng-container matColumnDef="perimeter">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Perimeter </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Perimeter [m] </th>
                             <td mat-cell *matCellDef="let row"> {{row.perimeter}} </td>
                         </ng-container>
 
                         
                     <!-- U Column -->
                     <ng-container matColumnDef="u">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header> U </th>
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> U [W/(m2K)]</th>
                       <td mat-cell *matCellDef="let row"> {{row.u}} </td>
                   </ng-container>
     
