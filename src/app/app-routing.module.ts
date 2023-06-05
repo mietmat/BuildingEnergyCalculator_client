@@ -30,6 +30,8 @@ import { OperatingCostsComponent } from './components/OPERATING COSTS/operating-
 import { InvestmentCostsComponent } from './components/INVESTMENT COSTS/investment-costs/investment-costs.component';
 import { MaterialCostsComponent } from './components/INVESTMENT COSTS/material-costs/material-costs.component';
 import { LabourCostsComponent } from './components/INVESTMENT COSTS/labour-costs/labour-costs.component';
+import { CostAnalysisComponent } from './components/COST ANALYSIS/cost-analysis/cost-analysis.component';
+import { LeftContainerCostAnalysisComponent } from './components/COST ANALYSIS/left-container-cost-analysis/left-container-cost-analysis.component';
 
 const routes: Routes = [
   // {
@@ -154,6 +156,14 @@ const routes: Routes = [
   {
     path:'labour-costs',
     component: LabourCostsComponent
+  },
+  {
+    path:'cost-analysis',
+    component: CostAnalysisComponent
+  },
+  {
+    path:'left-container-cost-analysis',
+    component: LeftContainerCostAnalysisComponent
   }
 
   

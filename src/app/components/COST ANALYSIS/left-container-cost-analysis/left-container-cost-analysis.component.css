@@ -1,0 +1,38 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }  
+
+  .container{
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  #sidebarMenu{
+    height: 100vh;
+  }
+  .nav-item{
+    text-align: center;
+    font-size: 1.9vh;
+  }
+  a{
+    color: black;
+  }
+  .position-sticky{
+    background-color: white;
+  }
+ 
+  
+ 
+
+
+ 
