@@ -62,6 +62,8 @@ import { PowerForHeatingComponent } from './components/OPERATING COSTS/power-for
 import { AnnualEnergyCostComponent } from './components/OPERATING COSTS/annual-energy-cost/annual-energy-cost.component';
 import { MaterialCostsComponent } from './components/INVESTMENT COSTS/material-costs/material-costs.component';
 import { LabourCostsComponent } from './components/INVESTMENT COSTS/labour-costs/labour-costs.component';
+import { OperatingCostsComponent } from './components/OPERATING COSTS/operating-costs/operating-costs.component';
+import { LeftContainerOperatingCostsComponent } from './components/OPERATING COSTS/left-container-operating-costs/left-container-operating-costs.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -107,7 +109,9 @@ import { LabourCostsComponent } from './components/INVESTMENT COSTS/labour-costs
     PowerForHeatingComponent,
     AnnualEnergyCostComponent,
     MaterialCostsComponent,
-    LabourCostsComponent
+    LabourCostsComponent,
+    OperatingCostsComponent,
+    LeftContainerOperatingCostsComponent
     
     
     

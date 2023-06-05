@@ -17,6 +17,16 @@ import { ClimaticDataComponent } from './components/ENERGY DEMAND/climatic-data/
 import { HeatLossByTransmissionAndVentilationComponent } from './components/ENERGY DEMAND/heat-loss-by-transmission-and-ventilation/heat-loss-by-transmission-and-ventilation.component';
 import { InternalHeatGainsComponent } from './components/ENERGY DEMAND/internal-heat-gains/internal-heat-gains.component';
 import { HeatGainsFromSolarRadiationComponent } from './components/ENERGY DEMAND/heat-gains-from-solar-radiation/heat-gains-from-solar-radiation.component';
+import { AnnualDemandForUsableEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-usable-energy/annual-demand-for-usable-energy.component';
+import { UsefulHeatDemandForDomesticHotWaterComponent } from './components/ENERGY DEMAND/useful-heat-demand-for-domestic-hot-water/useful-heat-demand-for-domestic-hot-water.component';
+import { DemandForUsableAndFianlEnergyComponent} from './components/ENERGY DEMAND/demand-for-usable-and-final-energy/demand-for-usable-and-final-energy.component';
+import { DemandForUsableAndFinalEnergyForPreparationOfDomesticHotWaterComponent } from './components/ENERGY DEMAND/demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water/demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water.component';
+import { FinalEnergyDemandForLightingComponent } from './components/ENERGY DEMAND/final-energy-demand-for-lighting/final-energy-demand-for-lighting.component';
+import { AnnualDemandForAuxiliaryEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-auxiliary-energy/annual-demand-for-auxiliary-energy.component';
+import { AnnualDemandForPrimaryFinalUsableEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-primary-final-usable-energy/annual-demand-for-primary-final-usable-energy.component';
+import { PowerForHeatingComponent } from './components/OPERATING COSTS/power-for-heating/power-for-heating.component';
+import { AnnualEnergyCostComponent } from './components/OPERATING COSTS/annual-energy-cost/annual-energy-cost.component';
+import { OperatingCostsComponent } from './components/OPERATING COSTS/operating-costs/operating-costs.component';
 
 const routes: Routes = [
   // {
@@ -90,6 +100,60 @@ const routes: Routes = [
     path:'internal-heat-gains',
     component: InternalHeatGainsComponent
   },
+  {
+    path:'annual-demand-for-usable-energy',
+    component: AnnualDemandForUsableEnergyComponent
+  },
+  {
+    path:'useful-heat-demand-for-hot-water-preparation',
+    component: UsefulHeatDemandForDomesticHotWaterComponent
+  },
+  {
+    path:'demand-for-usable-and-final-energy',
+    component: DemandForUsableAndFianlEnergyComponent
+  },
+  {
+    path:'demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water',
+    component: DemandForUsableAndFinalEnergyForPreparationOfDomesticHotWaterComponent
+  },
+  {
+    path:'final-energy-demand-for-lighting',
+    component: FinalEnergyDemandForLightingComponent
+  },
+  {
+    path:'annual-demand-for-auxiliary-energy',
+    component: AnnualDemandForAuxiliaryEnergyComponent
+  },
+  {
+    path:'annual-demand-for-primary-final-usable-energy',
+    component: AnnualDemandForPrimaryFinalUsableEnergyComponent
+  },
+  {
+    path:'power-for-heating',
+    component: PowerForHeatingComponent
+  },
+  {
+    path:'annual-energy-cost',
+    component: AnnualEnergyCostComponent
+  },
+  {
+    path:'operating-costs',
+    component: OperatingCostsComponent
+  },
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+  
+  
   
 ];
 
