@@ -27,6 +27,9 @@ import { AnnualDemandForPrimaryFinalUsableEnergyComponent } from './components/E
 import { PowerForHeatingComponent } from './components/OPERATING COSTS/power-for-heating/power-for-heating.component';
 import { AnnualEnergyCostComponent } from './components/OPERATING COSTS/annual-energy-cost/annual-energy-cost.component';
 import { OperatingCostsComponent } from './components/OPERATING COSTS/operating-costs/operating-costs.component';
+import { InvestmentCostsComponent } from './components/INVESTMENT COSTS/investment-costs/investment-costs.component';
+import { MaterialCostsComponent } from './components/INVESTMENT COSTS/material-costs/material-costs.component';
+import { LabourCostsComponent } from './components/INVESTMENT COSTS/labour-costs/labour-costs.component';
 
 const routes: Routes = [
   // {
@@ -140,6 +143,21 @@ const routes: Routes = [
     path:'operating-costs',
     component: OperatingCostsComponent
   },
+  {
+    path:'investment-costs',
+    component: InvestmentCostsComponent
+  },
+  {
+    path:'material-costs',
+    component: MaterialCostsComponent
+  },
+  {
+    path:'labour-costs',
+    component: LabourCostsComponent
+  }
+
+  
+
 
   
 
