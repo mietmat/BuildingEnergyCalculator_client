@@ -66,6 +66,8 @@ import { OperatingCostsComponent } from './components/OPERATING COSTS/operating-
 import { LeftContainerOperatingCostsComponent } from './components/OPERATING COSTS/left-container-operating-costs/left-container-operating-costs.component';
 import { InvestmentCostsComponent } from './components/INVESTMENT COSTS/investment-costs/investment-costs.component';
 import { LeftContainerInvestmentCostsComponent } from './components/INVESTMENT COSTS/left-container-investment-costs/left-container-investment-costs.component';
+import { CostAnalysisComponent } from './components/COST ANALYSIS/cost-analysis/cost-analysis.component';
+import { LeftContainerCostAnalysisComponent } from './components/COST ANALYSIS/left-container-cost-analysis/left-container-cost-analysis.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -115,7 +117,9 @@ import { LeftContainerInvestmentCostsComponent } from './components/INVESTMENT C
     OperatingCostsComponent,
     LeftContainerOperatingCostsComponent,
     InvestmentCostsComponent,
-    LeftContainerInvestmentCostsComponent
+    LeftContainerInvestmentCostsComponent,
+    CostAnalysisComponent,
+    LeftContainerCostAnalysisComponent
     
     
     
