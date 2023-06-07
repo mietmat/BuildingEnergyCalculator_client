@@ -68,6 +68,8 @@ import { InvestmentCostsComponent } from './components/INVESTMENT COSTS/investme
 import { LeftContainerInvestmentCostsComponent } from './components/INVESTMENT COSTS/left-container-investment-costs/left-container-investment-costs.component';
 import { CostAnalysisComponent } from './components/COST ANALYSIS/cost-analysis/cost-analysis.component';
 import { LeftContainerCostAnalysisComponent } from './components/COST ANALYSIS/left-container-cost-analysis/left-container-cost-analysis.component';
+import { LccComponent } from './components/COST ANALYSIS/lcc/lcc.component';
+import { NvpComponent } from './components/COST ANALYSIS/nvp/nvp.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -119,7 +121,9 @@ import { LeftContainerCostAnalysisComponent } from './components/COST ANALYSIS/l
     InvestmentCostsComponent,
     LeftContainerInvestmentCostsComponent,
     CostAnalysisComponent,
-    LeftContainerCostAnalysisComponent
+    LeftContainerCostAnalysisComponent,
+    LccComponent,
+    NvpComponent
     
     
     
