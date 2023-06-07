@@ -32,6 +32,10 @@ import { MaterialCostsComponent } from './components/INVESTMENT COSTS/material-c
 import { LabourCostsComponent } from './components/INVESTMENT COSTS/labour-costs/labour-costs.component';
 import { CostAnalysisComponent } from './components/COST ANALYSIS/cost-analysis/cost-analysis.component';
 import { LeftContainerCostAnalysisComponent } from './components/COST ANALYSIS/left-container-cost-analysis/left-container-cost-analysis.component';
+import { BuildingEnergyPerformanceCertificateComponent } from './components/ENERGY DEMAND/building-energy-performance-certificate/building-energy-performance-certificate.component';
+import { HeatDemandForDomesticHotWaterPreparationComponent } from './components/ENERGY DEMAND/heat-demand-for-domestic-hot-water-preparation/heat-demand-for-domestic-hot-water-preparation.component';
+import { LccComponent } from './components/COST ANALYSIS/lcc/lcc.component';
+import { NvpComponent } from './components/COST ANALYSIS/nvp/nvp.component';
 
 const routes: Routes = [
   // {
@@ -164,7 +168,24 @@ const routes: Routes = [
   {
     path:'left-container-cost-analysis',
     component: LeftContainerCostAnalysisComponent
+  },
+  {
+    path:'building-energy-performance-certificate',
+    component: BuildingEnergyPerformanceCertificateComponent
+  },
+  {
+    path:'heat-demand-for-domestic-hot-water-preparation',
+    component: HeatDemandForDomesticHotWaterPreparationComponent
+  },
+  {
+    path:'lcc',
+    component: LccComponent
+  },
+  {
+    path:'nvp',
+    component: NvpComponent
   }
+ 
 
   
 
