@@ -1,6 +1,6 @@
 #sidebarMenu{
-    height: 100vh;
-}
-.nav-item{
-    text-align: center;
+    height: 95vh;
+    margin: 0;
+    padding: 0;
+    background-color: black;
 }

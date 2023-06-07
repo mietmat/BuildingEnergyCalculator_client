@@ -1,12 +1,6 @@
 #sidebarMenu{
-    height: 100vh;
+    height: 95vh;
+    margin: 0;
+    padding: 0;
+    background-color: black;
 }
-.nav-item{
-    text-align: center;
-}
-
-/* .background{
-    background-image: url("background.jpg");
-    width: 82.5vw;
-    height: 100vh;
-} */
