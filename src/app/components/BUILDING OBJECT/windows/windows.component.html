@@ -7,7 +7,7 @@
     </ng-container> 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
  
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 headerContext">
         <mat-toolbar color="primary">
           
           <span>Windows</span>        
@@ -28,12 +28,12 @@
 
         <div class="container">
           <div style="margin-top: 10px">
-                <mat-form-field>
-                  <mat-label>Filter</mat-label>
-                  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-                </mat-form-field>
-                
-                <div class="mat-elevation-z8">
+            <mat-form-field class="filter">
+              <mat-label>Filter</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            </mat-form-field>
+            
+            <div class="mat-elevation-z8 tableContent">
                   <table mat-table [dataSource]="dataSource" matSort>            
                 
                     <!-- ID Column -->

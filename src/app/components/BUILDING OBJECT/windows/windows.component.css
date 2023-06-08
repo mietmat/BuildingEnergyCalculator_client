@@ -2,10 +2,11 @@ main{
   margin-top: 8vh;
 }
 
+
 .example-spacer {
     flex: 1 1 auto;
   }
-  
+
   table {
     width: 100%;
   }
@@ -14,18 +15,18 @@ main{
     font-size: 14px;
     width: 100%;
   }  
-  
+
   .container{
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
   }
-  
+
   #sidebarMenu{
     height: 100vh;
-    padding: 0;
     background-color: black;
-
+    position: fixed;
+    margin-top: 8vh;
   }
   .nav-item{
     text-align: center;
@@ -34,10 +35,30 @@ main{
   a{
     color: black;
   }
+
+  .headerContext{
+    position: fixed;
+    width: 80%;
+  }
+ 
+  .container{
+    margin-top: 100px;
+  }
+  .filter{
+    width: 65vw;
+    position: fixed;
+  }
+
+  .tableContent{
+    width: 98.5%;
+    padding-top: 90px;  
+    padding-bottom: 10vh;  
+  }
+
+
+
   
-  
-  
-  
-  
-  
-  
+ 
+
+
+ 
