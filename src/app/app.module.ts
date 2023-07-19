@@ -15,7 +15,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BuildingMaterialsComponent } from './components/BUILDING OBJECT/building-materials/building-materials.component';
+import { BuildingMaterialsComponent } from './components/LIBRARY/building-materials/building-materials.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-materials/dialog.component';
@@ -35,8 +35,8 @@ import { NgConfirmModule} from 'ng-confirm-box';
 import { BuildingInformationComponent } from './components/BUILDING OBJECT/building-information/building-information.component';
 import { DialogBuildingInformationComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-information/dialog-building-information.component';
 import { DialogBuildingParametersComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
-import { WindowsComponent } from './components/BUILDING OBJECT/windows/windows.component';
-import { DoorsComponent } from './components/BUILDING OBJECT/doors/doors.component';
+import { WindowsComponent } from './components/LIBRARY/windows/windows.component';
+import { DoorsComponent } from './components/LIBRARY/doors/doors.component';
 import { DialogDoorComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-door/dialog-door.component';
 import { DialogWindowComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-window/dialog-window.component';
 import { FloorOnTheGroundComponent } from './components/BUILDING OBJECT/floor-on-the-ground/floor-on-the-ground.component';
@@ -70,6 +70,12 @@ import { CostAnalysisComponent } from './components/COST ANALYSIS/cost-analysis/
 import { LeftContainerCostAnalysisComponent } from './components/COST ANALYSIS/left-container-cost-analysis/left-container-cost-analysis.component';
 import { LccComponent } from './components/COST ANALYSIS/lcc/lcc.component';
 import { NvpComponent } from './components/COST ANALYSIS/nvp/nvp.component';
+import { ProjectComponent } from './components/PROJECTS/project/project.component';
+import { LeftContainerProjectComponent } from './components/PROJECTS/left-container-project/left-container-project.component';
+import { DialogProjectsComponent } from './components/PROJECTS/DIALOGUES/dialog-projects/dialog-projects.component';
+import { LibraryComponent } from './components/LIBRARY/library/library.component';
+import { LeftContainerLibraryComponent } from './components/LIBRARY/left-container-library/left-container-library.component';
+import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOARD/project-settings/project-settings.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -123,7 +129,13 @@ import { NvpComponent } from './components/COST ANALYSIS/nvp/nvp.component';
     CostAnalysisComponent,
     LeftContainerCostAnalysisComponent,
     LccComponent,
-    NvpComponent
+    NvpComponent,
+    ProjectComponent,
+    LeftContainerProjectComponent,
+    DialogProjectsComponent,
+    LibraryComponent,
+    LeftContainerLibraryComponent,
+    ProjectSettingsComponent
     
     
     

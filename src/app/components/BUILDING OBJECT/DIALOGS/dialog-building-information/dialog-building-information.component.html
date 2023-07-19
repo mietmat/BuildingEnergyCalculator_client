@@ -1,4 +1,4 @@
-  <ng-container *ngIf="role === 'Admin'">
+  <ng-container *ngIf="role === 'User'">
     <h1 mat-dialog-title>Add Building Information</h1>
   
     <div mat-dialog-content >   
@@ -77,7 +77,7 @@
   
   </div>
   </ng-container>
-  <ng-container *ngIf="role != 'Admin'">
+  <ng-container *ngIf="role != 'User'">
     <h1 mat-dialog-title>You can add new material only as a logged user !</h1>
     <div mat-dialog-actions [align]="'end'">
       <button mat-raised-button color="warn" mat-dialog-close>Close</button>  

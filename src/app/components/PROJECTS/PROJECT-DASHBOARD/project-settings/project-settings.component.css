@@ -15,14 +15,15 @@ button{
 } */
 
 nav{
-    margin-top: 0.2vh;
-    height: 8vh;
-    background-color: #dd0b1f;
+    margin-top: 8.6vh;    
+    height: 4vh;
+    background-color: #adb3b2bb;
     position: fixed;
     width: 100%;
+
 }
 nav:hover{
-    background-color: #dd0b1f;
+    background-color: #adb3b2bb;
 }
 
 footer{
@@ -34,6 +35,10 @@ footer{
     height: 5vh;
     padding: 10px;
 }
+.project-headers{
+    margin-left: 15vw;
+}
+
 
 
 
