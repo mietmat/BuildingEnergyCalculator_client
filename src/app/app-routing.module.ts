@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BuildingMaterialsComponent } from './components/BUILDING OBJECT/building-materials/building-materials.component';
+import { BuildingMaterialsComponent } from './components/LIBRARY/building-materials/building-materials.component';
 import { BuildingObjectComponent } from './components/BUILDING OBJECT/building-object/building-object.component';
 import { DivisionalStructuresComponent } from './components/BUILDING OBJECT/divisional-structures/divisional-structures.component';
 import { BuildingParametersComponent } from './components/BUILDING OBJECT/building-parameters/building-parameters.component';
 import { LoginComponent } from './components/ACCOUNT/login/login.component';
 import { SignupComponent } from './components/ACCOUNT/signup/signup.component';
 import { BuildingInformationComponent } from './components/BUILDING OBJECT/building-information/building-information.component';
-import { DoorsComponent } from './components/BUILDING OBJECT/doors/doors.component';
-import { WindowsComponent } from './components/BUILDING OBJECT/windows/windows.component';
+import { DoorsComponent } from './components/LIBRARY/doors/doors.component';
+import { WindowsComponent } from './components/LIBRARY/windows/windows.component';
 import { FloorOnTheGroundComponent } from './components/BUILDING OBJECT/floor-on-the-ground/floor-on-the-ground.component';
 import { EnergyDemandComponent } from './components/ENERGY DEMAND/energy-demand/energy-demand.component';
 import { HeatLossCoefficientByTransmissionComponent } from './components/ENERGY DEMAND/heat-loss-coefficient-by-transmission/heat-loss-coefficient-by-transmission.component';
@@ -36,6 +36,9 @@ import { BuildingEnergyPerformanceCertificateComponent } from './components/ENER
 import { HeatDemandForDomesticHotWaterPreparationComponent } from './components/ENERGY DEMAND/heat-demand-for-domestic-hot-water-preparation/heat-demand-for-domestic-hot-water-preparation.component';
 import { LccComponent } from './components/COST ANALYSIS/lcc/lcc.component';
 import { NvpComponent } from './components/COST ANALYSIS/nvp/nvp.component';
+import { ProjectComponent } from './components/PROJECTS/project/project.component';
+import { LibraryComponent } from './components/LIBRARY/library/library.component';
+import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOARD/project-settings/project-settings.component';
 
 const routes: Routes = [
   // {
@@ -54,7 +57,7 @@ const routes: Routes = [
     component: BuildingMaterialsComponent
   },
   {
-    path:'building-object',
+    path:'project-settings/building-object',
     component: BuildingObjectComponent
   },
   {
@@ -82,7 +85,7 @@ const routes: Routes = [
     component: FloorOnTheGroundComponent
   },
   {
-    path:'energy-demand',
+    path:'project-settings/energy-demand',
     component: EnergyDemandComponent
   },
   {
@@ -146,11 +149,11 @@ const routes: Routes = [
     component: AnnualEnergyCostComponent
   },
   {
-    path:'operating-costs',
+    path:'project-settings/operating-costs',
     component: OperatingCostsComponent
   },
   {
-    path:'investment-costs',
+    path:'project-settings/investment-costs',
     component: InvestmentCostsComponent
   },
   {
@@ -162,7 +165,7 @@ const routes: Routes = [
     component: LabourCostsComponent
   },
   {
-    path:'cost-analysis',
+    path:'project-settings/cost-analysis',
     component: CostAnalysisComponent
   },
   {
@@ -184,6 +187,18 @@ const routes: Routes = [
   {
     path:'nvp',
     component: NvpComponent
+  },
+  {
+    path:'project',
+    component: ProjectComponent
+  },
+  {
+    path:'library',
+    component: LibraryComponent
+  },
+  {
+    path:'project-settings',
+    component: ProjectSettingsComponent
   }
  
 

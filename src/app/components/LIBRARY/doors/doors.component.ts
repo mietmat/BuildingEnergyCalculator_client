@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth-service.service';
 import { DoorService } from 'src/app/services/door.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { DialogDoorComponent } from '../../BUILDING OBJECT/DIALOGS/dialog-door/dialog-door.component';
-import { DialogComponent } from '../DIALOGS/dialog-building-materials/dialog.component';
+import { DialogComponent } from '../../BUILDING OBJECT/DIALOGS/dialog-building-materials/dialog.component';
 
 @Component({
   selector: 'app-doors',

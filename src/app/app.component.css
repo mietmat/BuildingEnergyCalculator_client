@@ -1,5 +1,5 @@
 h4{
-    color: white;
+    padding-top: 10px;
 }
 
 button{
@@ -15,6 +15,7 @@ button{
 } */
 
 nav{
+    margin-top: 0.2vh;
     height: 8vh;
     background-color: #dd0b1f;
     position: fixed;

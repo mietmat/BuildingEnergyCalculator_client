@@ -8,7 +8,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { BuildingMaterialService } from 'src/app/services/building-material.service';
 import { BuildingMaterial } from 'src/app/models/building-material.model';
-import { DialogComponent } from '../DIALOGS/dialog-building-materials/dialog.component';
+import { DialogComponent } from '../../BUILDING OBJECT/DIALOGS/dialog-building-materials/dialog.component';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { NgConfirmService } from 'ng-confirm-box';
