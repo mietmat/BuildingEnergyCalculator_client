@@ -22,8 +22,9 @@ main{
   
     #sidebarMenu{
       height: 100vh;
-      padding: 0;
       background-color: black;
+      position: fixed;
+      margin-top: 13vh;
     }
     .nav-item{
       text-align: center;

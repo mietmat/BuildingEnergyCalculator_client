@@ -24,6 +24,7 @@ main{
       height: 100vh;
       padding: 0;
       background-color: black;
+      margin-top: 13vh;
     }
     .nav-item{
       text-align: center;

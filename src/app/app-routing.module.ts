@@ -85,7 +85,7 @@ const routes: Routes = [
     component: FloorOnTheGroundComponent
   },
   {
-    path:'energy-demand',
+    path:'project-settings/energy-demand',
     component: EnergyDemandComponent
   },
   {
@@ -149,11 +149,11 @@ const routes: Routes = [
     component: AnnualEnergyCostComponent
   },
   {
-    path:'operating-costs',
+    path:'project-settings/operating-costs',
     component: OperatingCostsComponent
   },
   {
-    path:'investment-costs',
+    path:'project-settings/investment-costs',
     component: InvestmentCostsComponent
   },
   {
@@ -165,7 +165,7 @@ const routes: Routes = [
     component: LabourCostsComponent
   },
   {
-    path:'cost-analysis',
+    path:'project-settings/cost-analysis',
     component: CostAnalysisComponent
   },
   {

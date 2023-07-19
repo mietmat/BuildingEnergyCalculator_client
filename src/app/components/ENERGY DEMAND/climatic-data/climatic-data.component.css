@@ -14,10 +14,11 @@ main{
       width: 100%;
     }  
   
-    .container{
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
+    #sidebarMenu{
+      height: 100vh;
+      background-color: black;
+      position: fixed;
+      margin-top: 13vh;
     }
   
     #sidebarMenu{

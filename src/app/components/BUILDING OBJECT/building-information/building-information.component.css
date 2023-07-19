@@ -1,5 +1,5 @@
 main{
-  margin-top: 8vh;
+  margin-top: 13vh;
 }
 
 
@@ -26,7 +26,7 @@ main{
     height: 100vh;
     background-color: black;
     position: fixed;
-    margin-top: 8vh;
+    margin-top: 13vh;
   }
   .nav-item{
     text-align: center;
@@ -54,6 +54,8 @@ main{
     padding-top: 90px;  
     padding-bottom: 10vh;  
   }
+
+
 
 
 
