@@ -11,22 +11,19 @@ export class ProjectModelService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProjects(){
+  getAllProjects() {
     return this.http.get<any>(this.baseUrl + "project")
   }
 
-  addProject(addMaterialRequest: ProjectModel)
-  {
-    return this.http.post<ProjectModel>(this.baseUrl + "project",addMaterialRequest)
+  addProject(addProjectRequest: ProjectModel) {
+    return this.http.post<ProjectModel>(this.baseUrl + "project", addProjectRequest)
   }
 
-  updateProject(data: ProjectModel, id: number)
-  {
-    return this.http.put<ProjectModel>(this.baseUrl + "project/"+id,data)
+  updateProject(data: ProjectModel, id: number) {
+    return this.http.put<ProjectModel>(this.baseUrl + "project/" + id, data)
   }
 
-  deleteProject(id: number)
-  {
-    return this.http.delete<ProjectModel>(this.baseUrl + "project/"+id)
+  deleteProject(id: number) {
+    return this.http.delete<ProjectModel>(this.baseUrl + "project/" + id)
   }
 }

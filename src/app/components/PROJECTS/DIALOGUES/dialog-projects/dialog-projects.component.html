@@ -1,31 +1,27 @@
-<ng-container *ngIf="role === 'User' || role==='Admin'">
-    <h1 mat-dialog-title>Add Project</h1>
-  
-    <div mat-dialog-content >   
-      <form [formGroup]="projectForm">
-        <div id="horizontalFields" >   
-            <mat-form-field appearance="outline">
-                <mat-label>Project Name</mat-label>
-                <input formControlName="name" matInput placeholder="Project Name">      
-              </mat-form-field>                        
+<ng-container>
+  <h1 mat-dialog-title>Add Project</h1>
 
-        </div>                  
-                
-        </form>       
-    </div>
+  <div mat-dialog-content>
+    <form [formGroup]="projectForm">
+      <div id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Project Name</mat-label>
+          <input formControlName="name" matInput placeholder="Project Name">
+        </mat-form-field>
+
+      </div>
+
+    </form>
+  </div>
   <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProject()" >{{actionBtn}}</button>
-  
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProject()">{{actionBtn}}</button>
+
   </div>
-  </ng-container>
-  <ng-container *ngIf="role != 'User'">
-    <h1 mat-dialog-title>You can add new project only as a logged user !</h1>
-    <div mat-dialog-actions [align]="'end'">
-      <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
-    </div>
-  </ng-container>
-
-
-  
-  
+</ng-container>
+<!-- <ng-container *ngIf="role !== 'User' && role !== 'Admin' && role !== 'Manager'">
+  <h1 mat-dialog-title>You can add new project only as a logged user !</h1>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  </div>
+</ng-container> -->

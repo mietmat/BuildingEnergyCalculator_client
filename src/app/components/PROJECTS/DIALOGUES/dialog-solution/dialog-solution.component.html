@@ -1,0 +1,28 @@
+<ng-container>
+    <h1 mat-dialog-title>Add Solution</h1>
+
+    <div mat-dialog-content>
+        <form [formGroup]="solutionForm">
+            <div id="horizontalFields">
+                <mat-form-field appearance="outline">
+                    <mat-label>Solution Name</mat-label>
+                    <input formControlName="name" matInput placeholder="Solution Name">
+                </mat-form-field>
+
+            </div>
+
+        </form>
+    </div>
+    <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary"
+            (click)="addSolution()">{{actionBtn}}</button>
+
+    </div>
+</ng-container>
+<!-- <ng-container *ngIf="role !== 'User' && role !== 'Admin' && role !== 'Manager'">
+    <h1 mat-dialog-title>You can add new solution only as a logged user !</h1>
+    <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    </div>
+</ng-container> -->

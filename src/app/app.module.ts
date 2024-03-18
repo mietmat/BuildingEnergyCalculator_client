@@ -1,29 +1,29 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {MatInputModule} from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
 import { NgToastModule } from 'ng-angular-popup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatCardModule } from '@angular/material/card';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuildingMaterialsComponent } from './components/LIBRARY/building-materials/building-materials.component';
 import { MatButtonModule } from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-materials/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
 import { BuildingObjectComponent } from './components/BUILDING OBJECT/building-object/building-object.component';
 import { DivisionalStructuresComponent } from './components/BUILDING OBJECT/divisional-structures/divisional-structures.component';
 import { LeftContainerComponent } from './components/BUILDING OBJECT/left-container/left-container.component';
@@ -31,7 +31,7 @@ import { BuildingParametersComponent } from './components/BUILDING OBJECT/buildi
 import { DialogDivisionalStructureComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-divisional-structure/dialog-divisional-structure.component';
 import { LoginComponent } from './components/ACCOUNT/login/login.component';
 import { SignupComponent } from './components/ACCOUNT/signup/signup.component';
-import { NgConfirmModule} from 'ng-confirm-box';
+import { NgConfirmModule } from 'ng-confirm-box';
 import { BuildingInformationComponent } from './components/BUILDING OBJECT/building-information/building-information.component';
 import { DialogBuildingInformationComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-information/dialog-building-information.component';
 import { DialogBuildingParametersComponent } from './components/BUILDING OBJECT/DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
@@ -76,7 +76,8 @@ import { DialogProjectsComponent } from './components/PROJECTS/DIALOGUES/dialog-
 import { LibraryComponent } from './components/LIBRARY/library/library.component';
 import { LeftContainerLibraryComponent } from './components/LIBRARY/left-container-library/left-container-library.component';
 import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOARD/project-settings/project-settings.component';
-
+import { SolutionComponent } from './components/PROJECTS/solution/solution.component';
+import { DialogSolutionComponent } from './components/PROJECTS/DIALOGUES/dialog-solution/dialog-solution.component';
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
 
@@ -89,10 +90,10 @@ import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOAR
     DivisionalStructuresComponent,
     LeftContainerComponent,
     BuildingParametersComponent,
-    DialogDivisionalStructureComponent, 
-    LoginComponent,   
-    SignupComponent, 
-    BuildingInformationComponent, 
+    DialogDivisionalStructureComponent,
+    LoginComponent,
+    SignupComponent,
+    BuildingInformationComponent,
     DialogBuildingInformationComponent,
     DialogBuildingParametersComponent,
     WindowsComponent,
@@ -135,10 +136,11 @@ import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOAR
     DialogProjectsComponent,
     LibraryComponent,
     LeftContainerLibraryComponent,
-    ProjectSettingsComponent
-    
-    
-    
+    ProjectSettingsComponent,
+    SolutionComponent,
+    DialogSolutionComponent
+
+
 
   ],
   imports: [
@@ -168,11 +170,9 @@ import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOAR
     MatSelectModule,
     NgConfirmModule
 
-
   ],
-  providers: [ 
+  providers: [
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
- 

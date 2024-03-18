@@ -19,7 +19,7 @@ import { InternalHeatGainsComponent } from './components/ENERGY DEMAND/internal-
 import { HeatGainsFromSolarRadiationComponent } from './components/ENERGY DEMAND/heat-gains-from-solar-radiation/heat-gains-from-solar-radiation.component';
 import { AnnualDemandForUsableEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-usable-energy/annual-demand-for-usable-energy.component';
 import { UsefulHeatDemandForDomesticHotWaterComponent } from './components/ENERGY DEMAND/useful-heat-demand-for-domestic-hot-water/useful-heat-demand-for-domestic-hot-water.component';
-import { DemandForUsableAndFianlEnergyComponent} from './components/ENERGY DEMAND/demand-for-usable-and-final-energy/demand-for-usable-and-final-energy.component';
+import { DemandForUsableAndFianlEnergyComponent } from './components/ENERGY DEMAND/demand-for-usable-and-final-energy/demand-for-usable-and-final-energy.component';
 import { DemandForUsableAndFinalEnergyForPreparationOfDomesticHotWaterComponent } from './components/ENERGY DEMAND/demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water/demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water.component';
 import { FinalEnergyDemandForLightingComponent } from './components/ENERGY DEMAND/final-energy-demand-for-lighting/final-energy-demand-for-lighting.component';
 import { AnnualDemandForAuxiliaryEnergyComponent } from './components/ENERGY DEMAND/annual-demand-for-auxiliary-energy/annual-demand-for-auxiliary-energy.component';
@@ -39,186 +39,176 @@ import { NvpComponent } from './components/COST ANALYSIS/nvp/nvp.component';
 import { ProjectComponent } from './components/PROJECTS/project/project.component';
 import { LibraryComponent } from './components/LIBRARY/library/library.component';
 import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOARD/project-settings/project-settings.component';
+import { SolutionComponent } from './components/PROJECTS/solution/solution.component';
 
 const routes: Routes = [
   // {
   //   path:'', redirectTo:'building-energy/login', pathMatch:'full',
   // },
   {
-    path:'building-energy/login',
+    path: 'building-energy/login',
     component: LoginComponent
   },
   {
-    path:'building-energy/signup',
+    path: 'building-energy/signup',
     component: SignupComponent
   },
   {
-    path:'materials',
+    path: 'materials',
     component: BuildingMaterialsComponent
   },
   {
-    path:'project-settings/building-object',
+    path: 'project-settings/building-object',
     component: BuildingObjectComponent
   },
   {
-    path:'divisional-structures',
+    path: 'divisional-structures',
     component: DivisionalStructuresComponent
   },
   {
-    path:'building-parameters',
+    path: 'building-parameters',
     component: BuildingParametersComponent
   },
   {
-    path:'building-information',
+    path: 'building-information',
     component: BuildingInformationComponent
   },
   {
-    path:'doors',
+    path: 'doors',
     component: DoorsComponent
   },
   {
-    path:'windows',
+    path: 'windows',
     component: WindowsComponent
   },
   {
-    path:'floor-on-the-ground',
+    path: 'floor-on-the-ground',
     component: FloorOnTheGroundComponent
   },
   {
-    path:'project-settings/energy-demand',
+    path: 'project-settings/energy-demand',
     component: EnergyDemandComponent
   },
   {
-    path:'heat-loss-coefficient-by-transmission',
+    path: 'heat-loss-coefficient-by-transmission',
     component: HeatLossCoefficientByTransmissionComponent
   },
   {
-    path:'heat-loss-coefficient-by-ventilation',
+    path: 'heat-loss-coefficient-by-ventilation',
     component: HeatLossCoefficientByVentilationComponent
   },
   {
-    path:'climatic-data',
+    path: 'climatic-data',
     component: ClimaticDataComponent
   },
   {
-    path:'heat-loss-by-transmission-and-ventilation',
+    path: 'heat-loss-by-transmission-and-ventilation',
     component: HeatLossByTransmissionAndVentilationComponent
   },
   {
-    path:'heat-gains-from-solar-radiation',
+    path: 'heat-gains-from-solar-radiation',
     component: HeatGainsFromSolarRadiationComponent
   },
   {
-    path:'internal-heat-gains',
+    path: 'internal-heat-gains',
     component: InternalHeatGainsComponent
   },
   {
-    path:'annual-demand-for-usable-energy',
+    path: 'annual-demand-for-usable-energy',
     component: AnnualDemandForUsableEnergyComponent
   },
   {
-    path:'useful-heat-demand-for-hot-water-preparation',
+    path: 'useful-heat-demand-for-hot-water-preparation',
     component: UsefulHeatDemandForDomesticHotWaterComponent
   },
   {
-    path:'demand-for-usable-and-final-energy',
+    path: 'demand-for-usable-and-final-energy',
     component: DemandForUsableAndFianlEnergyComponent
   },
   {
-    path:'demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water',
+    path: 'demand-for-usable-and-final-energy-for-preparation-of-domestic-hot-water',
     component: DemandForUsableAndFinalEnergyForPreparationOfDomesticHotWaterComponent
   },
   {
-    path:'final-energy-demand-for-lighting',
+    path: 'final-energy-demand-for-lighting',
     component: FinalEnergyDemandForLightingComponent
   },
   {
-    path:'annual-demand-for-auxiliary-energy',
+    path: 'annual-demand-for-auxiliary-energy',
     component: AnnualDemandForAuxiliaryEnergyComponent
   },
   {
-    path:'annual-demand-for-primary-final-usable-energy',
+    path: 'annual-demand-for-primary-final-usable-energy',
     component: AnnualDemandForPrimaryFinalUsableEnergyComponent
   },
   {
-    path:'power-for-heating',
+    path: 'power-for-heating',
     component: PowerForHeatingComponent
   },
   {
-    path:'annual-energy-cost',
+    path: 'annual-energy-cost',
     component: AnnualEnergyCostComponent
   },
   {
-    path:'project-settings/operating-costs',
+    path: 'project-settings/operating-costs',
     component: OperatingCostsComponent
   },
   {
-    path:'project-settings/investment-costs',
+    path: 'project-settings/investment-costs',
     component: InvestmentCostsComponent
   },
   {
-    path:'material-costs',
+    path: 'material-costs',
     component: MaterialCostsComponent
   },
   {
-    path:'labour-costs',
+    path: 'labour-costs',
     component: LabourCostsComponent
   },
   {
-    path:'project-settings/cost-analysis',
+    path: 'project-settings/cost-analysis',
     component: CostAnalysisComponent
   },
   {
-    path:'left-container-cost-analysis',
+    path: 'left-container-cost-analysis',
     component: LeftContainerCostAnalysisComponent
   },
   {
-    path:'building-energy-performance-certificate',
+    path: 'building-energy-performance-certificate',
     component: BuildingEnergyPerformanceCertificateComponent
   },
   {
-    path:'heat-demand-for-domestic-hot-water-preparation',
+    path: 'heat-demand-for-domestic-hot-water-preparation',
     component: HeatDemandForDomesticHotWaterPreparationComponent
   },
   {
-    path:'lcc',
+    path: 'lcc',
     component: LccComponent
   },
   {
-    path:'nvp',
+    path: 'nvp',
     component: NvpComponent
   },
   {
-    path:'project',
+    path: 'project',
     component: ProjectComponent
   },
   {
-    path:'library',
+    path: 'solution',
+    component: SolutionComponent
+  },
+  {
+    path: 'library',
     component: LibraryComponent
   },
   {
-    path:'project-settings',
+    path: 'project-settings',
     component: ProjectSettingsComponent
+  },
+  {
+    path: 'solution/:id',
+    component: SolutionComponent
   }
- 
-
-  
-
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-  
-  
-  
-  
 ];
 
 @NgModule({

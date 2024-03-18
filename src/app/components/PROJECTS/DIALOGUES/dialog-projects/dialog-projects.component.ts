@@ -12,88 +12,88 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 })
 export class DialogProjectsComponent {
 
-  deliveryList = [true,false]
+  deliveryList = [true, false]
   projectForm: FormGroup;
- 
-  actionBtn : string = "Save"
-  public role!:string;    
 
-  constructor(private formBuilder : FormBuilder, 
-    private api: ProjectModelService, 
+  actionBtn: string = "Save"
+  public role!: string;
+
+  constructor(private formBuilder: FormBuilder,
+    private api: ProjectModelService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef : MatDialogRef<DialogProjectsComponent>,
+    private dialogRef: MatDialogRef<DialogProjectsComponent>,
     private auth: AuthService,
-    private userStore: UserStoreService){
-      this.projectForm = this.formBuilder.group({
-        name: ['',Validators.required],
-        
-      });
-      
+    private userStore: UserStoreService) {
+    this.projectForm = this.formBuilder.group({
+      name: ['', Validators.required],
+
+    });
+
+  }
+
+  ngOnInit(): void {
+
+    if (this.editData) {
+      this.actionBtn = "Update";
+      this.projectForm.controls['name'].setValue(this.editData.name);
+      this.projectForm.controls['description'].setValue(this.editData.description);
+
     }
 
-  ngOnInit(): void {   
-
-    // if(this.editData){
-    //   this.actionBtn = "Update";
-    //   this.buildingInformationForm.controls['name'].setValue(this.editData.name);
-    //   this.buildingInformationForm.controls['description'].setValue(this.editData.description);
-          
-    // }
-
     this.userStore.getRoleFromStore()
-      .subscribe(val=>{
+      .subscribe(val => {
         const roleFromToken = this.auth.getRoleFromToken();
         this.role = val || roleFromToken
       })
   }
 
-  addProject(){
-    if(!this.editData)
-    {
-      if(this.projectForm.valid){
+  addProject() {
+    console.log("addProjectFunction")
+    if (!this.editData) {
+      if (this.projectForm.valid) {
         console.log(this.projectForm.value)
         console.log("sent to backend")
         this.api.addProject(this.projectForm.value)
-        .subscribe({
-          next:(res)=>{
-            alert("Project added successfully");
-            console.log(res)
-            console.log("after response")
+          .subscribe({
+            next: (res) => {
+              alert("Project added successfully");
+              console.log(res)
+              console.log("after response")
 
-            this.projectForm.reset();
-            this.dialogRef.close('save');
-          },
-         error:(err)=>{
-            alert("Error while adding project")
-            console.log("FORM: " + this.projectForm)
-            console.log("error: " + err)
-          }
-        })
-      }   
-      else{
-        console.log("nie zwalidowałem się !")  
+              this.projectForm.reset();
+              this.dialogRef.close('save');
+            },
+            error: (err) => {
+              alert("Error while adding project")
+              console.log("FORM: " + this.projectForm)
+              console.log("error: " + err)
+            }
+          })
+      }
+      else {
+        console.log("nie zwalidowałem się !")
 
-      }     
-    }else{
-
+      }
+    } else {
+      console.log("updateProjectFunction")
       this.updateProject()
     }
   }
 
-  updateProject(){
+  updateProject() {
     this.api.updateProject(this.projectForm.value, this.editData.id)
-    .subscribe({
-      next:(res)=>{
-        alert("Project updated successfully");
-        console.log(res);
-        this.projectForm.reset();
-        this.dialogRef.close('update');
-      },
-      error:(err)=>{
-        console.log(err);
-        alert('Error while updating the record !')
-      }
-    })
-  }  
-  
+      .subscribe({
+        next: (res) => {
+          alert("Project updated successfully");
+          console.log(res);
+          this.projectForm.reset();
+          this.dialogRef.close('update');
+        },
+        error: (err) => {
+          console.log(err);
+          alert('Error while updating the record !')
+        }
+      })
+  }
+
 }
