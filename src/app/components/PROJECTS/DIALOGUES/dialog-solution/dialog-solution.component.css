@@ -1,0 +1,33 @@
+mat-form-field {
+    width: 100%;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+#claims {
+    color: black;
+    margin-left: 2vw;
+}
+
+#horizontalFields {
+    display: flex;
+}
+
+#horizontalFields mat-form-field {
+    margin-right: 10px;
+    margin-top: 4px;
+
+}
