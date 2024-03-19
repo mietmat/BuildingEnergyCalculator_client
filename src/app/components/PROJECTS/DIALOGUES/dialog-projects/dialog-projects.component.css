@@ -1,36 +1,33 @@
-mat-form-field{
-    width:100%;
+mat-form-field {
+  min-width: 300px;
 }
+
 .example-radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-    align-items: flex-start;
-  }
-  
-  .example-radio-button {
-    margin: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
 
-  h2 {
-    font-size: 18px;
-  }
+.example-radio-button {
+  margin: 5px;
+}
 
-  #claims{
-    color: black;
-    margin-left: 2vw;
-  }
+h2 {
+  font-size: 18px;
+}
 
-  #horizontalFields{
-    display: flex;
-  }
+#claims {
+  color: black;
+  margin-left: 2vw;
+}
 
-  #horizontalFields mat-form-field{
-    margin-right: 10px;
-    margin-top: 4px;
+#horizontalFields {
+  display: flex;
+}
 
-  }
+#horizontalFields mat-form-field {
+  margin-right: 10px;
+  margin-top: 4px;
 
-
-
-
+}

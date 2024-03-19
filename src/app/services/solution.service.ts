@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SolutionService {
+  solutionName: string = "";
 
   private baseUrl: string = 'https://localhost:5001/api/'
 
@@ -31,5 +32,14 @@ export class SolutionService {
 
   deleteSolution(id: number) {
     return this.http.delete<Solution>(this.baseUrl + "solution/" + id)
+  }
+
+  setSolutionName(solutionName: string) {
+    console.log("SolutionName:", solutionName)
+    this.solutionName = solutionName;
+  }
+
+  getSolutionName() {
+    return this.solutionName;
   }
 }

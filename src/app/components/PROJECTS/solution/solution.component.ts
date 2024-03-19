@@ -10,6 +10,8 @@ import { DialogSolutionComponent } from '../DIALOGUES/dialog-solution/dialog-sol
 import { ActivatedRoute } from '@angular/router';
 import { Component, Input, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AppComponent } from '../../../app.component';
+import { ProjectModelService } from '../../../services/project-model.service';
 
 @Component({
   selector: 'app-solution',
@@ -19,6 +21,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class SolutionComponent {
   solutions: any[] = [];
   @Input() projectId!: number;
+  @Input() projectName!: string;
 
   displayedColumns: string[] = ['id', 'name', 'action'];
   dataSource!: MatTableDataSource<Solution>;
@@ -28,12 +31,17 @@ export class SolutionComponent {
   public role!: string;
 
   constructor(private solutionService: SolutionService, private dialog: MatDialog, private auth: AuthService,
-    private userStore: UserStoreService, private confirmService: NgConfirmService, private route: ActivatedRoute) { }
+    private userStore: UserStoreService, private confirmService: NgConfirmService, private route: ActivatedRoute, private projectService: ProjectModelService) {
+    this.solutionService.setSolutionName("");
+
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       console.log("Params:", params);
       this.projectId = params['id'];
+      // this.projectName = params['name'];
+      // this.projectService.setProjectName(this.projectName);
       console.log("ProjectId: ", this.projectId);
       if (this.projectId !== undefined) {
         console.log("Solution-route-projectId:", this.projectId)
@@ -141,6 +149,10 @@ export class SolutionComponent {
       }
     )
 
+  }
+
+  setSolutionName(row: any) {
+    this.solutionService.setSolutionName("Solution: " + row.name);
   }
 }
 

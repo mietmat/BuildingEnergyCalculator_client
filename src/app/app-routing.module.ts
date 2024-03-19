@@ -206,7 +206,7 @@ const routes: Routes = [
     component: ProjectSettingsComponent
   },
   {
-    path: 'solution/:id',
+    path: 'solution/:id/:name',
     component: SolutionComponent
   }
 ];

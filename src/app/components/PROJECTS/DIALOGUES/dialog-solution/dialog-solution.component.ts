@@ -13,7 +13,9 @@ import { UserStoreService } from '../../../../services/user-store.service';
 export class DialogSolutionComponent {
   deliveryList = [true, false]
   solutionForm: FormGroup;
-  actionBtn: string = "Save"
+  actionBtn: string = "Save";
+  dialogTitle: string = "Add Solution";
+
   public role!: string;
   isEditing: boolean = false;
   newData: any;
@@ -35,6 +37,7 @@ export class DialogSolutionComponent {
     if (this.editData && this.editData.name !== undefined) {
       this.isEditing = true;
       this.actionBtn = "Update";
+      this.dialogTitle = "Edit Solution";
       this.solutionForm.controls['name'].setValue(this.editData.name);
       this.solutionForm.controls['description'].setValue(this.editData.description);
 
@@ -80,7 +83,9 @@ export class DialogSolutionComponent {
       else {
         console.log("nie zwalidowałem się !");
       }
-    } else {
+    }
+    else {
+      this.dialogTitle = "Edit Solution";
       this.updateSolution();
     }
   }

@@ -1,89 +1,85 @@
-  <ng-container *ngIf="role === 'User'">
-    <h1 mat-dialog-title>Add Building Information</h1>
-  
-    <div mat-dialog-content >   
-      <form [formGroup]="buildingInformationForm">
-        <div id="horizontalFields" >   
-            <mat-form-field appearance="outline">
-                <mat-label>Building Name</mat-label>
-                <input formControlName="name" matInput placeholder="Building Name">      
-              </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Building Description</mat-label>
-                <textarea formControlName="description" matInput></textarea>
-              </mat-form-field>              
-
-        </div>
-        <h2>Address</h2>
-        <div formGroupName="address" id="horizontalFields" >                        
-            <mat-form-field appearance="outline">            
-                <mat-label>City</mat-label>
-                <input formControlName="city" matInput>
-            </mat-form-field>
-            <mat-form-field appearance="outline">            
-                <mat-label>Street</mat-label>
-                <input formControlName="street" matInput>
-            </mat-form-field>        
-            <mat-form-field appearance="outline">
-                <mat-label>Postal Code</mat-label>
-                <input formControlName="postalCode" matInput>
-            </mat-form-field>
-
-        </div>
-        <h2>Investor</h2>
-        <div formGroupName="investor" id="horizontalFields">
-            <mat-form-field appearance="outline">
-                <mat-label>Name</mat-label>
-                <input  formControlName="name" matInput>
-            </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Last Name </mat-label>
-                <input formControlName="lastName" matInput>
-              </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Phone</mat-label>
-                <input formControlName="phoneNumber" matInput>
-                <mat-icon matSuffix>phone</mat-icon>
-              </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input formControlName="email" matInput>
-              </mat-form-field>          
-        </div> 
-        <h2>Investor Address</h2> 
-        <div formGroupName="address" id="horizontalFields">
-          <mat-form-field appearance="outline">
-              <mat-label>City</mat-label>
-          <input  formControlName="city" matInput>
-          </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Street</mat-label>
-              <input  formControlName="street" matInput>
-          </mat-form-field>  
-            <mat-form-field appearance="outline">
-              <mat-label>Postal Code</mat-label>
-              <input  formControlName="postalCode" matInput>
-          </mat-form-field> 
+<ng-container>
+  <h1 mat-dialog-title>Add Building Information</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="buildingInformationForm">
+      <div id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Building Name</mat-label>
+          <input formControlName="name" matInput placeholder="Building Name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Building Description</mat-label>
+          <textarea formControlName="description" matInput></textarea>
+        </mat-form-field>
 
       </div>
-        
-        
-                
-        </form>       
-    </div>
+      <h2>Address</h2>
+      <div formGroupName="address" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input formControlName="city" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Street</mat-label>
+          <input formControlName="street" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input formControlName="postalCode" matInput>
+        </mat-form-field>
+
+      </div>
+      <h2>Investor</h2>
+      <div formGroupName="investor" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name </mat-label>
+          <input formControlName="lastName" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input formControlName="phoneNumber" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput>
+        </mat-form-field>
+      </div>
+      <h2>Investor Address</h2>
+      <div formGroupName="address" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input formControlName="city" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Street</mat-label>
+          <input formControlName="street" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input formControlName="postalCode" matInput>
+        </mat-form-field>
+
+      </div>
+
+
+
+    </form>
+  </div>
   <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addBuildingInformation()" >{{actionBtn}}</button>
-  
+    <button style="margin-left: 8px;" mat-raised-button color="primary"
+      (click)="addBuildingInformation()">{{actionBtn}}</button>
+
   </div>
-  </ng-container>
-  <ng-container *ngIf="role != 'User'">
-    <h1 mat-dialog-title>You can add new material only as a logged user !</h1>
-    <div mat-dialog-actions [align]="'end'">
-      <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
-    </div>
-  </ng-container>
-
-
-  
-  
+</ng-container>
+<!-- <ng-container *ngIf="role != 'User'">
+  <h1 mat-dialog-title>You can add new material only as a logged user !</h1>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  </div>
+</ng-container> -->
