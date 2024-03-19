@@ -1,31 +1,169 @@
-<ng-container *ngIf="role === 'User' || role==='Admin'">
-    <h1 mat-dialog-title>Add Project</h1>
-  
-    <div mat-dialog-content >   
-      <form [formGroup]="projectForm">
-        <div id="horizontalFields" >   
-            <mat-form-field appearance="outline">
-                <mat-label>Project Name</mat-label>
-                <input formControlName="name" matInput placeholder="Project Name">      
-              </mat-form-field>                        
+<ng-container>
+  <h1 mat-dialog-title>{{dialogTitle}}</h1>
 
-        </div>                  
-                
-        </form>       
-    </div>
+  <div mat-dialog-content>
+    <form [formGroup]="projectForm">
+      <div id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Project Name</mat-label>
+          <input formControlName="name" matInput placeholder="Project Name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Project Description</mat-label>
+          <textarea formControlName="description" matInput></textarea>
+        </mat-form-field>
+      </div>
+      <h2>Address</h2>
+      <div formGroupName="address" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input formControlName="city" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Street</mat-label>
+          <input formControlName="street" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input formControlName="postalCode" matInput>
+        </mat-form-field>
+
+      </div>
+      <h2>Investor</h2>
+      <div formGroupName="investor" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name </mat-label>
+          <input formControlName="lastName" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input formControlName="phoneNumber" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+      <h2>Investor Address</h2>
+      <div formGroupName="address" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input formControlName="city" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Street</mat-label>
+          <input formControlName="street" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input formControlName="postalCode" matInput>
+        </mat-form-field>
+      </div>
+      <h2>Chief Architect</h2>
+      <div formGroupName="architect" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input formControlName="phoneNumber" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+      <h2>Architect</h2>
+      <div formGroupName="architect" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input formControlName="phoneNumber" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+      <h2>Structural Engineer</h2>
+      <div formGroupName="architect" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input formControlName="phoneNumber" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <h2>HVAC Engineer</h2>
+      <div formGroupName="architect" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input formControlName="phoneNumber" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <h2>Electrical Engineer</h2>
+      <div formGroupName="architect" id="horizontalFields">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input formControlName="phoneNumber" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
   <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProject()" >{{actionBtn}}</button>
-  
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProject()">{{actionBtn}}</button>
+
   </div>
-  </ng-container>
-  <ng-container *ngIf="role != 'User'">
-    <h1 mat-dialog-title>You can add new project only as a logged user !</h1>
-    <div mat-dialog-actions [align]="'end'">
-      <button mat-raised-button color="warn" mat-dialog-close>Close</button>  
-    </div>
-  </ng-container>
-
-
-  
-  
+</ng-container>
+<!-- <ng-container *ngIf="role !== 'User' && role !== 'Admin' && role !== 'Manager'">
+  <h1 mat-dialog-title>You can add new project only as a logged user !</h1>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  </div>
+</ng-container> -->

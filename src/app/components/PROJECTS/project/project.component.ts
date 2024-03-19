@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,30 +16,29 @@ import { DialogProjectsComponent } from '../DIALOGUES/dialog-projects/dialog-pro
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent {
-  public projectModel:any[]=[];
+  public projects: any[] = [];
   addProjectRequest: ProjectModel = {
-    name:''   
-
+    name: ''
   };
-
-  displayedColumns: string[] = ['id', 'name','action'];
+  displayedColumns: string[] = ['id', 'name', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  public role!:string;    
 
-  constructor(private projectService: ProjectModelService, private dialog: MatDialog,private auth: AuthService,
-     private userStore: UserStoreService,private confirmService: NgConfirmService){}
+  public role!: string;
+
+  constructor(private projectService: ProjectModelService, private dialog: MatDialog, private auth: AuthService,
+    private userStore: UserStoreService, private confirmService: NgConfirmService) { }
 
   ngOnInit(): void {
-    this.getAllProjects();  
+    this.getAllProjects();
     this.userStore.getRoleFromStore()
-    .subscribe(val=>{
-      const roleFromToken = this.auth.getRoleFromToken();
-      this.role = val || roleFromToken
-    })
-  }  
+      .subscribe(val => {
+        const roleFromToken = this.auth.getRoleFromToken();
+        this.role = val || roleFromToken
+      })
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -50,78 +49,69 @@ export class ProjectComponent {
     }
   }
 
-  openDialog() {
-    this.dialog.open(DialogProjectsComponent, {
-     width:'40%'
-    }).afterClosed().subscribe(val=>{
-      if(val==='save'){
+  openDialog(): void {
+
+    const dialogRef = this.dialog.open(DialogProjectsComponent, {
+      width: '74%'
+    });
+    dialogRef.afterClosed().subscribe(val => {
+      if (val === 'save') {
         this.getAllProjects();
       }
     })
   };
 
-  // addBuildingMaterial(){
-  //   this.buildingMaterialsService.addMaterial(this.addBuildingMaterialRequest)
-  //   .subscribe({
-  //     next: (material)=>{
-  //       console.log(material);
-  //     },
-  //     error:(response)=>{
-  //       console.log(response);
-  //     }
-      
-  //   })
-  // }
-
-  getAllProjects(){
+  getAllProjects() {
     this.projectService.getAllProjects()
-    .subscribe({
-      next: (res)=>{  
-        this.projectModel=res;
-        console.log(res)      
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      error: (err)=>{
-        console.log(err);
-        alert("Error while fetching the Records")
-      }
-
-    })
+      .subscribe({
+        next: (res) => {
+          this.projects = res;
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        error: (err) => {
+          console.log(err);
+          alert("Error while fetching the Records");
+        }
+      });
   }
 
-  editProject(row: any){
-    this.dialog.open(DialogProjectsComponent,{
-      width:'30%',
+  editProject(row: any) {
+    this.dialog.open(DialogProjectsComponent, {
+      width: '74%',
       data: row
-    }).afterClosed().subscribe(val=>{
-      if(val==='update'){
+    }).afterClosed().subscribe(val => {
+      if (val === 'update') {
         this.getAllProjects();
       }
     })
   };
 
-    deleteProject(id: number){
-        this.confirmService.showConfirm("Are you sure want to remove project ?",
-        ()=>{
+  deleteProject(id: number) {
+    this.confirmService.showConfirm("Are you sure want to remove project ?",
+      () => {
         this.projectService.deleteProject(id)
-        .subscribe({
-        next:(res)=>{
-          alert("project deleted successfully")
-          this.getAllProjects();
-        },
-        error:(err)=>{
-          console.log(err)
-          alert("Error while deleting project !")
-        }
-        })
-        },
-          ()=>{
-          alert("User selected No")
-        }
-      )  
-    
-    }
+          .subscribe({
+            next: (res) => {
+              alert("project deleted successfully")
+              this.getAllProjects();
+            },
+            error: (err) => {
+              console.log(err)
+              alert("Error while deleting project !")
+            }
+          })
+      },
+      () => {
+        alert("User selected No")
+      }
+    )
+
+  }
+
+  setProjectName(row: any) {
+    this.projectService.setProjectName("Project: " + row.name);
+  }
 
 }
