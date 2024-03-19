@@ -16,6 +16,8 @@ export class DialogProjectsComponent {
   projectForm: FormGroup;
 
   actionBtn: string = "Save"
+  dialogTitle: string = "Add Project"
+
   public role!: string;
 
   constructor(private formBuilder: FormBuilder,
@@ -26,18 +28,39 @@ export class DialogProjectsComponent {
     private userStore: UserStoreService) {
     this.projectForm = this.formBuilder.group({
       name: ['', Validators.required],
-
+      description: [''],
+      address: this.formBuilder.group({
+        city: [''],
+        street: [''],
+        postalCode: [''],
+      }),
+      investor: this.formBuilder.group({
+        name: [''],
+        lastName: [''],
+        phoneNumber: [''],
+        email: [''],
+        address: this.formBuilder.group({
+          city: [''],
+          street: [''],
+          postalCode: [''],
+        })
+      }),
+      architect: this.formBuilder.group({
+        name: [''],
+        phoneNumber: [''],
+        email: ['']
+      })
     });
 
   }
 
   ngOnInit(): void {
-
+    this.api.setProjectName(this.editData.name)
     if (this.editData) {
       this.actionBtn = "Update";
       this.projectForm.controls['name'].setValue(this.editData.name);
       this.projectForm.controls['description'].setValue(this.editData.description);
-
+      this.dialogTitle = "Edit Project";
     }
 
     this.userStore.getRoleFromStore()
@@ -68,7 +91,7 @@ export class DialogProjectsComponent {
               console.log("FORM: " + this.projectForm)
               console.log("error: " + err)
             }
-          })
+          });
       }
       else {
         console.log("nie zwalidowałem się !")

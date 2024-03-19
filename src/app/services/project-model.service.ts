@@ -6,6 +6,7 @@ import { ProjectModel } from '../models/project-model.model';
   providedIn: 'root'
 })
 export class ProjectModelService {
+  projectName: string = "";
 
   private baseUrl: string = 'https://localhost:5001/api/'
 
@@ -25,5 +26,14 @@ export class ProjectModelService {
 
   deleteProject(id: number) {
     return this.http.delete<ProjectModel>(this.baseUrl + "project/" + id)
+  }
+
+  setProjectName(projectName: string) {
+    console.log("ProjectName:", projectName)
+    this.projectName = projectName;
+  }
+
+  getProjectName() {
+    return this.projectName;
   }
 }

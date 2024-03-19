@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,6 +25,7 @@ export class ProjectComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
   public role!: string;
 
   constructor(private projectService: ProjectModelService, private dialog: MatDialog, private auth: AuthService,
@@ -49,8 +50,9 @@ export class ProjectComponent {
   }
 
   openDialog(): void {
+
     const dialogRef = this.dialog.open(DialogProjectsComponent, {
-      width: '40%'
+      width: '74%'
     });
     dialogRef.afterClosed().subscribe(val => {
       if (val === 'save') {
@@ -77,7 +79,7 @@ export class ProjectComponent {
 
   editProject(row: any) {
     this.dialog.open(DialogProjectsComponent, {
-      width: '30%',
+      width: '74%',
       data: row
     }).afterClosed().subscribe(val => {
       if (val === 'update') {
@@ -106,6 +108,10 @@ export class ProjectComponent {
       }
     )
 
+  }
+
+  setProjectName(row: any) {
+    this.projectService.setProjectName("Project: " + row.name);
   }
 
 }

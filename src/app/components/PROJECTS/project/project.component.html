@@ -67,7 +67,7 @@
                   <button mat-icon-button (click)="deleteProject(row.id)" color="warn">
                     <mat-icon>delete</mat-icon>
                   </button>
-                  <button mat-icon-button [routerLink]="['/solution', row.id ]">
+                  <button mat-icon-button [routerLink]="['/solution', row.id,row.name ]" (click)="setProjectName(row)">
                     <mat-icon>settings</mat-icon>
                   </button>
                 </td>
