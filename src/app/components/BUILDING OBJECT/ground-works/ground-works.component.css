@@ -1,0 +1,92 @@
+main {
+    margin-top: 13vh;
+}
+
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#sidebarMenu {
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    margin-top: 13vh;
+}
+
+.nav-item {
+    text-align: center;
+    font-size: 1.8vh;
+}
+
+a {
+    color: black;
+}
+
+.headerContext {
+    position: fixed;
+    width: 80%;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.filter {
+    width: 65vw;
+    position: fixed;
+}
+
+.tableContent {
+    width: 98.5%;
+    padding-top: 90px;
+    padding-bottom: 10vh;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+#claims {
+    color: black;
+    margin-left: 2vw;
+}
+
+
+#horizontalFields {
+    display: flex;
+}
+
+#horizontalFields mat-form-field {
+    margin-right: 10px;
+}
