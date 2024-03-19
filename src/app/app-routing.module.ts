@@ -40,6 +40,7 @@ import { ProjectComponent } from './components/PROJECTS/project/project.componen
 import { LibraryComponent } from './components/LIBRARY/library/library.component';
 import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOARD/project-settings/project-settings.component';
 import { SolutionComponent } from './components/PROJECTS/solution/solution.component';
+import { GroundWorksComponent } from './components/BUILDING OBJECT/ground-works/ground-works.component';
 
 const routes: Routes = [
   // {
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: 'building-parameters',
     component: BuildingParametersComponent
+  },
+  {
+    path: 'ground-works',
+    component: GroundWorksComponent
   },
   {
     path: 'building-information',

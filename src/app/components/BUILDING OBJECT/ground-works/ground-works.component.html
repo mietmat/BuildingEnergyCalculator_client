@@ -1,1 +1,64 @@
-<p>ground-works works!</p>
+<app-project-settings></app-project-settings>
+<router-outlet></router-outlet>
+
+<div class="container-fluid">
+    <div class="row">
+        <ng-container>
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <app-left-container></app-left-container>
+            </nav>
+        </ng-container>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 headerContext">
+                <mat-toolbar color="primary">
+
+                    <span>Ground works</span>
+                    <span class="example-spacer"></span>
+                    <div class="btn-toolbar mb-2 mb-md-4 m-2">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                            <i class="fa-solid fa-calendar"></i>
+                            This week
+                        </button>
+                    </div>
+                    <button mat-raised-button color="warn">Add</button>
+                </mat-toolbar>
+            </div>
+
+            <!-- <div class="container">
+                <div style="margin-top: 10px">
+                    <div id="horizontalFields">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Length N</mat-label>
+                            <input formControlName="buildingLengthN" matInput placeholder="Length N">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Length E</mat-label>
+                            <input formControlName="buildingLengthE" matInput placeholder="Length E">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Length S</mat-label>
+                            <input formControlName="buildingLengthS" matInput placeholder="Length S">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Length W</mat-label>
+                            <input formControlName="buildingLengthW" matInput placeholder="Length W">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Perimeter</mat-label>
+                            <input formControlName="perimeterOfTheBuilding" matInput
+                                placeholder="Perimeter Of The Building">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </main>
+    </div>
+</div>
