@@ -78,6 +78,8 @@ import { LeftContainerLibraryComponent } from './components/LIBRARY/left-contain
 import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOARD/project-settings/project-settings.component';
 import { SolutionComponent } from './components/PROJECTS/solution/solution.component';
 import { DialogSolutionComponent } from './components/PROJECTS/DIALOGUES/dialog-solution/dialog-solution.component';
+import { GroundWorksComponent } from './components/BUILDING OBJECT/ground-works/ground-works.component';
+
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
 
@@ -138,7 +140,8 @@ import { DialogSolutionComponent } from './components/PROJECTS/DIALOGUES/dialog-
     LeftContainerLibraryComponent,
     ProjectSettingsComponent,
     SolutionComponent,
-    DialogSolutionComponent
+    DialogSolutionComponent,
+    GroundWorksComponent
 
 
 
