@@ -111,6 +111,7 @@ export class ProjectComponent {
   }
 
   setProjectName(row: any) {
+
     this.projectService.setProjectName("Project: " + row.name);
   }
 

@@ -11,6 +11,7 @@ import { BuildingParameters } from 'src/app/models/building-parameters.model';
 import { BuildingParametersService } from 'src/app/services/building-parameters.service';
 import { DialogBuildingParametersComponent } from '../DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SolutionService } from '../../../services/solution.service';
 
 @Component({
   selector: 'app-building-parameters',
@@ -19,8 +20,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class BuildingParametersComponent {
   buildingParametersForm: FormGroup;
+  buildingParameters: BuildingParameters[] = [];
 
-  public buildingParameters: any = [];
+  public buildingParametersOld: any = [];
   addBuildingParametersRequest: BuildingParameters = {
     buildingLengthN: 0,
     buildingLengthE: 0,
@@ -57,8 +59,14 @@ export class BuildingParametersComponent {
   @ViewChild(MatSort) sort!: MatSort;
   public role!: string;
 
-  constructor(private buildingParametersService: BuildingParametersService, private dialog: MatDialog, private auth: AuthService,
-    private userStore: UserStoreService, private confirmService: NgConfirmService, private formBuilder: FormBuilder) {
+  constructor(
+    private buildingParametersService: BuildingParametersService,
+    private dialog: MatDialog,
+    private auth: AuthService,
+    private userStore: UserStoreService,
+    private confirmService: NgConfirmService,
+    private formBuilder: FormBuilder,
+    private solutionService: SolutionService) {
     this.buildingParametersForm = this.formBuilder.group({
       buildingLengthN: ["", Validators.required],
       buildingLengthE: ["", Validators.required],
@@ -91,7 +99,7 @@ export class BuildingParametersComponent {
   }
 
   ngOnInit(): void {
-    this.getAllBuildingParameters();
+    this.loadBuildingParameters();
     this.userStore.getRoleFromStore()
       .subscribe(val => {
         const roleFromToken = this.auth.getRoleFromToken();
@@ -118,7 +126,7 @@ export class BuildingParametersComponent {
     })
   };
 
-  addBuildingMaterial() {
+  addBuildingParameters() {
     this.buildingParametersService.addBuildingParameters(this.addBuildingParametersRequest)
       .subscribe({
         next: (parameters: any) => {
@@ -135,8 +143,8 @@ export class BuildingParametersComponent {
     this.buildingParametersService.getAllBuildingParameters()
       .subscribe({
         next: (res: any[] | undefined) => {
-          this.buildingParameters = res;
-          console.log(res)
+          this.buildingParametersOld = res;
+          console.log(res);
           this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -147,6 +155,23 @@ export class BuildingParametersComponent {
         }
 
       })
+  }
+
+  loadBuildingParameters(): void {
+    const solutionId = this.solutionService.getSolutionId();
+    if (solutionId) {
+      this.buildingParametersService.getBuildingParametersBySolutionId(solutionId).subscribe({
+        next: (res: BuildingParameters[]) => {
+          this.buildingParameters = res;
+          console.log("RES:", res);
+          this.buildingParametersForm.patchValue(res);
+          this.dataSource = new MatTableDataSource(this.buildingParameters);
+        },
+        error: (err: any) => {
+          console.error('Error while fetching building parameters:', err);
+        }
+      });
+    }
   }
 
   editMaterial(row: any) {
@@ -181,6 +206,27 @@ export class BuildingParametersComponent {
       }
     )
 
+  }
+
+  saveBuildingParameters(): void {
+    if (this.buildingParametersForm.valid) {
+      const formData = this.buildingParametersForm.value;
+      console.log("FormData:", formData);
+      const solutionId = this.solutionService.getSolutionId();
+      if (solutionId) {
+        console.log("Sending data to backend");
+        this.buildingParametersService.saveBuildingParameters(formData, solutionId).subscribe({
+          next: (res: any) => {
+            console.log('Building parameters saved successfully:', res);
+          },
+          error: (err: any) => {
+            console.error('Error while saving building parameters:', err);
+          }
+        });
+      }
+    } else {
+      console.error('Form is invalid. Cannot save building parameters.');
+    }
   }
 
 

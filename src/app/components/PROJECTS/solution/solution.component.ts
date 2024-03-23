@@ -151,8 +151,9 @@ export class SolutionComponent {
 
   }
 
-  setSolutionName(row: any) {
+  setSolutionData(row: any) {
     this.solutionService.setSolutionName("Solution: " + row.name);
+    this.solutionService.setSolutionId(row.id);
   }
 }
 

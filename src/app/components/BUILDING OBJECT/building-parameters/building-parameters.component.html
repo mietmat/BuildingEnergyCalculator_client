@@ -11,6 +11,7 @@
     <div class="mainContainer">
       <div class="info-bar">
         <span>Building parameters</span>
+        <button class="saveButton" mat-raised-button color="warn" (click)="saveBuildingParameters()">Save</button>
         <span class="example-spacer"></span>
         <div class="btn-toolbar mb-2 mb-md-4 m-2">
           <div class="btn-group me-2">
@@ -23,6 +24,7 @@
           </button>
         </div>
       </div>
+
       <form [formGroup]="buildingParametersForm">
         <h2>Building outer dimensions [m]</h2>
         <div class="data-container">
