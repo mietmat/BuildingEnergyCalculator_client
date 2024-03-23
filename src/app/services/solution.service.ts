@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SolutionService {
   solutionName: string = "";
-
+  private solutionId: any;
   private baseUrl: string = 'https://localhost:5001/api/'
 
   constructor(private http: HttpClient) { }
@@ -41,5 +41,13 @@ export class SolutionService {
 
   getSolutionName() {
     return this.solutionName;
+  }
+
+  setSolutionId(id: number) {
+    this.solutionId = id;
+  }
+
+  getSolutionId(): number {
+    return this.solutionId;
   }
 }

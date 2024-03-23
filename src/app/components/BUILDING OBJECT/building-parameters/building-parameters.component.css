@@ -15,6 +15,10 @@ table {
   width: 100%;
 }
 
+.saveButton {
+  margin-left: 2vw;
+}
+
 .container {
   margin-top: 100px;
   max-width: 1200px;
@@ -109,7 +113,7 @@ a {
 
 .mainContainer {
   margin-top: 13vh;
-  width: 85vw;
+  width: 83vw;
   margin-left: 17vw;
 }
 
@@ -121,6 +125,10 @@ h2 {
 mat-form-field {
   margin-right: 50px;
   /* border-radius: 10px; */
+}
+
+mat-form-field:last-child {
+  margin-right: 0;
 }
 
 mat-form-field mat-label {
