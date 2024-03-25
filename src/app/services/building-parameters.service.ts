@@ -18,10 +18,6 @@ export class BuildingParametersService {
     return this.http.post<BuildingParameters>(this.baseUrl + "buildingparameters", addParametersRequest)
   }
 
-  updateBuildingParameters(data: BuildingParameters, id: number) {
-    return this.http.put<BuildingParameters>(this.baseUrl + "buildingparameters/" + id, data)
-  }
-
   deleteBuildingParameters(id: number) {
     return this.http.delete<BuildingParameters>(this.baseUrl + "buildingparameters/" + id)
   }
@@ -30,6 +26,10 @@ export class BuildingParametersService {
     console.log("getBuildingParametersBySolutionIdEndPoint");
     return this.http.get<any>(this.baseUrl + "buildingparameters/" + solutionId);
 
+  }
+
+  updateBuildingParameters(formData: any, solutionId: number) {
+    return this.http.put<any>(this.baseUrl + "buildingparameters/" + solutionId, formData);
   }
 
   saveBuildingParameters(formData: any, solutionId: number) {

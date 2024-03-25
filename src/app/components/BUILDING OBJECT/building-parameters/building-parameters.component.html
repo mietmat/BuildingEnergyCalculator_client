@@ -11,7 +11,8 @@
     <div class="mainContainer">
       <div class="info-bar">
         <span>Building parameters</span>
-        <button class="saveButton" mat-raised-button color="warn" (click)="saveBuildingParameters()">Save</button>
+        <button class="saveButton" mat-raised-button color="warn"
+          (click)="this.actionBtn === 'Save' ? saveBuildingParameters() : updateBuildingParameters()">{{this.actionBtn}}</button>
         <span class="example-spacer"></span>
         <div class="btn-toolbar mb-2 mb-md-4 m-2">
           <div class="btn-group me-2">
@@ -46,7 +47,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Perimeter</mat-label>
-            <input formControlName="perimeterOfTheBuilding" matInput placeholder="Perimeter Of The Building">
+            <input matInput formControlName="perimeterOfTheBuilding">
           </mat-form-field>
         </div>
 

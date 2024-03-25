@@ -19,44 +19,17 @@ import { SolutionService } from '../../../services/solution.service';
   styleUrls: ['./building-parameters.component.css']
 })
 export class BuildingParametersComponent {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   buildingParametersForm: FormGroup;
   buildingParameters: BuildingParameters[] = [];
-
-  public buildingParametersOld: any = [];
-  addBuildingParametersRequest: BuildingParameters = {
-    buildingLengthN: 0,
-    buildingLengthE: 0,
-    buildingLengthS: 0,
-    buildingLengthW: 0,
-    storeyHeightNet: 0,
-    storeyHeightGross: 0,
-    cellarHeight: 0,
-    storeyQuantity: 0,
-    buildingArea: 0,
-    staircaseSurface: 0,
-    usableAreaOfTheStairCase: 0,
-    staircaseWidth: 0,
-    heatAtticArea: 0,
-    unheatedAtticArea: 0,
-    usableAreaOfTheBuilding: 0,
-    atticUsableArea: 0,
-    perimeterOfTheBuilding: 0,
-    balconyLength: 0,
-    totalWindowAreaN: 0,
-    totalWindowAreaE: 0,
-    totalWindowAreaS: 0,
-    totalWindowAreaW: 0,
-    totalDoorAreaN: 0,
-    totalDoorAreaE: 0,
-    totalDoorAreaS: 0,
-    totalDoorAreaW: 0,
-  };
-
+  actionBtn: string = "Save";
+  perimeter: number = 0;
   displayedColumns: string[] = ['id', 'BuildingLengthN', 'BuildingLengthE'];
   dataSource!: MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+
   public role!: string;
 
   constructor(
@@ -67,6 +40,7 @@ export class BuildingParametersComponent {
     private confirmService: NgConfirmService,
     private formBuilder: FormBuilder,
     private solutionService: SolutionService) {
+
     this.buildingParametersForm = this.formBuilder.group({
       buildingLengthN: ["", Validators.required],
       buildingLengthE: ["", Validators.required],
@@ -84,7 +58,7 @@ export class BuildingParametersComponent {
       unheatedAtticArea: ["", Validators.required],
       usableAreaOfTheBuilding: ["", Validators.required],
       atticUsableArea: ["", Validators.required],
-      perimeterOfTheBuilding: ["", Validators.required],
+      perimeterOfTheBuilding: { value: 0, disabled: true },
       balconyLength: ["", Validators.required],
       totalWindowAreaN: ["", Validators.required],
       totalWindowAreaE: ["", Validators.required],
@@ -95,6 +69,23 @@ export class BuildingParametersComponent {
       totalDoorAreaS: ["", Validators.required],
       totalDoorAreaW: ["", Validators.required],
 
+    });
+
+    this.buildingParametersForm.valueChanges.subscribe(() => {
+      const lengthN = parseFloat(this.buildingParametersForm.get('buildingLengthN')?.value);
+      const lengthE = parseFloat(this.buildingParametersForm.get('buildingLengthE')?.value);
+      const lengthS = parseFloat(this.buildingParametersForm.get('buildingLengthS')?.value);
+      const lengthW = parseFloat(this.buildingParametersForm.get('buildingLengthW')?.value);
+      if (!isNaN(lengthN) && !isNaN(lengthE) && !isNaN(lengthS) && !isNaN(lengthW)) {
+        this.perimeter = lengthN + lengthE + lengthS + lengthW;
+        this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue(this.perimeter);
+      }
+      else {
+        this.perimeter = 0;
+        this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue("");
+        console.error('One or more values are not valid numbers.');
+
+      }
     });
   }
 
@@ -126,25 +117,10 @@ export class BuildingParametersComponent {
     })
   };
 
-  addBuildingParameters() {
-    this.buildingParametersService.addBuildingParameters(this.addBuildingParametersRequest)
-      .subscribe({
-        next: (parameters: any) => {
-          console.log(parameters);
-        },
-        error: (response: any) => {
-          console.log(response);
-        }
-
-      })
-  }
-
   getAllBuildingParameters() {
     this.buildingParametersService.getAllBuildingParameters()
       .subscribe({
         next: (res: any[] | undefined) => {
-          this.buildingParametersOld = res;
-          console.log(res);
           this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -162,10 +138,28 @@ export class BuildingParametersComponent {
     if (solutionId) {
       this.buildingParametersService.getBuildingParametersBySolutionId(solutionId).subscribe({
         next: (res: BuildingParameters[]) => {
-          this.buildingParameters = res;
-          console.log("RES:", res);
-          this.buildingParametersForm.patchValue(res);
-          this.dataSource = new MatTableDataSource(this.buildingParameters);
+          if (Array.isArray(res)) {
+            this.buildingParameters = res;
+            console.log("RES:", res);
+            this.buildingParametersForm.patchValue(res);
+            this.dataSource = new MatTableDataSource(this.buildingParameters);
+
+            const isEmpty = res.every(parameters => {
+              return Object.values(parameters).every(value => value === null || value === '');
+            });
+
+            this.actionBtn = isEmpty ? 'Save' : 'Update';
+            console.log("actionBtn:", this.actionBtn);
+
+          } else {
+            const isEmpty = Object.values(res).every(value => value === null || value === '');
+            console.log("RES:", res);
+            this.buildingParametersForm.patchValue(res);
+
+            this.actionBtn = isEmpty ? 'Save' : 'Update';
+            console.log("actionBtn:", this.actionBtn);
+
+          }
         },
         error: (err: any) => {
           console.error('Error while fetching building parameters:', err);
@@ -211,6 +205,7 @@ export class BuildingParametersComponent {
   saveBuildingParameters(): void {
     if (this.buildingParametersForm.valid) {
       const formData = this.buildingParametersForm.value;
+      formData.perimeterOfTheBuilding = this.perimeter;
       console.log("FormData:", formData);
       const solutionId = this.solutionService.getSolutionId();
       if (solutionId) {
@@ -224,8 +219,31 @@ export class BuildingParametersComponent {
           }
         });
       }
-    } else {
+    }
+    else {
       console.error('Form is invalid. Cannot save building parameters.');
+    }
+  }
+  updateBuildingParameters(): void {
+    if (this.buildingParametersForm.valid) {
+      const formData = this.buildingParametersForm.value;
+      formData.perimeterOfTheBuilding = this.perimeter;
+      console.log("FormData:", formData);
+      const solutionId = this.solutionService.getSolutionId();
+      if (solutionId) {
+        console.log("Sending data to backend");
+        this.buildingParametersService.updateBuildingParameters(formData, solutionId).subscribe({
+          next: (res: any) => {
+            console.log('Building parameters updated successfully:', res);
+          },
+          error: (err: any) => {
+            console.error('Error while update building parameters:', err);
+          }
+        });
+      }
+    }
+    else {
+      console.error('Form is invalid. Cannot update building parameters.');
     }
   }
 
