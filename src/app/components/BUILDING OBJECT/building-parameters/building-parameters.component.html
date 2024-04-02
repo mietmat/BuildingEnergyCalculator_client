@@ -12,7 +12,8 @@
       <div class="info-bar">
         <span>Building parameters</span>
         <button class="saveButton" mat-raised-button color="warn"
-          (click)="this.actionBtn === 'Save' ? saveBuildingParameters() : updateBuildingParameters()">{{this.actionBtn}}</button>
+          (click)="this.actionBtn === 'Save' ? saveBuildingParameters() : updateBuildingParameters()">{{actionBtn}}</button>
+        <span *ngIf="isFormChanged">Please save updated data !</span>
         <span class="example-spacer"></span>
         <div class="btn-toolbar mb-2 mb-md-4 m-2">
           <div class="btn-group me-2">
@@ -27,23 +28,26 @@
       </div>
 
       <form [formGroup]="buildingParametersForm">
-        <h2>Building outer dimensions [m]</h2>
+        <div class="header">
+          <h2>Building external dimensions without insulation [m]</h2>
+          <mat-icon class="info-icon" (click)="openInfoDialogExternalDimensions()">info</mat-icon>
+        </div>
         <div class="data-container">
           <mat-form-field appearance="fill">
-            <mat-label>Length N</mat-label>
-            <input formControlName="buildingLengthN" matInput placeholder="Length N">
+            <mat-label>Total length (N)</mat-label>
+            <input formControlName="buildingLengthN" matInput type="number" placeholder="Total length (N)">
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Length E</mat-label>
-            <input formControlName="buildingLengthE" matInput placeholder="Length E">
+            <mat-label>Total length (E)</mat-label>
+            <input formControlName="buildingLengthE" matInput type="number" placeholder="Total length (E)">
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Length S</mat-label>
-            <input formControlName="buildingLengthS" matInput placeholder="Length S">
+            <mat-label>Total length (S)</mat-label>
+            <input formControlName="buildingLengthS" matInput type="number" placeholder="Total length (S)">
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Length W</mat-label>
-            <input formControlName="buildingLengthW" matInput placeholder="Length W">
+            <mat-label>Total length (W)</mat-label>
+            <input formControlName="buildingLengthW" matInput type="number" placeholder="Total length (W)">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Perimeter</mat-label>
@@ -51,7 +55,10 @@
           </mat-form-field>
         </div>
 
-        <h2>Storey dimensions [m]</h2>
+        <div class="header">
+          <h2>Storey dimensions [m]</h2>
+          <mat-icon class="info-icon" (click)="openInfoDialogStoreyDimensions()">info</mat-icon>
+        </div>
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>Storey Height Net</mat-label>

@@ -82,6 +82,10 @@ a {
   align-items: center;
 }
 
+.info-icon {
+  cursor: pointer;
+}
+
 .main-button {
   background-color: #28a745;
   color: #fff;
@@ -120,6 +124,11 @@ a {
 h2 {
   margin: 10px 15px 5px 0;
   font-weight: 100;
+}
+
+.header {
+  display: flex;
+  align-items: center;
 }
 
 mat-form-field {

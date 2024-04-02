@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,9 +9,10 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 import { NgConfirmService } from 'ng-confirm-box';
 import { BuildingParameters } from 'src/app/models/building-parameters.model';
 import { BuildingParametersService } from 'src/app/services/building-parameters.service';
-import { DialogBuildingParametersComponent } from '../DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SolutionService } from '../../../services/solution.service';
+import { DialogBuildingParametersComponent } from '../DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
+import { InfoImageBuildingExternalDimensionsComponent } from '../DIALOGS/info-image-Building-external-dimensions/info-image-building-external-dimensions.component';
 
 @Component({
   selector: 'app-building-parameters',
@@ -28,8 +29,9 @@ export class BuildingParametersComponent {
   perimeter: number = 0;
   displayedColumns: string[] = ['id', 'BuildingLengthN', 'BuildingLengthE'];
   dataSource!: MatTableDataSource<any>;
-
-
+  isProgrammaticChange = false;
+  isFormChanged = false;
+  // currentFormValues: any;
   public role!: string;
 
   constructor(
@@ -39,7 +41,9 @@ export class BuildingParametersComponent {
     private userStore: UserStoreService,
     private confirmService: NgConfirmService,
     private formBuilder: FormBuilder,
-    private solutionService: SolutionService) {
+    private solutionService: SolutionService,
+    private renderer: Renderer2,
+    private elementRef: ElementRef) {
 
     this.buildingParametersForm = this.formBuilder.group({
       buildingLengthN: ["", Validators.required],
@@ -70,21 +74,41 @@ export class BuildingParametersComponent {
       totalDoorAreaW: ["", Validators.required],
 
     });
-
     this.buildingParametersForm.valueChanges.subscribe(() => {
-      const lengthN = parseFloat(this.buildingParametersForm.get('buildingLengthN')?.value);
-      const lengthE = parseFloat(this.buildingParametersForm.get('buildingLengthE')?.value);
-      const lengthS = parseFloat(this.buildingParametersForm.get('buildingLengthS')?.value);
-      const lengthW = parseFloat(this.buildingParametersForm.get('buildingLengthW')?.value);
-      if (!isNaN(lengthN) && !isNaN(lengthE) && !isNaN(lengthS) && !isNaN(lengthW)) {
-        this.perimeter = lengthN + lengthE + lengthS + lengthW;
-        this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue(this.perimeter);
+      if (!this.isProgrammaticChange) {
+        // this.currentFormValues = this.buildingParametersForm.value;
+        // this.isFormChanged = !this.isEqual(this.currentFormValues, this.buildingParameters);
+        const lengthN = parseFloat(this.buildingParametersForm.get('buildingLengthN')?.value);
+        const lengthE = parseFloat(this.buildingParametersForm.get('buildingLengthE')?.value);
+        const lengthS = parseFloat(this.buildingParametersForm.get('buildingLengthS')?.value);
+        const lengthW = parseFloat(this.buildingParametersForm.get('buildingLengthW')?.value);
+        if (!isNaN(lengthN) && !isNaN(lengthE) && !isNaN(lengthS) && !isNaN(lengthW)) {
+          this.perimeter = lengthN + lengthE + lengthS + lengthW;
+          this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue(this.perimeter);
+        }
+        else {
+          this.perimeter = 0;
+          this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue("");
+          console.error('One or more values are not valid numbers.');
+        }
       }
-      else {
-        this.perimeter = 0;
-        this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue("");
-        console.error('One or more values are not valid numbers.');
+    });
+  }
 
+  openInfoDialogExternalDimensions(): void {
+    this.dialog.open(InfoImageBuildingExternalDimensionsComponent, {
+      width: '30vw',
+      data: {
+        image: 'assets/externalDimensionsExplanation.png'
+      }
+    });
+  }
+
+  openInfoDialogStoreyDimensions(): void {
+    this.dialog.open(InfoImageBuildingExternalDimensionsComponent, {
+      width: '30vw',
+      data: {
+        image: 'assets/externalDimensionsExplanation.png'
       }
     });
   }
@@ -95,7 +119,35 @@ export class BuildingParametersComponent {
       .subscribe(val => {
         const roleFromToken = this.auth.getRoleFromToken();
         this.role = val || roleFromToken
-      })
+      });
+    const infoIcon = this.elementRef.nativeElement.querySelector('.info-icon');
+    const imageSrc = 'ścieżka/do/obrazka.jpg';
+    this.renderer.listen(infoIcon, 'mouseover', () => {
+      this.showInfo(imageSrc);
+    });
+    this.renderer.listen(infoIcon, 'mouseout', () => {
+      this.hideInfo();
+    });
+  }
+
+  showInfo(imageSrc: string) {
+    const infoPopup = document.createElement('div');
+    infoPopup.classList.add('info-popup');
+    const image = document.createElement('img');
+    image.src = imageSrc;
+    infoPopup.appendChild(image);
+    document.body.appendChild(infoPopup);
+  }
+
+  hideInfo() {
+    const infoPopup = document.querySelector('.info-popup');
+    if (infoPopup) {
+      infoPopup.remove();
+    }
+  }
+
+  isEqual(obj1: any, obj2: any): boolean {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
   }
 
   applyFilter(event: Event) {
@@ -141,7 +193,9 @@ export class BuildingParametersComponent {
           if (Array.isArray(res)) {
             this.buildingParameters = res;
             console.log("RES:", res);
+            this.isProgrammaticChange = true;
             this.buildingParametersForm.patchValue(res);
+            this.isProgrammaticChange = false;
             this.dataSource = new MatTableDataSource(this.buildingParameters);
 
             const isEmpty = res.every(parameters => {
@@ -246,6 +300,8 @@ export class BuildingParametersComponent {
       console.error('Form is invalid. Cannot update building parameters.');
     }
   }
+
+
 
 
 }
