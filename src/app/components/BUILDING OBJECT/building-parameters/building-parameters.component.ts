@@ -1,21 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import { BuildingMaterialService } from 'src/app/services/building-material.service';
-import { BuildingMaterial } from 'src/app/models/building-material.model';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { DialogComponent } from '../DIALOGS/dialog-building-materials/dialog.component';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { NgConfirmService } from 'ng-confirm-box';
 import { BuildingParameters } from 'src/app/models/building-parameters.model';
 import { BuildingParametersService } from 'src/app/services/building-parameters.service';
-import { DialogBuildingInformationComponent } from '../DIALOGS/dialog-building-information/dialog-building-information.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SolutionService } from '../../../services/solution.service';
 import { DialogBuildingParametersComponent } from '../DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
+import { InfoImageBuildingExternalDimensionsComponent } from '../DIALOGS/info-image-Building-external-dimensions/info-image-building-external-dimensions.component';
 
 @Component({
   selector: 'app-building-parameters',
@@ -23,55 +20,135 @@ import { DialogBuildingParametersComponent } from '../DIALOGS/dialog-building-pa
   styleUrls: ['./building-parameters.component.css']
 })
 export class BuildingParametersComponent {
-
-  public buildingParameters:any=[];
-  addBuildingParametersRequest: BuildingParameters = {    
-    buildingLengthN:0,
-    buildingLengthE:0,
-    buildingLengthS:0,
-    buildingLengthW:0,
-    storeyHeightNet:0,
-    storeyHeightGross:0,
-    cellarHeight:0,
-    storeyQuantity:0,
-    buildingArea:0,
-    staircaseSurface:0,
-    usableAreaOfTheStairCase:0,
-    staircaseWidth:0,
-    heatAtticArea:0,
-    unheatedAtticArea:0,
-    usableAreaOfTheBuilding:0,
-    atticUsableArea:0,
-    perimeterOfTheBuilding:0,
-    balconyLength:0,
-    totalWindowAreaN:0,
-    totalWindowAreaE:0,
-    totalWindowAreaS:0,
-    totalWindowAreaW:0,
-    totalDoorAreaN:0,
-    totalDoorAreaE:0,
-    totalDoorAreaS:0,
-    totalDoorAreaW:0,
-  };
-
-  displayedColumns: string[] = ['id', 'BuildingLengthN', 'BuildingLengthE'];
-  dataSource!: MatTableDataSource<any>;
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  public role!:string;    
 
-  constructor(private buildingParametersService: BuildingParametersService, private dialog: MatDialog,private auth: AuthService,
-     private userStore: UserStoreService,private confirmService: NgConfirmService){}
+  buildingParametersForm: FormGroup;
+  buildingParameters: BuildingParameters[] = [];
+  actionBtn: string = "Save";
+  perimeter: number = 0;
+  displayedColumns: string[] = ['id', 'BuildingLengthN', 'BuildingLengthE'];
+  dataSource!: MatTableDataSource<any>;
+  isProgrammaticChange = false;
+  isFormChanged = false;
+  // currentFormValues: any;
+  public role!: string;
+
+  constructor(
+    private buildingParametersService: BuildingParametersService,
+    private dialog: MatDialog,
+    private auth: AuthService,
+    private userStore: UserStoreService,
+    private confirmService: NgConfirmService,
+    private formBuilder: FormBuilder,
+    private solutionService: SolutionService,
+    private renderer: Renderer2,
+    private elementRef: ElementRef) {
+
+    this.buildingParametersForm = this.formBuilder.group({
+      buildingLengthN: ["", Validators.required],
+      buildingLengthE: ["", Validators.required],
+      buildingLengthS: ["", Validators.required],
+      buildingLengthW: ["", Validators.required],
+      storeyHeightNet: ["", Validators.required],
+      storeyHeightGross: ["", Validators.required],
+      cellarHeight: ["", Validators.required],
+      storeyQuantity: ["", Validators.required],
+      buildingArea: ["", Validators.required],
+      staircaseSurface: ["", Validators.required],
+      usableAreaOfTheStairCase: ["", Validators.required],
+      staircaseWidth: ["", Validators.required],
+      heatAtticArea: ["", Validators.required],
+      unheatedAtticArea: ["", Validators.required],
+      usableAreaOfTheBuilding: ["", Validators.required],
+      atticUsableArea: ["", Validators.required],
+      perimeterOfTheBuilding: { value: 0, disabled: true },
+      balconyLength: ["", Validators.required],
+      totalWindowAreaN: ["", Validators.required],
+      totalWindowAreaE: ["", Validators.required],
+      totalWindowAreaS: ["", Validators.required],
+      totalWindowAreaW: ["", Validators.required],
+      totalDoorAreaN: ["", Validators.required],
+      totalDoorAreaE: ["", Validators.required],
+      totalDoorAreaS: ["", Validators.required],
+      totalDoorAreaW: ["", Validators.required],
+
+    });
+    this.buildingParametersForm.valueChanges.subscribe(() => {
+      if (!this.isProgrammaticChange) {
+        // this.currentFormValues = this.buildingParametersForm.value;
+        // this.isFormChanged = !this.isEqual(this.currentFormValues, this.buildingParameters);
+        const lengthN = parseFloat(this.buildingParametersForm.get('buildingLengthN')?.value);
+        const lengthE = parseFloat(this.buildingParametersForm.get('buildingLengthE')?.value);
+        const lengthS = parseFloat(this.buildingParametersForm.get('buildingLengthS')?.value);
+        const lengthW = parseFloat(this.buildingParametersForm.get('buildingLengthW')?.value);
+        if (!isNaN(lengthN) && !isNaN(lengthE) && !isNaN(lengthS) && !isNaN(lengthW)) {
+          this.perimeter = lengthN + lengthE + lengthS + lengthW;
+          this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue(this.perimeter);
+        }
+        else {
+          this.perimeter = 0;
+          this.buildingParametersForm.get('perimeterOfTheBuilding')?.setValue("");
+          console.error('One or more values are not valid numbers.');
+        }
+      }
+    });
+  }
+
+  openInfoDialogExternalDimensions(): void {
+    this.dialog.open(InfoImageBuildingExternalDimensionsComponent, {
+      width: '30vw',
+      data: {
+        image: 'assets/externalDimensionsExplanation.png'
+      }
+    });
+  }
+
+  openInfoDialogStoreyDimensions(): void {
+    this.dialog.open(InfoImageBuildingExternalDimensionsComponent, {
+      width: '30vw',
+      data: {
+        image: 'assets/externalDimensionsExplanation.png'
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.getAllBuildingParameters();  
+    this.loadBuildingParameters();
     this.userStore.getRoleFromStore()
-    .subscribe(val=>{
-      const roleFromToken = this.auth.getRoleFromToken();
-      this.role = val || roleFromToken
-    })
-  }  
+      .subscribe(val => {
+        const roleFromToken = this.auth.getRoleFromToken();
+        this.role = val || roleFromToken
+      });
+    const infoIcon = this.elementRef.nativeElement.querySelector('.info-icon');
+    const imageSrc = 'ścieżka/do/obrazka.jpg';
+    this.renderer.listen(infoIcon, 'mouseover', () => {
+      this.showInfo(imageSrc);
+    });
+    this.renderer.listen(infoIcon, 'mouseout', () => {
+      this.hideInfo();
+    });
+  }
+
+  showInfo(imageSrc: string) {
+    const infoPopup = document.createElement('div');
+    infoPopup.classList.add('info-popup');
+    const image = document.createElement('img');
+    image.src = imageSrc;
+    infoPopup.appendChild(image);
+    document.body.appendChild(infoPopup);
+  }
+
+  hideInfo() {
+    const infoPopup = document.querySelector('.info-popup');
+    if (infoPopup) {
+      infoPopup.remove();
+    }
+  }
+
+  isEqual(obj1: any, obj2: any): boolean {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -84,78 +161,147 @@ export class BuildingParametersComponent {
 
   openDialog() {
     this.dialog.open(DialogBuildingParametersComponent, {
-     width:'50%'
-    }).afterClosed().subscribe(val=>{
-      if(val==='save'){
+      width: '50%'
+    }).afterClosed().subscribe(val => {
+      if (val === 'save') {
         this.getAllBuildingParameters();
       }
     })
   };
 
-  addBuildingMaterial(){
-    this.buildingParametersService.addBuildingParameters(this.addBuildingParametersRequest)
-    .subscribe({
-      next: (parameters: any)=>{
-        console.log(parameters);
-      },
-      error:(response: any)=>{
-        console.log(response);
-      }
-      
-    })
-  }
-
-  getAllBuildingParameters(){
+  getAllBuildingParameters() {
     this.buildingParametersService.getAllBuildingParameters()
-    .subscribe({
-      next: (res: any[] | undefined)=>{  
-        this.buildingParameters=res;
-        console.log(res)      
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      error: (err: any)=>{
-        console.log(err);
-        alert("Error while fetching the Records")
-      }
+      .subscribe({
+        next: (res: any[] | undefined) => {
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        error: (err: any) => {
+          console.log(err);
+          alert("Error while fetching the Records")
+        }
 
-    })
+      })
   }
 
-  editMaterial(row: any){
-    this.dialog.open(DialogComponent,{
-      width:'30%',
+  loadBuildingParameters(): void {
+    const solutionId = this.solutionService.getSolutionId();
+    if (solutionId) {
+      this.buildingParametersService.getBuildingParametersBySolutionId(solutionId).subscribe({
+        next: (res: BuildingParameters[]) => {
+          if (Array.isArray(res)) {
+            this.buildingParameters = res;
+            console.log("RES:", res);
+            this.isProgrammaticChange = true;
+            this.buildingParametersForm.patchValue(res);
+            this.isProgrammaticChange = false;
+            this.dataSource = new MatTableDataSource(this.buildingParameters);
+
+            const isEmpty = res.every(parameters => {
+              return Object.values(parameters).every(value => value === null || value === '');
+            });
+
+            this.actionBtn = isEmpty ? 'Save' : 'Update';
+            console.log("actionBtn:", this.actionBtn);
+
+          } else {
+            const isEmpty = Object.values(res).every(value => value === null || value === '');
+            console.log("RES:", res);
+            this.buildingParametersForm.patchValue(res);
+
+            this.actionBtn = isEmpty ? 'Save' : 'Update';
+            console.log("actionBtn:", this.actionBtn);
+
+          }
+        },
+        error: (err: any) => {
+          console.error('Error while fetching building parameters:', err);
+        }
+      });
+    }
+  }
+
+  editMaterial(row: any) {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
       data: row
-    }).afterClosed().subscribe(val=>{
-      if(val==='update'){
+    }).afterClosed().subscribe(val => {
+      if (val === 'update') {
         this.getAllBuildingParameters();
       }
     })
   };
 
-  deleteMaterial(id: number){
+  deleteMaterial(id: number) {
 
     this.confirmService.showConfirm("Are you sure want to remove item permanently ?",
-    ()=>{
-      this.buildingParametersService.deleteBuildingParameters(id)
-    .subscribe({
-      next:(res: any)=>{
-        alert("material deleted successfully")
-        this.getAllBuildingParameters();
+      () => {
+        this.buildingParametersService.deleteBuildingParameters(id)
+          .subscribe({
+            next: (res: any) => {
+              alert("material deleted successfully")
+              this.getAllBuildingParameters();
+            },
+            error: (err: any) => {
+              console.log(err)
+              alert("Error while deleting the product !")
+            }
+          })
       },
-      error:(err: any)=>{
-        console.log(err)
-        alert("Error while deleting the product !")
+      () => {
+        alert("User selected No")
       }
-      })
-    },
-    ()=>{
-       alert("User selected No")
+    )
+
+  }
+
+  saveBuildingParameters(): void {
+    if (this.buildingParametersForm.valid) {
+      const formData = this.buildingParametersForm.value;
+      formData.perimeterOfTheBuilding = this.perimeter;
+      console.log("FormData:", formData);
+      const solutionId = this.solutionService.getSolutionId();
+      if (solutionId) {
+        console.log("Sending data to backend");
+        this.buildingParametersService.saveBuildingParameters(formData, solutionId).subscribe({
+          next: (res: any) => {
+            console.log('Building parameters saved successfully:', res);
+          },
+          error: (err: any) => {
+            console.error('Error while saving building parameters:', err);
+          }
+        });
+      }
     }
-    )  
-    
-}
+    else {
+      console.error('Form is invalid. Cannot save building parameters.');
+    }
+  }
+  updateBuildingParameters(): void {
+    if (this.buildingParametersForm.valid) {
+      const formData = this.buildingParametersForm.value;
+      formData.perimeterOfTheBuilding = this.perimeter;
+      console.log("FormData:", formData);
+      const solutionId = this.solutionService.getSolutionId();
+      if (solutionId) {
+        console.log("Sending data to backend");
+        this.buildingParametersService.updateBuildingParameters(formData, solutionId).subscribe({
+          next: (res: any) => {
+            console.log('Building parameters updated successfully:', res);
+          },
+          error: (err: any) => {
+            console.error('Error while update building parameters:', err);
+          }
+        });
+      }
+    }
+    else {
+      console.error('Form is invalid. Cannot update building parameters.');
+    }
+  }
+
+
 
 
 }

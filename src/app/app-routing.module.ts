@@ -71,6 +71,10 @@ const routes: Routes = [
     component: BuildingParametersComponent
   },
   {
+    path: 'building-parameters/:solutionId',
+    component: BuildingParametersComponent
+  },
+  {
     path: 'ground-works',
     component: GroundWorksComponent
   },
