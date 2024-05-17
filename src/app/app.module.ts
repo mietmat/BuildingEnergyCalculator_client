@@ -79,6 +79,10 @@ import { ProjectSettingsComponent } from './components/PROJECTS/PROJECT-DASHBOAR
 import { SolutionComponent } from './components/PROJECTS/solution/solution.component';
 import { DialogSolutionComponent } from './components/PROJECTS/DIALOGUES/dialog-solution/dialog-solution.component';
 import { GroundWorksComponent } from './components/BUILDING OBJECT/ground-works/ground-works.component';
+import { InfoImageStoreyDimensionsComponent } from './components/BUILDING OBJECT/DIALOGS/info-image-storey-dimensions/info-image-storey-dimensions.component';
+import { InfoImageBuildingExternalDimensionsComponent } from './components/BUILDING OBJECT/DIALOGS/info-image-Building-external-dimensions/info-image-building-external-dimensions.component';
+import { InfoWindowsAreaComponent } from './components/BUILDING OBJECT/DIALOGS/info-windows-area/info-windows-area.component';
+import { InfoDoorsAreaComponent } from './components/BUILDING OBJECT/DIALOGS/info-doors-area/info-doors-area.component';
 
 
 // import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -141,9 +145,11 @@ import { GroundWorksComponent } from './components/BUILDING OBJECT/ground-works/
     ProjectSettingsComponent,
     SolutionComponent,
     DialogSolutionComponent,
-    GroundWorksComponent
-
-
+    GroundWorksComponent,
+    InfoImageStoreyDimensionsComponent,
+    InfoImageBuildingExternalDimensionsComponent,
+    InfoWindowsAreaComponent,
+    InfoDoorsAreaComponent
 
   ],
   imports: [

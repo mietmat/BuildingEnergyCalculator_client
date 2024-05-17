@@ -82,8 +82,9 @@ a {
   align-items: center;
 }
 
-.info-icon {
+.info-icon:hover {
   cursor: pointer;
+  color: yellow;
 }
 
 .main-button {

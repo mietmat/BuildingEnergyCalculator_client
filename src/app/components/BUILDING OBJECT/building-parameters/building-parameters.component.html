@@ -35,19 +35,20 @@
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>Total length (N)</mat-label>
-            <input formControlName="buildingLengthN" matInput type="number" placeholder="Total length (N)">
+            <input formControlName="buildingLengthN" matInput type="number" placeholder="Total length (N)" min="0"
+              max="10000" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Total length (E)</mat-label>
-            <input formControlName="buildingLengthE" matInput type="number" placeholder="Total length (E)">
+            <input formControlName="buildingLengthE" matInput type="number" placeholder="Total length (E)" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Total length (S)</mat-label>
-            <input formControlName="buildingLengthS" matInput type="number" placeholder="Total length (S)">
+            <input formControlName="buildingLengthS" matInput type="number" placeholder="Total length (S)" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Total length (W)</mat-label>
-            <input formControlName="buildingLengthW" matInput type="number" placeholder="Total length (W)">
+            <input formControlName="buildingLengthW" matInput type="number" placeholder="Total length (W)" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Perimeter</mat-label>
@@ -62,28 +63,29 @@
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>Storey Height Net</mat-label>
-            <input formControlName="storeyHeightNet" matInput placeholder="Storey Height Net">
+            <input formControlName="storeyHeightNet" matInput type="number" placeholder="Storey Height Net" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Storey Height Gross</mat-label>
-            <input formControlName="storeyHeightGross" matInput placeholder="Storey Height Gross">
+            <input formControlName="storeyHeightGross" matInput type="number" placeholder="Storey Height Gross"
+              step="0.1">
           </mat-form-field>
         </div>
 
-
-        <h2>Attic</h2>
+        <h2>Attic [m²]</h2>
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>Heat Area</mat-label>
-            <input formControlName="heatAtticArea" matInput placeholder="Heat Attic Area">
+            <input formControlName="heatAtticArea" matInput type="number" placeholder="Heat Attic Area" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Unheated Area</mat-label>
-            <input formControlName="unheatedAtticArea" matInput placeholder="Unheated Attic Area">
+            <input formControlName="unheatedAtticArea" matInput type="number" placeholder="Unheated Attic Area"
+              step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Usable Area</mat-label>
-            <input formControlName="atticUsableArea" matInput placeholder="Attic Usable Area">
+            <input formControlName="atticUsableArea" matInput type="number" placeholder="Attic Usable Area" step="0.1">
           </mat-form-field>
         </div>
 
@@ -91,55 +93,70 @@
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>Width</mat-label>
-            <input formControlName="staircaseWidth" matInput placeholder="Staircase Width">
+            <input formControlName="staircaseWidth" matInput type="number" placeholder="Staircase Width" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Surface</mat-label>
-            <input formControlName="staircaseSurface" matInput placeholder="StaircaseSurface">
+            <input formControlName="staircaseSurface" matInput type="number" placeholder="StaircaseSurface" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Usable Area</mat-label>
-            <input formControlName="usableAreaOfTheStairCase" matInput placeholder="Usable Area Of The Stair Case">
+            <input formControlName="usableAreaOfTheStairCase" matInput type="number"
+              placeholder="Usable Area Of The Stair Case" step="0.1">
           </mat-form-field>
         </div>
 
-        <h2>Total Windows area [m²]</h2>
+        <div class="header">
+          <h2>Total Windows area [m²]</h2>
+          <mat-icon class="info-icon" (click)="openInfoDialogWindowsArea()">info</mat-icon>
+        </div>
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>N</mat-label>
-            <input formControlName="totalWindowAreaN" matInput placeholder="Total Window Area N">
+            <input formControlName="totalWindowAreaN" matInput type="number" placeholder="Total Window Area N"
+              [value]="0 | number: '1.1-1'" readonly>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>E</mat-label>
-            <input formControlName="totalWindowAreaE" matInput placeholder="Total Window Area E">
+            <input formControlName="totalWindowAreaE" matInput type="number" placeholder="Total Window Area E"
+              [value]="0" readonly>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>S</mat-label>
-            <input formControlName="totalWindowAreaS" matInput placeholder="Total Window Area S">
+            <input formControlName="totalWindowAreaS" matInput type="number" placeholder="Total Window Area S"
+              [value]="0" readonly>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>W</mat-label>
-            <input formControlName="totalWindowAreaW" matInput placeholder="Total Window Area W">
+            <input formControlName="totalWindowAreaW" matInput type="number" placeholder="Total Window Area W"
+              [value]="0" readonly>
           </mat-form-field>
         </div>
 
-        <h2>Total Doors area [m²]</h2>
+        <div class="header">
+          <h2>Total Doors area [m²]</h2>
+          <mat-icon class="info-icon" (click)="openInfoDialogDoorsArea()">info</mat-icon>
+        </div>
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>N</mat-label>
-            <input formControlName="totalDoorAreaN" matInput placeholder="Total Door Area N">
+            <input formControlName="totalDoorAreaN" matInput type="number" placeholder="Total Door Area N" [value]="0"
+              readonly>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>E</mat-label>
-            <input formControlName="totalDoorAreaE" matInput placeholder="Total Door Area E">
+            <input formControlName="totalDoorAreaE" matInput type="number" placeholder="Total Door Area E" [value]="0"
+              readonly>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>S</mat-label>
-            <input formControlName="totalDoorAreaS" matInput placeholder="Total Door Area S">
+            <input formControlName="totalDoorAreaS" matInput type="number" placeholder="Total Door Area S" [value]="0"
+              readonly>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>W</mat-label>
-            <input formControlName="totalDoorAreaW" matInput placeholder="Total Door Area W">
+            <input formControlName="totalDoorAreaW" matInput type="number" placeholder="Total Door Area W" [value]="0"
+              readonly>
           </mat-form-field>
         </div>
 
@@ -147,11 +164,12 @@
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>Area</mat-label>
-            <input formControlName="buildingArea" matInput placeholder="Building Area">
+            <input formControlName="buildingArea" matInput type="number" placeholder="Building Area" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Usable Area</mat-label>
-            <input formControlName="usableAreaOfTheBuilding" matInput placeholder="Usable Area Of The Building">
+            <input formControlName="usableAreaOfTheBuilding" matInput type="number"
+              placeholder="Usable Area Of The Building" step="0.1">
           </mat-form-field>
         </div>
 
@@ -159,15 +177,15 @@
         <div class="data-container">
           <mat-form-field appearance="fill">
             <mat-label>Balcony Length</mat-label>
-            <input formControlName="balconyLength" matInput placeholder="Balcony Length">
+            <input formControlName="balconyLength" matInput type="number" placeholder="Balcony Length" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Cellar Height</mat-label>
-            <input formControlName="cellarHeight" matInput placeholder="Cellar Height">
+            <input formControlName="cellarHeight" matInput type="number" placeholder="Cellar Height" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Storey Quantity</mat-label>
-            <input formControlName="storeyQuantity" matInput placeholder="Storey Quantity">
+            <input formControlName="storeyQuantity" matInput type="number" placeholder="Storey Quantity" step="0.1">
           </mat-form-field>
         </div>
       </form>

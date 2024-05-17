@@ -1,6 +1,4 @@
 import { Component } from "@angular/core";
-import { FormGroup } from "@angular/forms";
-
 
 @Component({
   selector: 'app-info-image-building-external-dimensions',
@@ -8,7 +6,6 @@ import { FormGroup } from "@angular/forms";
   styleUrls: ['./info-image-building-external-dimensions.component.css']
 })
 export class InfoImageBuildingExternalDimensionsComponent {
-
 
   constructor() { }
 

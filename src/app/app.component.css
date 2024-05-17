@@ -42,3 +42,9 @@ footer {
     color: white;
     font-size: 14px;
 }
+
+.background {
+    padding-top: 10vh;
+    height: 600px;
+    width: 600px;
+}

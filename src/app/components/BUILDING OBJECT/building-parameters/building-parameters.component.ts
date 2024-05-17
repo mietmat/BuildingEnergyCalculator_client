@@ -13,6 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SolutionService } from '../../../services/solution.service';
 import { DialogBuildingParametersComponent } from '../DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
 import { InfoImageBuildingExternalDimensionsComponent } from '../DIALOGS/info-image-Building-external-dimensions/info-image-building-external-dimensions.component';
+import { InfoImageStoreyDimensionsComponent } from '../DIALOGS/info-image-storey-dimensions/info-image-storey-dimensions.component';
+import { InfoWindowsAreaComponent } from '../DIALOGS/info-windows-area/info-windows-area.component';
+import { InfoDoorsAreaComponent } from '../DIALOGS/info-doors-area/info-doors-area.component';
 
 @Component({
   selector: 'app-building-parameters',
@@ -105,11 +108,23 @@ export class BuildingParametersComponent {
   }
 
   openInfoDialogStoreyDimensions(): void {
-    this.dialog.open(InfoImageBuildingExternalDimensionsComponent, {
+    this.dialog.open(InfoImageStoreyDimensionsComponent, {
       width: '30vw',
       data: {
         image: 'assets/externalDimensionsExplanation.png'
       }
+    });
+  }
+
+  openInfoDialogWindowsArea(): void {
+    this.dialog.open(InfoWindowsAreaComponent, {
+      width: '30vw'
+    });
+  }
+
+  openInfoDialogDoorsArea(): void {
+    this.dialog.open(InfoDoorsAreaComponent, {
+      width: '30vw'
     });
   }
 
