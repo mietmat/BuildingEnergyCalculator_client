@@ -18,29 +18,29 @@ import { NgConfirmService } from 'ng-confirm-box';
 export class DivisionalStructuresComponent implements OnInit {
 
   public materials!: any[];
-  public divisionalStructures:any=[];
+  public divisionalStructures: any = [];
 
   addDivisionalStructuresRequest: DivisionalStructure = {
-    name:'',
-    description:'',
+    name: '',
+    description: '',
     divisionalThickness: 0,
-    R:0,
-    U:0,
-    Rsi:0,
-    Rse:0,
-    buildingMaterials:[],
+    R: 0,
+    U: 0,
+    Rsi: 0,
+    Rse: 0,
+    buildingMaterials: [],
 
 
   };
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'divisionalThickness','U','Rsi','Rse','action' ];
+  displayedColumns: string[] = ['id', 'name', 'description', 'divisionalThickness', 'U', 'Rsi', 'Rse', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  
+
   constructor(private divisionalStructureService: DivisionalStructureService, private dialog: MatDialog,
-     private confirmService: NgConfirmService){}
+    private confirmService: NgConfirmService) { }
 
   ngOnInit(): void {
     this.getAllDivisionalStructures();
@@ -57,67 +57,67 @@ export class DivisionalStructuresComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DialogDivisionalStructureComponent, {
-      width:'30%'
-     }).afterClosed().subscribe(val=>{
-       if(val==='save'){
+      width: '30%'
+    }).afterClosed().subscribe(val => {
+      if (val === 'save') {
         this.getAllDivisionalStructures();
-       }
-     })
-  };
-  
-
-  getAllDivisionalStructures(){
-    this.divisionalStructureService.getAllDivisionalStructures()
-    .subscribe({
-      next: (res)=>{  
-        // this.divisionalStructures=res;
-        console.log(res) 
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      error: (err)=>{
-        console.log(err);
-        alert("Error while fetching the Records DS")
       }
-      
     })
+  };
+
+
+  getAllDivisionalStructures() {
+    this.divisionalStructureService.getAllDivisionalStructures()
+      .subscribe({
+        next: (res) => {
+          // this.divisionalStructures=res;
+          console.log(res)
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        error: (err) => {
+          console.log(err);
+          alert("Error while fetching the Records DS")
+        }
+
+      })
   }
 
-  editStructure(row: any)
-  {
-    this.dialog.open(DialogDivisionalStructureComponent,{
-      width:'30%',
+  editStructure(row: any) {
+    console.log("ROW:", row)
+    this.dialog.open(DialogDivisionalStructureComponent, {
+      width: '30%',
       data: row
-    }).afterClosed().subscribe(val=>{
-      if(val==='update'){
+    }).afterClosed().subscribe(val => {
+      if (val === 'update') {
         this.getAllDivisionalStructures();
       }
     })
   };
 
-  deleteStructure(id: number){
+  deleteStructure(id: number) {
 
     this.confirmService.showConfirm("Are you sure want to remove item permanently ?",
-    ()=>{
-      this.divisionalStructureService.deleteStructure(id)
-    .subscribe({
-      next:(res)=>{
-        alert("product deleted successfully")
-        this.getAllDivisionalStructures();
+      () => {
+        this.divisionalStructureService.deleteStructure(id)
+          .subscribe({
+            next: (res) => {
+              alert("product deleted successfully")
+              this.getAllDivisionalStructures();
+            },
+            error: () => {
+              alert("Error while deleting the product !")
+            }
+          })
       },
-      error:()=>{
-        alert("Error while deleting the product !")
+      () => {
+        alert("User selected No")
       }
-      })
-    },
-    ()=>{
-      alert("User selected No")
-    }
-    )   
-  
-  
-}
+    )
 
-  
+
+  }
+
+
 }
