@@ -29,26 +29,26 @@
 
       <form [formGroup]="buildingParametersForm">
         <div class="header">
-          <h2>Building external dimensions without insulation [m]</h2>
+          <h2>Building axes dimensions [m]</h2>
           <mat-icon class="info-icon" (click)="openInfoDialogExternalDimensions()">info</mat-icon>
         </div>
         <div class="data-container">
           <mat-form-field appearance="fill">
-            <mat-label>Total length (N)</mat-label>
-            <input formControlName="buildingLengthN" matInput type="number" placeholder="Total length (N)" min="0"
+            <mat-label>Axes length (N)</mat-label>
+            <input formControlName="buildingLengthN" matInput type="number" placeholder="Axes length (N)" min="0"
               max="10000" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Total length (E)</mat-label>
-            <input formControlName="buildingLengthE" matInput type="number" placeholder="Total length (E)" step="0.1">
+            <mat-label>Axes length (E)</mat-label>
+            <input formControlName="buildingLengthE" matInput type="number" placeholder="Axes length (E)" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Total length (S)</mat-label>
-            <input formControlName="buildingLengthS" matInput type="number" placeholder="Total length (S)" step="0.1">
+            <mat-label>Axes length (S)</mat-label>
+            <input formControlName="buildingLengthS" matInput type="number" placeholder="Axes length (S)" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Total length (W)</mat-label>
-            <input formControlName="buildingLengthW" matInput type="number" placeholder="Total length (W)" step="0.1">
+            <mat-label>Axes length (W)</mat-label>
+            <input formControlName="buildingLengthW" matInput type="number" placeholder="Axes length (W)" step="0.1">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Perimeter</mat-label>

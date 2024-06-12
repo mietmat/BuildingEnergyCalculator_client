@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InfoImageBuildingExternalDimensionsComponent } from './info-image-Building-external-dimensions.component';
+import { InfoImageBuildingExternalDimensionsComponent } from './info-image-building-axes-dimensions.component';
 
 describe('InfoImageBuildingExternalDimensionsComponent', () => {
   let component: InfoImageBuildingExternalDimensionsComponent;

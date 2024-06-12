@@ -12,7 +12,7 @@ import { BuildingParametersService } from 'src/app/services/building-parameters.
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SolutionService } from '../../../services/solution.service';
 import { DialogBuildingParametersComponent } from '../DIALOGS/dialog-building-parameters/dialog-building-parameters.component';
-import { InfoImageBuildingExternalDimensionsComponent } from '../DIALOGS/info-image-Building-external-dimensions/info-image-building-external-dimensions.component';
+import { InfoImageBuildingExternalDimensionsComponent } from '../DIALOGS/info-image-Building-external-dimensions/info-image-building-axes-dimensions.component';
 import { InfoImageStoreyDimensionsComponent } from '../DIALOGS/info-image-storey-dimensions/info-image-storey-dimensions.component';
 import { InfoWindowsAreaComponent } from '../DIALOGS/info-windows-area/info-windows-area.component';
 import { InfoDoorsAreaComponent } from '../DIALOGS/info-doors-area/info-doors-area.component';

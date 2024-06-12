@@ -1,64 +1,63 @@
-main{
+main {
   margin-top: 8vh;
 }
 
 
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
 
-  table {
-    width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }  
+table {
+  width: 100%;
+}
 
-  .container{
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
 
-  #sidebarMenu{
-    height: 100vh;
-    background-color: black;
-    position: fixed;
-    margin-top: 8.7vh;
-  }
-  .nav-item{
-    text-align: center;
-    font-size: 1.8vh;
-  }
-  a{
-    color: black;
-  }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-  .headerContext{
-    position: fixed;
-    width: 80%;
-  }
- 
-  .container{
-    margin-top: 100px;
-  }
-  .filter{
-    width: 65vw;
-    position: fixed;
-  }
+#sidebarMenu {
+  height: 100vh;
+  background-color: black;
+  position: fixed;
+  margin-top: 8.7vh;
+}
 
-  .tableContent{
-    width: 98.5%;
-    padding-top: 90px;  
-    padding-bottom: 10vh;  
-  }
+.nav-item {
+  text-align: center;
+  font-size: 1.8vh;
+}
 
+a {
+  color: black;
+}
 
+.headerContext {
+  position: fixed;
+  width: 80%;
+}
 
-  
- 
+.container {
+  margin-top: 100px;
+}
 
+.filter {
+  width: 65vw;
+  position: fixed;
+}
 
- 
+.tableContent {
+  width: 98.5%;
+  padding-top: 90px;
+  padding-bottom: 10vh;
+  overflow-y: auto;
+  max-height: calc(80vh - 10vh);
+  margin: 10vh 0 0 0;
+
+}
